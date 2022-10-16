@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Admins can delete existing Margots" do
+RSpec.feature "Admins can delete existing posts" do
     before do
         login_as(FactoryBot.create(:user, :admin))
     end
@@ -11,13 +11,13 @@ RSpec.feature "Admins can delete existing Margots" do
         visit "/"
 
         within(".posts") do
-            click_link "Example Margot"
+            click_link "Example post"
         end
         
-        click_link "Remove this Margot"
+        click_link "Remove post"
 
-        expect(page).to have_content "Margot successfully removed."
+        expect(page).to have_content "Post successfully removed."
         expect(page.current_url).to eq posts_url
-        expect(page).to have_no_content "Example Margot"
+        expect(page).to have_no_content "Example post"
     end
 end

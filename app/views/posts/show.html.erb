@@ -25,13 +25,13 @@
             <% end %>
             
             <% admins_only do %>
-                <li><%= link_to "Edit this Margot", edit_admin_post_path(@post) %></li>
-                <li><%= link_to "Remove this Margot", admin_post_path(@post),
+                <li><%= link_to "Edit post", edit_admin_post_path(@post) %></li>
+                <li><%= link_to "Remove post", admin_post_path(@post),
                 method: :delete,
-                data: { confirm: "Do you want to remove this Margot?" } %></li>
+                data: { confirm: "Do you want to remove this post?" } %></li>
             <% end %>
 
-            <li><%= link_to "Return to the Emporium...", posts_path %></li>
+            <li><%= link_to "Return to home...", posts_path %></li>
     </div>
 
     <div class="sidebar-right">

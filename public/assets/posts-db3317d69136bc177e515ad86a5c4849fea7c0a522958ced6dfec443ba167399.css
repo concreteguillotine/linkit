@@ -1,0 +1,5 @@
+/* line 1, app/assets/stylesheets/posts.scss */
+.votes, .vote, .unvote {
+  display: block;
+  justify-content: center;
+}

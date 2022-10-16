@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Admins can remove comments from Margot posts" do
+RSpec.feature "Admins can remove comments from posts" do
   let(:admin) { FactoryBot.create(:user, :admin) }
   let(:user) { FactoryBot.create(:user) }
   let!(:post) { FactoryBot.create(:post) }

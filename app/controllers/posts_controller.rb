@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     def set_post
         @post = Post.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-        flash[:alert] = "This Margot does not exist!"
+        flash[:alert] = "This post does not exist!"
         redirect_to posts_path
     end
 

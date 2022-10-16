@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Users can vote on Margot posts" do
+RSpec.feature "Users can vote on posts" do
     let(:user) { FactoryBot.create(:user) }
     let(:post_1) { FactoryBot.create(:post, name: "Chi Ball") }
     let(:post_2) { FactoryBot.create(:post, name: "Dragonmode") }

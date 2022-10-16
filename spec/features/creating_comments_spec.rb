@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Users can comment on Margot posts" do
+RSpec.feature "Users can comment on posts" do
     let(:user) { FactoryBot.create(:user) }
     let(:post) { FactoryBot.create(:post) }
 

@@ -1,0 +1,190 @@
+/* line 1, app/assets/stylesheets/posts.scss */
+.votes, .vote, .unvote {
+  display: block;
+  justify-content: center;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+/* line 16, app/assets/stylesheets/application.css.scss */
+body {
+  background-color: rgba(180, 221, 226, 0.842);
+  display: block;
+  margin: 0;
+}
+
+/* line 21, app/assets/stylesheets/application.css.scss */
+body .sidebar-left {
+  border-right: 5px double rgba(240, 234, 157, 0.897);
+  float: left;
+  left: 0;
+  display: block;
+  height: 980px;
+  width: 260px;
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  text-align: center;
+  background-color: #dad3d3;
+}
+
+/* line 35, app/assets/stylesheets/application.css.scss */
+body .sidebar-right {
+  border-left: 5px double #dad3d3;
+  float: right;
+  right: 0;
+  display: flex;
+  height: 1fr;
+  width: 260px;
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  padding-top: 0px;
+  background-color: rgba(240, 234, 157, 0.897);
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+}
+
+/* line 53, app/assets/stylesheets/application.css.scss */
+body .sidebar-right .allhof figure.hof {
+  display: table;
+  text-align: center;
+  border: none;
+}
+
+/* line 60, app/assets/stylesheets/application.css.scss */
+body .sidebar-right .allhof figure.hof figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  text-align: center;
+}
+
+/* line 66, app/assets/stylesheets/application.css.scss */
+body .sidebar-right .allhof figure.hof img[src] {
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* line 76, app/assets/stylesheets/application.css.scss */
+.content {
+  max-width: 1328px;
+}
+
+/* line 79, app/assets/stylesheets/application.css.scss */
+.content figure.posts {
+  display: inline-grid;
+  grid-auto-columns: max-content;
+  text-align: center;
+  border: none;
+  position: relative;
+  left: 320px;
+  right: 320px;
+  margin: 10px;
+  margin-left: 1px;
+  align-content: center;
+}
+
+/* line 91, app/assets/stylesheets/application.css.scss */
+.content figure.posts figcaption {
+  display: table-caption;
+  caption-side: bottom;
+}
+
+/* line 96, app/assets/stylesheets/application.css.scss */
+.content figure.posts img[src] {
+  max-width: 275px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* line 105, app/assets/stylesheets/application.css.scss */
+.post {
+  display: block;
+  align-content: center;
+  text-align: center;
+}
+
+/* line 110, app/assets/stylesheets/application.css.scss */
+.post .sidebar-left {
+  border-right: 5px double rgba(240, 234, 157, 0.897);
+  float: left;
+  left: 0;
+  display: block;
+  height: 980px;
+  width: 260px;
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  background-color: #dad3d3;
+}
+
+/* line 122, app/assets/stylesheets/application.css.scss */
+.post .sidebar-left .votes {
+  padding-top: 0px;
+}
+
+/* line 127, app/assets/stylesheets/application.css.scss */
+.post .sidebar-right {
+  border-left: 5px double #dad3d3;
+  float: right;
+  right: 0;
+  display: block;
+  height: 980px;
+  width: 260px;
+  position: fixed;
+  top: 0;
+  padding: 30px;
+  padding-top: 0px;
+  background-color: white;
+  text-align: center;
+}
+
+/* line 142, app/assets/stylesheets/application.css.scss */
+.post .content {
+  left: 320px;
+  right: 320px;
+  position: relative;
+}
+
+/* line 147, app/assets/stylesheets/application.css.scss */
+.post .content img[src] {
+  left: 260px;
+  max-width: 560px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* line 156, app/assets/stylesheets/application.css.scss */
+.comment {
+  text-align: center;
+  background-color: rgba(240, 234, 157, 0.897);
+  border: 5px double #dad3d3;
+  max-width: 350px;
+  margin: 20px 20px;
+  padding: 5px;
+}
+
+/* line 164, app/assets/stylesheets/application.css.scss */
+.comment .author {
+  background-color: rgba(180, 221, 226, 0.842);
+  background-size: cover;
+}
+
+/* line 169, app/assets/stylesheets/application.css.scss */
+.comment .text {
+  list-style: none;
+}

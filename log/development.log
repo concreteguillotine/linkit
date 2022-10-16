@@ -1,0 +1,1337 @@
+Started GET "/posts" for 127.0.0.1 at 2022-10-16 14:58:16 -0400
+  [1m[35m (8.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (28.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 9 pending migrations:
+
+20220625212203_create_posts.rb
+20220625214339_create_active_storage_tables.active_storage.rb
+20220626233928_devise_create_users.rb
+20220627010432_add_username_to_users.rb
+20220701165217_add_admin_to_users.rb
+20220701220809_create_comments.rb
+20220704193248_acts_as_votable_migration.rb
+20220705202949_add_cached_votes_to_posts.rb
+20220720205239_add_user_to_users.rb
+
+
+):
+  
+activerecord (6.1.6) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.6) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.6) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.6) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.6) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.6) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.6) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.6) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.6) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.6) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.6) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.2) lib/rack/proxy.rb:67:in `call'
+railties (6.1.6) lib/rails/engine.rb:539:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePosts (20220625212203)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220625212203"]]
+  [1m[36mTRANSACTION (52.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveStorageTables (20220625214339)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (4.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220625214339"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20220626233928)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (8.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220626233928"]]
+  [1m[36mTRANSACTION (28.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUsernameToUsers (20220627010432)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "users" ADD "username" varchar[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (5.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220627010432"]]
+  [1m[36mTRANSACTION (13.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddAdminToUsers (20220701165217)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.7ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT 0[0m
+  [1m[36mActiveRecord::SchemaMigration Create (5.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220701165217"]]
+  [1m[36mTRANSACTION (22.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20220701220809)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "post_id" integer, "author_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+, CONSTRAINT "fk_rails_f44b1e3c8a"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_comments_on_post_id" ON "comments" ("post_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_comments_on_author_id" ON "comments" ("author_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (4.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220701220809"]]
+  [1m[36mTRANSACTION (24.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ActsAsVotableMigration (20220704193248)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "votes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "votable_type" varchar, "votable_id" integer, "voter_type" varchar, "voter_id" integer, "vote_flag" boolean, "vote_scope" varchar, "vote_weight" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_votes_on_votable_type_and_votable_id" ON "votes" ("votable_type", "votable_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_votes_on_voter_type_and_voter_id" ON "votes" ("voter_type", "voter_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_votes_on_voter_id_and_voter_type_and_vote_scope" ON "votes" ("voter_id", "voter_type", "vote_scope")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_votes_on_votable_id_and_votable_type_and_vote_scope" ON "votes" ("votable_id", "votable_type", "vote_scope")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (9.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220704193248"]]
+  [1m[36mTRANSACTION (14.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddCachedVotesToPosts (20220705202949)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (9.4ms)[0m  [1m[35mALTER TABLE "posts" ADD "cached_votes_total" integer DEFAULT 0[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_posts_on_cached_votes_total" ON "posts" ("cached_votes_total")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (4.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220705202949"]]
+  [1m[36mTRANSACTION (16.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUserToUsers (20220720205239)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (5.1ms)[0m  [1m[35mALTER TABLE "users" ADD "user" boolean DEFAULT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220720205239"]]
+  [1m[36mTRANSACTION (30.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (4.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-16 18:59:02.960683"], ["updated_at", "2022-10-16 18:59:02.960683"]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts" for 127.0.0.1 at 2022-10-16 14:59:15 -0400
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."cached_votes_total" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  Rendered posts/index.html.erb within layouts/application (Duration: 94.3ms | Allocations: 4430)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1768.1ms | Allocations: 30482)
+Completed 200 OK in 1990ms (Views: 1789.2ms | ActiveRecord: 1.2ms | Allocations: 35920)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@margemporium.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@margemporium.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Create (5.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username", "admin") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "admin@margemporium.com"], ["encrypted_password", "$2a$12$inOiANCDUqvR4HkK5ENYhOpsYf140y2vQuNQYzaAZhh3PP9yYt6Py"], ["created_at", "2022-10-16 18:59:46.264114"], ["updated_at", "2022-10-16 18:59:46.264114"], ["username", "admin"], ["admin", 1]]
+  [1m[36mTRANSACTION (24.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@margemporium.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@margemporium.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  [1m[36mUser Create (4.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "user@margemporium.com"], ["encrypted_password", "$2a$12$tZiTTSfhKaLjvtMkgXZbIe8ZThMMqYksghc6C.XG8/i5a4nBcEykG"], ["created_at", "2022-10-16 18:59:46.642975"], ["updated_at", "2022-10-16 18:59:46.642975"], ["username", "user"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/posts" for 127.0.0.1 at 2022-10-16 15:00:35 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."cached_votes_total" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  Rendered posts/index.html.erb within layouts/application (Duration: 53.4ms | Allocations: 4430)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 136.9ms | Allocations: 21313)
+Completed 200 OK in 229ms (Views: 143.7ms | ActiveRecord: 1.3ms | Allocations: 26810)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-10-16 15:00:37 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 13.8ms | Allocations: 624)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 191.7ms | Allocations: 5093)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 225.9ms | Allocations: 10259)
+Completed 200 OK in 314ms (Views: 236.5ms | ActiveRecord: 3.8ms | Allocations: 17396)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2022-10-16 15:00:40 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"admin", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "admin"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 521ms (ActiveRecord: 0.4ms | Allocations: 4444)
+
+
+Started GET "/" for 127.0.0.1 at 2022-10-16 15:00:41 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."cached_votes_total" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  Rendered posts/index.html.erb within layouts/application (Duration: 51.7ms | Allocations: 3745)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 66.5ms | Allocations: 8933)
+Completed 200 OK in 69ms (Views: 66.8ms | ActiveRecord: 0.9ms | Allocations: 9343)
+
+
+Started GET "/admin/posts/new" for 127.0.0.1 at 2022-10-16 15:00:44 -0400
+Processing by Admin::PostsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/application_controller.rb:10:in `authorize_admin!'
+  Rendering layout layouts/application.html.erb
+  Rendering admin/posts/new.html.erb within layouts/application
+  Rendered admin/posts/_form.html.erb (Duration: 18.2ms | Allocations: 1287)
+  Rendered admin/posts/new.html.erb within layouts/application (Duration: 40.4ms | Allocations: 1641)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 83.1ms | Allocations: 6827)
+Completed 200 OK in 135ms (Views: 93.1ms | ActiveRecord: 0.7ms | Allocations: 11073)
+
+
+Started POST "/admin/posts" for 127.0.0.1 at 2022-10-16 15:01:05 -0400
+Processing by Admin::PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"name"=>"Test post", "image"=>#<ActionDispatch::Http::UploadedFile:0x00005580c9b45628 @tempfile=#<Tempfile:/tmp/RackMultipart20221016-3398-ayik5f.jpg>, @original_filename="tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Post"}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/application_controller.rb:10:in `authorize_admin!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admin/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (7.2ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Test post"], ["created_at", "2022-10-16 19:01:05.394703"], ["updated_at", "2022-10-16 19:01:05.394703"]]
+  ↳ app/controllers/admin/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Load (9.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/admin/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/admin/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Create (19.8ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "dxmd06ru15kdr9cs7bpz0di4f9hz"], ["filename", "tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 1184131], ["checksum", "cbsiJ2v0uiDc32bpupDEnA=="], ["created_at", "2022-10-16 19:01:05.584012"]]
+  ↳ app/controllers/admin/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Create (7.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-16 19:01:05.619821"]]
+  ↳ app/controllers/admin/posts_controller.rb:11:in `create'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-16 19:01:05.642831"], ["id", 1]]
+  ↳ app/controllers/admin/posts_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (23.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admin/posts_controller.rb:11:in `create'
+[36m  Disk Storage (63.7ms) [0m[32mUploaded file to key: dxmd06ru15kdr9cs7bpz0di4f9hz (checksum: cbsiJ2v0uiDc32bpupDEnA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 0fa52f3d-a58d-448d-b820-5c67daa56ab2) to Async(default) with arguments: #<GlobalID:0x00005580c95f1730 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 636ms (ActiveRecord: 73.3ms | Allocations: 37664)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (8.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0fa52f3d-a58d-448d-b820-5c67daa56ab2] Performing ActiveStorage::AnalyzeJob (Job ID: 0fa52f3d-a58d-448d-b820-5c67daa56ab2) from Async(default) enqueued at 2022-10-16T19:01:05Z with arguments: #<GlobalID:0x00005580c8db7ce0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:01:05 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0fa52f3d-a58d-448d-b820-5c67daa56ab2] [36m  Disk Storage (10.9ms) [0m[34mDownloaded file from key: dxmd06ru15kdr9cs7bpz0di4f9hz[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0fa52f3d-a58d-448d-b820-5c67daa56ab2] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0fa52f3d-a58d-448d-b820-5c67daa56ab2]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0fa52f3d-a58d-448d-b820-5c67daa56ab2]   [1m[36mActiveStorage::Blob Update (3.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0fa52f3d-a58d-448d-b820-5c67daa56ab2]   [1m[36mTRANSACTION (73.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0fa52f3d-a58d-448d-b820-5c67daa56ab2] Performed ActiveStorage::AnalyzeJob (Job ID: 0fa52f3d-a58d-448d-b820-5c67daa56ab2) from Async(default) in 262.75ms
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mActsAsVotable::Vote Exists? (33.1ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 105.6ms | Allocations: 3125)
+  [1m[36mCACHE ActsAsVotable::Vote Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 41.9ms | Allocations: 1914)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:52
+  Rendered comments/_form.html.erb (Duration: 32.8ms | Allocations: 782)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:65
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:65
+  [1m[36mCACHE Comment Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:98
+  Rendered comments/_form.html.erb (Duration: 4.9ms | Allocations: 479)
+  Rendered posts/show.html.erb within layouts/application (Duration: 521.5ms | Allocations: 21841)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 561.6ms | Allocations: 26945)
+Completed 200 OK in 658ms (Views: 529.3ms | ActiveRecord: 38.6ms | Allocations: 33364)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--652cf2615e48ea1876fac3768ee8433ba201895b/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:01:06 -0400
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--652cf2615e48ea1876fac3768ee8433ba201895b", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (1.4ms) [0m[34mGenerated URL for file at key: dxmd06ru15kdr9cs7bpz0di4f9hz (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg
+Completed 302 Found in 39ms (ActiveRecord: 0.2ms | Allocations: 1753)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:01:06 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 342)
+
+
+Started POST "/posts/1/like" for 127.0.0.1 at 2022-10-16 15:01:22 -0400
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? LIMIT ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["voter_id", 1], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mActsAsVotable::Vote Create (30.9ms)[0m  [1m[32mINSERT INTO "votes" ("votable_type", "votable_id", "voter_type", "voter_id", "vote_flag", "vote_weight", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["votable_type", "Post"], ["votable_id", 1], ["voter_type", "User"], ["voter_id", 1], ["vote_flag", 1], ["vote_weight", 1], ["created_at", "2022-10-16 19:01:22.290749"], ["updated_at", "2022-10-16 19:01:22.290749"]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 0]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mPost Update (4.7ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ?, "cached_votes_total" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-16 19:01:22.368632"], ["cached_votes_total", 1], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mTRANSACTION (16.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 15ced739-c547-45cd-8e05-70e682945eff) to Async(default) with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c978a3a8 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c9789a70 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c97891d8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 691d62fb-5d60-432e-9413-3be88445bd71) to Async(default) with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c9753d80 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c9753628 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c9752e58 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+Redirected to http://localhost:3000/posts/1
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 302 Found in 254ms (ActiveRecord: 55.8ms | Allocations: 17118)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [15ced739-c547-45cd-8e05-70e682945eff] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 15ced739-c547-45cd-8e05-70e682945eff) from Async(default) enqueued at 2022-10-16T19:01:22Z with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c96d8630 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c9607fa8 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c96078c8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:01:22 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [15ced739-c547-45cd-8e05-70e682945eff]   [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  Rendering layout layouts/application.html.erb
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [15ced739-c547-45cd-8e05-70e682945eff]   ↳ app/views/posts/_unvote.html.erb:4
+  Rendering posts/show.html.erb within layouts/application
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [15ced739-c547-45cd-8e05-70e682945eff]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [15ced739-c547-45cd-8e05-70e682945eff]   ↳ app/views/posts/_unvote.html.erb:4
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [15ced739-c547-45cd-8e05-70e682945eff]   Rendered posts/_unvote.html.erb (Duration: 57.7ms | Allocations: 5148)
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [15ced739-c547-45cd-8e05-70e682945eff] [ActionCable] Broadcasting to posts/vote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"unvote\">\n    <td class=\"...
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  Rendered posts/_unvote.html.erb (Duration: 68.2ms | Allocations: 3647)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:98
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 487)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:111
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:111
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [15ced739-c547-45cd-8e05-70e682945eff] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 15ced739-c547-45cd-8e05-70e682945eff) from Async(default) in 220.2ms
+  Rendered posts/show.html.erb within layouts/application (Duration: 176.7ms | Allocations: 10692)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [691d62fb-5d60-432e-9413-3be88445bd71] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 691d62fb-5d60-432e-9413-3be88445bd71) from Async(default) enqueued at 2022-10-16T19:01:22Z with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c69b0478 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c693d0e0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c6923c08 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 233.4ms | Allocations: 18804)
+Completed 200 OK in 276ms (Views: 253.7ms | ActiveRecord: 1.5ms | Allocations: 21557)
+
+
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [691d62fb-5d60-432e-9413-3be88445bd71]   [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [691d62fb-5d60-432e-9413-3be88445bd71]   ↳ app/views/posts/_vote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [691d62fb-5d60-432e-9413-3be88445bd71]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [691d62fb-5d60-432e-9413-3be88445bd71]   ↳ app/views/posts/_vote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [691d62fb-5d60-432e-9413-3be88445bd71]   Rendered posts/_vote.html.erb (Duration: 26.6ms | Allocations: 2478)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [691d62fb-5d60-432e-9413-3be88445bd71] [ActionCable] Broadcasting to posts/unvote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"vote\">\n    <td class=\"co...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [691d62fb-5d60-432e-9413-3be88445bd71] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 691d62fb-5d60-432e-9413-3be88445bd71) from Async(default) in 61.13ms
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:01:23 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 299)
+
+
+Started POST "/posts/1/unlike" for 127.0.0.1 at 2022-10-16 15:01:28 -0400
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mActsAsVotable::Vote Destroy (4.6ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["voter_id", 1], ["voter_type", "User"]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 0]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mPost Update (4.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ?, "cached_votes_total" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-16 19:01:28.885450"], ["cached_votes_total", 0], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mTRANSACTION (34.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 1f76568e-33cd-4353-8223-d27dd1d14572) to Async(default) with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c9a0e098 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c9a0d5d0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c9a0c888 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 99d61eaf-d7b4-4a4f-8d15-d914f0850b4d) to Async(default) with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c9962540 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c99616e0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c9960c18 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 206ms (ActiveRecord: 44.1ms | Allocations: 12085)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [1f76568e-33cd-4353-8223-d27dd1d14572] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 1f76568e-33cd-4353-8223-d27dd1d14572) from Async(default) enqueued at 2022-10-16T19:01:28Z with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c98fce48 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c98f7e48 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c98f7740 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [1f76568e-33cd-4353-8223-d27dd1d14572]   [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:01:29 -0400
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [1f76568e-33cd-4353-8223-d27dd1d14572]   ↳ app/views/posts/_unvote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [1f76568e-33cd-4353-8223-d27dd1d14572]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+Processing by PostsController#show as HTML
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [1f76568e-33cd-4353-8223-d27dd1d14572]   ↳ app/views/posts/_unvote.html.erb:4
+  Parameters: {"id"=>"1"}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [1f76568e-33cd-4353-8223-d27dd1d14572]   Rendered posts/_unvote.html.erb (Duration: 44.1ms | Allocations: 3233)
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [1f76568e-33cd-4353-8223-d27dd1d14572] [ActionCable] Broadcasting to posts/vote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"unvote\">\n    <td class=\"...
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [1f76568e-33cd-4353-8223-d27dd1d14572] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 1f76568e-33cd-4353-8223-d27dd1d14572) from Async(default) in 54.6ms
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [99d61eaf-d7b4-4a4f-8d15-d914f0850b4d] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 99d61eaf-d7b4-4a4f-8d15-d914f0850b4d) from Async(default) enqueued at 2022-10-16T19:01:28Z with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c985f288 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c985e860 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c985de60 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [99d61eaf-d7b4-4a4f-8d15-d914f0850b4d]   [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [99d61eaf-d7b4-4a4f-8d15-d914f0850b4d]   ↳ app/views/posts/_vote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [99d61eaf-d7b4-4a4f-8d15-d914f0850b4d]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [99d61eaf-d7b4-4a4f-8d15-d914f0850b4d]   ↳ app/views/posts/_vote.html.erb:4
+  ↳ app/views/posts/show.html.erb:5
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [99d61eaf-d7b4-4a4f-8d15-d914f0850b4d]   Rendered posts/_vote.html.erb (Duration: 31.4ms | Allocations: 2450)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [99d61eaf-d7b4-4a4f-8d15-d914f0850b4d] [ActionCable] Broadcasting to posts/unvote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"vote\">\n    <td class=\"co...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [99d61eaf-d7b4-4a4f-8d15-d914f0850b4d] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 99d61eaf-d7b4-4a4f-8d15-d914f0850b4d) from Async(default) in 48.45ms
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 44.5ms | Allocations: 2319)
+  [1m[36mCACHE ActsAsVotable::Vote Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 31.9ms | Allocations: 1914)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:52
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 487)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:65
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:65
+  [1m[36mCACHE Comment Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:98
+  Rendered comments/_form.html.erb (Duration: 3.3ms | Allocations: 479)
+  Rendered posts/show.html.erb within layouts/application (Duration: 210.5ms | Allocations: 14925)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 249.5ms | Allocations: 20793)
+Completed 200 OK in 290ms (Views: 276.4ms | ActiveRecord: 1.8ms | Allocations: 23166)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:01:29 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:03:54 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 33.9ms | Allocations: 2204)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 13.2ms | Allocations: 633)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 121.0ms | Allocations: 8728)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 143.4ms | Allocations: 14167)
+Completed 200 OK in 203ms (Views: 186.9ms | ActiveRecord: 1.5ms | Allocations: 16109)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:03:55 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 299)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:05:03 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mActsAsVotable::Vote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 36.3ms | Allocations: 2024)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 485)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 104.9ms | Allocations: 7491)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1056.9ms | Allocations: 24370)
+Completed 200 OK in 1071ms (Views: 1061.1ms | ActiveRecord: 1.4ms | Allocations: 25490)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:05:04 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/posts" for 127.0.0.1 at 2022-10-16 15:05:10 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mActiveStorage::Blob Load (2.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  Rendered posts/index.html.erb within layouts/application (Duration: 92.9ms | Allocations: 4990)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 129.3ms | Allocations: 10185)
+Completed 200 OK in 135ms (Views: 127.7ms | ActiveRecord: 2.9ms | Allocations: 10717)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:05:16 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mActsAsVotable::Vote Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 29.1ms | Allocations: 2020)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 7.2ms | Allocations: 484)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 101.8ms | Allocations: 7476)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 133.6ms | Allocations: 12660)
+Completed 200 OK in 149ms (Views: 136.7ms | ActiveRecord: 2.1ms | Allocations: 13784)
+
+
+Started POST "/posts/1/like" for 127.0.0.1 at 2022-10-16 15:05:17 -0400
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? LIMIT ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["voter_id", 1], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mActsAsVotable::Vote Create (23.7ms)[0m  [1m[32mINSERT INTO "votes" ("votable_type", "votable_id", "voter_type", "voter_id", "vote_flag", "vote_weight", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["votable_type", "Post"], ["votable_id", 1], ["voter_type", "User"], ["voter_id", 1], ["vote_flag", 1], ["vote_weight", 1], ["created_at", "2022-10-16 19:05:17.753502"], ["updated_at", "2022-10-16 19:05:17.753502"]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 0]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mPost Update (10.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ?, "cached_votes_total" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-16 19:05:17.836628"], ["cached_votes_total", 1], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mTRANSACTION (22.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 17280736-759d-4f4a-a137-c99ef09f624c) to Async(default) with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c97d0768 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c97cfae8 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c97cf368 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 8eb04e3e-1022-4f14-b648-2e5f511fe0f0) to Async(default) with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c97aacc0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c97aa568 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c97a9eb0 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+Redirected to http://localhost:3000/posts/1
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 302 Found in 195ms (ActiveRecord: 57.6ms | Allocations: 12504)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [17280736-759d-4f4a-a137-c99ef09f624c] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 17280736-759d-4f4a-a137-c99ef09f624c) from Async(default) enqueued at 2022-10-16T19:05:17Z with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c972b380 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c972a9d0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c9729da0 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:05:17 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [17280736-759d-4f4a-a137-c99ef09f624c]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [17280736-759d-4f4a-a137-c99ef09f624c]   ↳ app/views/posts/_unvote.html.erb:4
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [17280736-759d-4f4a-a137-c99ef09f624c]   [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [17280736-759d-4f4a-a137-c99ef09f624c]   ↳ app/views/posts/_unvote.html.erb:4
+  Rendering layout layouts/application.html.erb
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [17280736-759d-4f4a-a137-c99ef09f624c]   Rendered posts/_unvote.html.erb (Duration: 22.1ms | Allocations: 2713)
+  Rendering posts/show.html.erb within layouts/application
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [17280736-759d-4f4a-a137-c99ef09f624c] [ActionCable] Broadcasting to posts/vote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"unvote\">\n    <td class=\"...
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [17280736-759d-4f4a-a137-c99ef09f624c] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 17280736-759d-4f4a-a137-c99ef09f624c) from Async(default) in 41.35ms
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8eb04e3e-1022-4f14-b648-2e5f511fe0f0] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 8eb04e3e-1022-4f14-b648-2e5f511fe0f0) from Async(default) enqueued at 2022-10-16T19:05:17Z with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c8b07090 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c8ae8e60 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c8ace178 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8eb04e3e-1022-4f14-b648-2e5f511fe0f0]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8eb04e3e-1022-4f14-b648-2e5f511fe0f0]   ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8eb04e3e-1022-4f14-b648-2e5f511fe0f0]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8eb04e3e-1022-4f14-b648-2e5f511fe0f0]   ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_unvote.html.erb (Duration: 45.0ms | Allocations: 3795)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8eb04e3e-1022-4f14-b648-2e5f511fe0f0]   Rendered posts/_vote.html.erb (Duration: 36.1ms | Allocations: 3299)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8eb04e3e-1022-4f14-b648-2e5f511fe0f0] [ActionCable] Broadcasting to posts/unvote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"vote\">\n    <td class=\"co...
+  ↳ app/views/posts/show.html.erb:42
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8eb04e3e-1022-4f14-b648-2e5f511fe0f0] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 8eb04e3e-1022-4f14-b648-2e5f511fe0f0) from Async(default) in 73.37ms
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 487)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 142.1ms | Allocations: 12690)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 167.7ms | Allocations: 17997)
+Completed 200 OK in 187ms (Views: 169.8ms | ActiveRecord: 1.4ms | Allocations: 20209)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:05:18 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started POST "/posts/1/unlike" for 127.0.0.1 at 2022-10-16 15:05:21 -0400
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mActsAsVotable::Vote Destroy (12.6ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["voter_id", 1], ["voter_type", "User"]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 0]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mPost Update (7.8ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ?, "cached_votes_total" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-16 19:05:21.821602"], ["cached_votes_total", 0], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: f0f28c96-7caf-4786-8a89-114eded2f6ff) to Async(default) with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c9b25aa8 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c9b25328 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c9b24c70 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 2914e21d-0147-496b-a42a-5929c67cc885) to Async(default) with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00007fb558032bd0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00007fb5580324c8 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00007fb558031e60 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 165ms (ActiveRecord: 29.8ms | Allocations: 12050)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f0f28c96-7caf-4786-8a89-114eded2f6ff] Performing Turbo::Streams::ActionBroadcastJob (Job ID: f0f28c96-7caf-4786-8a89-114eded2f6ff) from Async(default) enqueued at 2022-10-16T19:05:21Z with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c99c2828 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c99c1a40 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c99c0cf8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:05:21 -0400
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f0f28c96-7caf-4786-8a89-114eded2f6ff]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+Processing by PostsController#show as HTML
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f0f28c96-7caf-4786-8a89-114eded2f6ff]   ↳ app/views/posts/_unvote.html.erb:4
+  Parameters: {"id"=>"1"}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f0f28c96-7caf-4786-8a89-114eded2f6ff]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f0f28c96-7caf-4786-8a89-114eded2f6ff]   ↳ app/views/posts/_unvote.html.erb:4
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f0f28c96-7caf-4786-8a89-114eded2f6ff]   Rendered posts/_unvote.html.erb (Duration: 28.1ms | Allocations: 2365)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f0f28c96-7caf-4786-8a89-114eded2f6ff] [ActionCable] Broadcasting to posts/vote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"unvote\">\n    <td class=\"...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f0f28c96-7caf-4786-8a89-114eded2f6ff] Performed Turbo::Streams::ActionBroadcastJob (Job ID: f0f28c96-7caf-4786-8a89-114eded2f6ff) from Async(default) in 38.8ms
+  Rendering layout layouts/application.html.erb
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2914e21d-0147-496b-a42a-5929c67cc885] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 2914e21d-0147-496b-a42a-5929c67cc885) from Async(default) enqueued at 2022-10-16T19:05:21Z with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c98b5520 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c98b4ee0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c98b48c8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2914e21d-0147-496b-a42a-5929c67cc885]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2914e21d-0147-496b-a42a-5929c67cc885]   ↳ app/views/posts/_vote.html.erb:4
+  ↳ app/views/posts/show.html.erb:5
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2914e21d-0147-496b-a42a-5929c67cc885]   [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2914e21d-0147-496b-a42a-5929c67cc885]   ↳ app/views/posts/_vote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2914e21d-0147-496b-a42a-5929c67cc885]   Rendered posts/_vote.html.erb (Duration: 35.1ms | Allocations: 2490)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2914e21d-0147-496b-a42a-5929c67cc885] [ActionCable] Broadcasting to posts/unvote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"vote\">\n    <td class=\"co...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2914e21d-0147-496b-a42a-5929c67cc885] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 2914e21d-0147-496b-a42a-5929c67cc885) from Async(default) in 40.89ms
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 38.1ms | Allocations: 2829)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 4.9ms | Allocations: 482)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 150.8ms | Allocations: 10975)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 193.3ms | Allocations: 16844)
+Completed 200 OK in 226ms (Views: 208.7ms | ActiveRecord: 1.4ms | Allocations: 19059)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:05:22 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 299)
+
+
+Started POST "/posts/1/like" for 127.0.0.1 at 2022-10-16 15:05:24 -0400
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mActsAsVotable::Vote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? LIMIT ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["voter_id", 1], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mActsAsVotable::Vote Create (10.1ms)[0m  [1m[32mINSERT INTO "votes" ("votable_type", "votable_id", "voter_type", "voter_id", "vote_flag", "vote_weight", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["votable_type", "Post"], ["votable_id", 1], ["voter_type", "User"], ["voter_id", 1], ["vote_flag", 1], ["vote_weight", 1], ["created_at", "2022-10-16 19:05:24.628364"], ["updated_at", "2022-10-16 19:05:24.628364"]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 0]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mPost Update (7.6ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ?, "cached_votes_total" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-16 19:05:24.694655"], ["cached_votes_total", 1], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 0ca3c947-95a2-4c50-ae0a-197f4c417a7b) to Async(default) with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580ca0a0938 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580ca0a00c8 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580ca093878 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: e31bf0b2-61ba-4964-84f0-6b73dd20e013) to Async(default) with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580ca061120 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580ca060518 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580ca057d00 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+Redirected to http://localhost:3000/posts/1
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 302 Found in 193ms (ActiveRecord: 32.6ms | Allocations: 12503)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [0ca3c947-95a2-4c50-ae0a-197f4c417a7b] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 0ca3c947-95a2-4c50-ae0a-197f4c417a7b) from Async(default) enqueued at 2022-10-16T19:05:24Z with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c9fd8488 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c9fd7a10 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c9fd72b8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [0ca3c947-95a2-4c50-ae0a-197f4c417a7b]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:05:24 -0400
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [0ca3c947-95a2-4c50-ae0a-197f4c417a7b]   ↳ app/views/posts/_unvote.html.erb:4
+Processing by PostsController#show as HTML
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [0ca3c947-95a2-4c50-ae0a-197f4c417a7b]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  Parameters: {"id"=>"1"}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [0ca3c947-95a2-4c50-ae0a-197f4c417a7b]   ↳ app/views/posts/_unvote.html.erb:4
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [0ca3c947-95a2-4c50-ae0a-197f4c417a7b]   Rendered posts/_unvote.html.erb (Duration: 24.0ms | Allocations: 3481)
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [0ca3c947-95a2-4c50-ae0a-197f4c417a7b] [ActionCable] Broadcasting to posts/vote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"unvote\">\n    <td class=\"...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [0ca3c947-95a2-4c50-ae0a-197f4c417a7b] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 0ca3c947-95a2-4c50-ae0a-197f4c417a7b) from Async(default) in 34.03ms
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [e31bf0b2-61ba-4964-84f0-6b73dd20e013] Performing Turbo::Streams::ActionBroadcastJob (Job ID: e31bf0b2-61ba-4964-84f0-6b73dd20e013) from Async(default) enqueued at 2022-10-16T19:05:24Z with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c9d7de90 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c9d7d7b0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c9d7cbd0 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [e31bf0b2-61ba-4964-84f0-6b73dd20e013]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [e31bf0b2-61ba-4964-84f0-6b73dd20e013]   ↳ app/views/posts/_vote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [e31bf0b2-61ba-4964-84f0-6b73dd20e013]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [e31bf0b2-61ba-4964-84f0-6b73dd20e013]   ↳ app/views/posts/_vote.html.erb:4
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [e31bf0b2-61ba-4964-84f0-6b73dd20e013]   Rendered posts/_vote.html.erb (Duration: 34.0ms | Allocations: 2087)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [e31bf0b2-61ba-4964-84f0-6b73dd20e013] [ActionCable] Broadcasting to posts/unvote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"vote\">\n    <td class=\"co...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [e31bf0b2-61ba-4964-84f0-6b73dd20e013] Performed Turbo::Streams::ActionBroadcastJob (Job ID: e31bf0b2-61ba-4964-84f0-6b73dd20e013) from Async(default) in 40.83ms
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  Rendered posts/_unvote.html.erb (Duration: 35.2ms | Allocations: 2017)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 482)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 142.4ms | Allocations: 10292)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 188.3ms | Allocations: 16158)
+Completed 200 OK in 215ms (Views: 198.5ms | ActiveRecord: 1.5ms | Allocations: 18718)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MDY6MDYuODQxWiIsInB1ciI6ImJsb2Jfa2V5In19--b42b96916b7b87e76f261ac1d735cfe31430e358/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:05:25 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/posts" for 127.0.0.1 at 2022-10-16 15:05:26 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."cached_votes_total" = ? LIMIT ?[0m  [["cached_votes_total", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY cached_votes_total ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:34
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  Rendered posts/index.html.erb within layouts/application (Duration: 195.8ms | Allocations: 12798)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 231.7ms | Allocations: 17990)
+Completed 200 OK in 235ms (Views: 232.9ms | ActiveRecord: 1.7ms | Allocations: 18397)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:06:27 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  Rendered posts/_unvote.html.erb (Duration: 43.2ms | Allocations: 2017)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 5.8ms | Allocations: 482)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 118.8ms | Allocations: 7468)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 149.8ms | Allocations: 12659)
+Completed 200 OK in 163ms (Views: 149.6ms | ActiveRecord: 1.4ms | Allocations: 13782)
+
+
+Started GET "/posts" for 127.0.0.1 at 2022-10-16 15:06:28 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."cached_votes_total" = ? LIMIT ?[0m  [["cached_votes_total", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY cached_votes_total ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:34
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  Rendered posts/index.html.erb within layouts/application (Duration: 191.8ms | Allocations: 12674)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 220.2ms | Allocations: 17889)
+Completed 200 OK in 225ms (Views: 222.8ms | ActiveRecord: 1.7ms | Allocations: 18296)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:06:30 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (5.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  Rendered posts/_unvote.html.erb (Duration: 30.0ms | Allocations: 2017)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 4.0ms | Allocations: 482)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 104.4ms | Allocations: 7468)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 139.5ms | Allocations: 12642)
+Completed 200 OK in 155ms (Views: 136.4ms | ActiveRecord: 7.0ms | Allocations: 13765)
+
+
+Started POST "/posts/1/unlike" for 127.0.0.1 at 2022-10-16 15:06:31 -0400
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mActsAsVotable::Vote Destroy (6.9ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["voter_id", 1], ["voter_type", "User"]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 0]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mPost Update (9.7ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ?, "cached_votes_total" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-16 19:06:31.416069"], ["cached_votes_total", 0], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mTRANSACTION (15.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 4927f0ea-efe7-4928-aa61-2f153d7d463f) to Async(default) with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c7d207b0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c7d06b30 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c7d05348 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 8e06184b-8a04-4e51-934c-0500e2f7352b) to Async(default) with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c7b26928 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c7b08a18 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c7af2038 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+Redirected to http://localhost:3000/posts/1
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 302 Found in 145ms (ActiveRecord: 33.1ms | Allocations: 10947)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [4927f0ea-efe7-4928-aa61-2f153d7d463f] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 4927f0ea-efe7-4928-aa61-2f153d7d463f) from Async(default) enqueued at 2022-10-16T19:06:31Z with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c70692b0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c7055d78 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c6848130 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [4927f0ea-efe7-4928-aa61-2f153d7d463f]   [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [4927f0ea-efe7-4928-aa61-2f153d7d463f]   ↳ app/views/posts/_unvote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [4927f0ea-efe7-4928-aa61-2f153d7d463f]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:06:31 -0400
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [4927f0ea-efe7-4928-aa61-2f153d7d463f]   ↳ app/views/posts/_unvote.html.erb:4
+Processing by PostsController#show as HTML
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [4927f0ea-efe7-4928-aa61-2f153d7d463f]   Rendered posts/_unvote.html.erb (Duration: 27.8ms | Allocations: 2569)
+  Parameters: {"id"=>"1"}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [4927f0ea-efe7-4928-aa61-2f153d7d463f] [ActionCable] Broadcasting to posts/vote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"unvote\">\n    <td class=\"...
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [4927f0ea-efe7-4928-aa61-2f153d7d463f] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 4927f0ea-efe7-4928-aa61-2f153d7d463f) from Async(default) in 35.02ms
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8e06184b-8a04-4e51-934c-0500e2f7352b] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 8e06184b-8a04-4e51-934c-0500e2f7352b) from Async(default) enqueued at 2022-10-16T19:06:31Z with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c9f84c70 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c9f84298 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c9f73628 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  Rendering posts/show.html.erb within layouts/application
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8e06184b-8a04-4e51-934c-0500e2f7352b]   [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8e06184b-8a04-4e51-934c-0500e2f7352b]   ↳ app/views/posts/_vote.html.erb:4
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8e06184b-8a04-4e51-934c-0500e2f7352b]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8e06184b-8a04-4e51-934c-0500e2f7352b]   ↳ app/views/posts/_vote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8e06184b-8a04-4e51-934c-0500e2f7352b]   Rendered posts/_vote.html.erb (Duration: 38.5ms | Allocations: 2714)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8e06184b-8a04-4e51-934c-0500e2f7352b] [ActionCable] Broadcasting to posts/unvote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"vote\">\n    <td class=\"co...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [8e06184b-8a04-4e51-934c-0500e2f7352b] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 8e06184b-8a04-4e51-934c-0500e2f7352b) from Async(default) in 45.26ms
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 31.1ms | Allocations: 2018)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 482)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 120.3ms | Allocations: 8851)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 158.8ms | Allocations: 14766)
+Completed 200 OK in 194ms (Views: 167.2ms | ActiveRecord: 1.5ms | Allocations: 18419)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--652cf2615e48ea1876fac3768ee8433ba201895b/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:06:31 -0400
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--652cf2615e48ea1876fac3768ee8433ba201895b", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (12.6ms) [0m[34mGenerated URL for file at key: dxmd06ru15kdr9cs7bpz0di4f9hz (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MTE6MzIuMDEwWiIsInB1ciI6ImJsb2Jfa2V5In19--e878ec4877a33b52da854338a7a06f38187780c1/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MTE6MzIuMDEwWiIsInB1ciI6ImJsb2Jfa2V5In19--e878ec4877a33b52da854338a7a06f38187780c1/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg
+Completed 302 Found in 27ms (ActiveRecord: 0.2ms | Allocations: 1440)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MTE6MzIuMDEwWiIsInB1ciI6ImJsb2Jfa2V5In19--e878ec4877a33b52da854338a7a06f38187780c1/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:06:32 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 309)
+
+
+Started POST "/posts/1/like" for 127.0.0.1 at 2022-10-16 15:09:48 -0400
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mActsAsVotable::Vote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? LIMIT ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["voter_id", 1], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mActsAsVotable::Vote Create (8.5ms)[0m  [1m[32mINSERT INTO "votes" ("votable_type", "votable_id", "voter_type", "voter_id", "vote_flag", "vote_weight", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["votable_type", "Post"], ["votable_id", 1], ["voter_type", "User"], ["voter_id", 1], ["vote_flag", 1], ["vote_weight", 1], ["created_at", "2022-10-16 19:09:48.934973"], ["updated_at", "2022-10-16 19:09:48.934973"]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 0]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mPost Update (10.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ?, "cached_votes_total" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-16 19:09:48.995991"], ["cached_votes_total", 1], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+  [1m[36mTRANSACTION (14.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:13:in `like'
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: bd4b85e0-b6be-4668-8115-0e554354cb3f) to Async(default) with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c970b2b0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c970a748 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c970a018 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 564951e0-6a11-42d2-92b4-299c3ea5a1d4) to Async(default) with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c95fd9e0 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c95fd288 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c95fcba8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+Redirected to http://localhost:3000/posts/1
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 302 Found in 162ms (ActiveRecord: 34.3ms | Allocations: 12088)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [bd4b85e0-b6be-4668-8115-0e554354cb3f] Performing Turbo::Streams::ActionBroadcastJob (Job ID: bd4b85e0-b6be-4668-8115-0e554354cb3f) from Async(default) enqueued at 2022-10-16T19:09:49Z with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00005580c8fd7228 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00005580c8fd43e8 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c8fceda8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [bd4b85e0-b6be-4668-8115-0e554354cb3f]   [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [bd4b85e0-b6be-4668-8115-0e554354cb3f]   ↳ app/views/posts/_unvote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [bd4b85e0-b6be-4668-8115-0e554354cb3f]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [bd4b85e0-b6be-4668-8115-0e554354cb3f]   ↳ app/views/posts/_unvote.html.erb:4
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:09:49 -0400
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [bd4b85e0-b6be-4668-8115-0e554354cb3f]   Rendered posts/_unvote.html.erb (Duration: 23.6ms | Allocations: 2912)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [bd4b85e0-b6be-4668-8115-0e554354cb3f] [ActionCable] Broadcasting to posts/vote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"unvote\">\n    <td class=\"...
+Processing by PostsController#show as HTML
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [bd4b85e0-b6be-4668-8115-0e554354cb3f] Performed Turbo::Streams::ActionBroadcastJob (Job ID: bd4b85e0-b6be-4668-8115-0e554354cb3f) from Async(default) in 34.77ms
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [564951e0-6a11-42d2-92b4-299c3ea5a1d4] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 564951e0-6a11-42d2-92b4-299c3ea5a1d4) from Async(default) enqueued at 2022-10-16T19:09:49Z with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x00005580c864f408 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x00005580c864dbf8 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00005580c8644ff8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  Rendering layout layouts/application.html.erb
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [564951e0-6a11-42d2-92b4-299c3ea5a1d4]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  Rendering posts/show.html.erb within layouts/application
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [564951e0-6a11-42d2-92b4-299c3ea5a1d4]   ↳ app/views/posts/_vote.html.erb:4
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [564951e0-6a11-42d2-92b4-299c3ea5a1d4]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [564951e0-6a11-42d2-92b4-299c3ea5a1d4]   ↳ app/views/posts/_vote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [564951e0-6a11-42d2-92b4-299c3ea5a1d4]   Rendered posts/_vote.html.erb (Duration: 32.0ms | Allocations: 2743)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [564951e0-6a11-42d2-92b4-299c3ea5a1d4] [ActionCable] Broadcasting to posts/unvote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"vote\">\n    <td class=\"co...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [564951e0-6a11-42d2-92b4-299c3ea5a1d4] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 564951e0-6a11-42d2-92b4-299c3ea5a1d4) from Async(default) in 37.32ms
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  Rendered posts/_unvote.html.erb (Duration: 30.3ms | Allocations: 2017)
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 4.4ms | Allocations: 482)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 142.1ms | Allocations: 8504)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 171.3ms | Allocations: 14042)
+Completed 200 OK in 209ms (Views: 189.4ms | ActiveRecord: 1.4ms | Allocations: 17957)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MTE6MzIuMDEwWiIsInB1ciI6ImJsb2Jfa2V5In19--e878ec4877a33b52da854338a7a06f38187780c1/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:09:49 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:14:58 -0400
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (8.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mActsAsVotable::Vote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_unvote.html.erb:4
+  Rendered posts/_unvote.html.erb (Duration: 25.4ms | Allocations: 3178)
+  [1m[36mComment Exists? (3.5ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 22.2ms | Allocations: 2900)
+  [1m[36mActiveStorage::Attachment Load (17.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  [1m[36mActiveStorage::Blob Load (2.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+  Rendered posts/show.html.erb within layouts/application (Duration: 295.1ms | Allocations: 32805)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 821.3ms | Allocations: 54737)
+Completed 200 OK in 994ms (Views: 800.8ms | ActiveRecord: 42.3ms | Allocations: 70119)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--652cf2615e48ea1876fac3768ee8433ba201895b/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:14:59 -0400
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--652cf2615e48ea1876fac3768ee8433ba201895b", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (31.2ms) [0m[34mGenerated URL for file at key: dxmd06ru15kdr9cs7bpz0di4f9hz (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MTk6NTkuODgxWiIsInB1ciI6ImJsb2Jfa2V5In19--be3bdb362a7fbe1d22c46ffa61aebccf609bace6/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MTk6NTkuODgxWiIsInB1ciI6ImJsb2Jfa2V5In19--be3bdb362a7fbe1d22c46ffa61aebccf609bace6/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg
+Completed 302 Found in 50ms (ActiveRecord: 0.2ms | Allocations: 1767)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MTk6NTkuODgxWiIsInB1ciI6ImJsb2Jfa2V5In19--be3bdb362a7fbe1d22c46ffa61aebccf609bace6/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:14:59 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 341)
+
+
+Started POST "/posts/1/unlike" for 127.0.0.1 at 2022-10-16 15:15:02 -0400
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mActsAsVotable::Vote Destroy (23.9ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["voter_id", 1], ["voter_type", "User"]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 0]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mPost Update (5.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ?, "cached_votes_total" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-16 19:15:02.261208"], ["cached_votes_total", 0], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+  [1m[36mTRANSACTION (15.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:23:in `unlike'
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: f30648ca-8a26-4b77-bcbb-7f962a77e71d) to Async(default) with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x000055ca7ec4a600 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x000055ca7ec49c50 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x000055ca7ec492a0 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 9eddd295-705b-44f9-bd8b-0b60086bb0e8) to Async(default) with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x000055ca7ebe0160 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x000055ca7ebd2ee8 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x000055ca7ebd24e8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 147ms (ActiveRecord: 45.9ms | Allocations: 11429)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-16 15:15:02 -0400
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Processing by PostsController#show as HTML
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f30648ca-8a26-4b77-bcbb-7f962a77e71d] Performing Turbo::Streams::ActionBroadcastJob (Job ID: f30648ca-8a26-4b77-bcbb-7f962a77e71d) from Async(default) enqueued at 2022-10-16T19:15:02Z with arguments: "posts/vote", {:action=>:update, :target=>#<GlobalID:0x00007f4f3003e658 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/unvote", :locals=>{:post=>#<GlobalID:0x00007f4f3003df28 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x00007f4f3003d7f8 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:34:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f30648ca-8a26-4b77-bcbb-7f962a77e71d]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f30648ca-8a26-4b77-bcbb-7f962a77e71d]   ↳ app/views/posts/_unvote.html.erb:4
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f30648ca-8a26-4b77-bcbb-7f962a77e71d]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/show.html.erb:5
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f30648ca-8a26-4b77-bcbb-7f962a77e71d]   ↳ app/views/posts/_unvote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f30648ca-8a26-4b77-bcbb-7f962a77e71d]   Rendered posts/_unvote.html.erb (Duration: 35.8ms | Allocations: 3579)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f30648ca-8a26-4b77-bcbb-7f962a77e71d] [ActionCable] Broadcasting to posts/vote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"unvote\">\n    <td class=\"...
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [f30648ca-8a26-4b77-bcbb-7f962a77e71d] Performed Turbo::Streams::ActionBroadcastJob (Job ID: f30648ca-8a26-4b77-bcbb-7f962a77e71d) from Async(default) in 93.25ms
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_vote.html.erb:4
+  Rendered posts/_vote.html.erb (Duration: 39.1ms | Allocations: 3663)
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:42
+  Rendered comments/_form.html.erb (Duration: 9.6ms | Allocations: 487)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [9eddd295-705b-44f9-bd8b-0b60086bb0e8] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 9eddd295-705b-44f9-bd8b-0b60086bb0e8) from Async(default) enqueued at 2022-10-16T19:15:02Z with arguments: "posts/unvote", {:action=>:update, :target=>#<GlobalID:0x000055ca7e857480 @uri=#<URI::GID gid://projectmargot/Post/1>>, :targets=>nil, :partial=>"posts/vote", :locals=>{:post=>#<GlobalID:0x000055ca7e856d50 @uri=#<URI::GID gid://projectmargot/Post/1>>, :posts=>#<GlobalID:0x000055ca7e856670 @uri=#<URI::GID gid://projectmargot/Post/1>>}}
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:55
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [9eddd295-705b-44f9-bd8b-0b60086bb0e8]   [1m[35m (4.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [9eddd295-705b-44f9-bd8b-0b60086bb0e8]   ↳ app/views/posts/_vote.html.erb:4
+  ↳ app/views/posts/show.html.erb:55
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [9eddd295-705b-44f9-bd8b-0b60086bb0e8]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  Rendered posts/show.html.erb within layouts/application (Duration: 189.2ms | Allocations: 14577)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [9eddd295-705b-44f9-bd8b-0b60086bb0e8]   ↳ app/views/posts/_vote.html.erb:4
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [9eddd295-705b-44f9-bd8b-0b60086bb0e8]   Rendered posts/_vote.html.erb (Duration: 40.6ms | Allocations: 3557)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [9eddd295-705b-44f9-bd8b-0b60086bb0e8] [ActionCable] Broadcasting to posts/unvote: "<turbo-stream action=\"update\" target=\"post_1\"><template><turbo-cable-stream-source channel=\"Turbo::StreamsChannel\" signed-stream-name=\"InBvc3Qi--b23c390748ff6d459a865599c28915f506a052c56c3a1c99795ea82dce8fea61\"></turbo-cable-stream-source>\n\n<turbo-frame id=\"vote\">\n    <td class=\"co...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [9eddd295-705b-44f9-bd8b-0b60086bb0e8] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 9eddd295-705b-44f9-bd8b-0b60086bb0e8) from Async(default) in 44.05ms
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 224.1ms | Allocations: 20585)
+Completed 200 OK in 247ms (Views: 236.4ms | ActiveRecord: 1.3ms | Allocations: 22395)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSGh0WkRBMmNuVXhOV3RrY2psamN6ZGljSG93WkdrMFpqbG9lZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpocGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTUdWbU9UUmxZVEJqTWpZMlpHSmpZemsyTVRGa01UWmxNemcwTXpNeFpEWmZaREF4TkdVNFlUTmZNakEwT0M1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM1IxYldKc2NsOHdaV1k1TkdWaE1HTXlOalprWW1Oak9UWXhNV1F4Tm1Vek9EUXpNekZrTmw5a01ERTBaVGhoTTE4eU1EUTRMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMTAtMTZUMTk6MTk6NTkuODgxWiIsInB1ciI6ImJsb2Jfa2V5In19--be3bdb362a7fbe1d22c46ffa61aebccf609bace6/tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048.jpg" for 127.0.0.1 at 2022-10-16 15:15:02 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_0ef94ea0c266dbcc9611d16e384331d6_d014e8a3_2048"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 299)
+
+
