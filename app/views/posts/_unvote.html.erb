@@ -1,0 +1,6 @@
+<%= turbo_stream_from "post" %>
+
+<%= turbo_frame_tag "unvote" do %>
+    <td class="count"> <%= post.name %> has <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
+    <button id="unvote"> <%= link_to image_tag("/assets/unvotebtn.png", alt: "unvote"), unlike_post_path(post), method: :post, data: { turbo_frame: "unvote" } %> </button>
+<% end %>

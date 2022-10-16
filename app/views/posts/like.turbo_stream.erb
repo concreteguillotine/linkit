@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "posts/vote" do %>
+    <%= render partial: "posts/unvote", locals: { post: @post }, target: "posts/vote" %>
+<% end %>

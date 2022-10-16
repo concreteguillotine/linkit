@@ -1,0 +1,172 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+    background-color: rgba(180, 221, 226, 0.842);
+    display: block;
+    margin: 0;
+
+    .sidebar-left {
+        border-right: 5px double rgba(240, 234, 157, 0.897);
+        float: left;
+        left: 0;
+        display: block;
+        height: 980px;
+        width: 260px;
+        position: fixed;
+        top: 0;
+        padding: 20px;
+        text-align: center;
+        background-color: rgb(218, 211, 211);
+    }
+
+    .sidebar-right {
+        border-left: 5px double rgb(218, 211, 211);
+        float: right;
+        right: 0;
+        display: flex;
+        height: 1fr;
+        width: 260px;
+        position: fixed;
+        top: 0;
+        padding: 20px;
+        padding-top: 0px;
+        background-color: rgba(240, 234, 157, 0.897);
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+
+        .allhof {
+            
+            figure.hof {
+                display: table;
+                text-align: center;
+                border: none;
+                // margin: 20px;
+                
+
+                figcaption {
+                    display: table-caption;
+                    caption-side: bottom;
+                    text-align: center;
+                }
+
+                img[src] {
+                    max-width: 220px;
+                    height: auto;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}
+
+.content {
+    max-width: 1328px;
+
+    figure.posts {
+        display: inline-grid;
+        grid-auto-columns: max-content;
+        text-align: center;
+        border: none;
+        position: relative;
+        left: 320px;
+        right: 320px;
+        margin: 10px;
+        margin-left: 1px;
+        align-content: center;
+
+        figcaption {
+            display: table-caption;
+            caption-side: bottom;
+        }
+
+        img[src] {
+            max-width: 275px;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+}
+
+
+.post {
+    display: block;
+    align-content: center;
+    text-align: center;
+
+    .sidebar-left {
+        border-right: 5px double rgba(240, 234, 157, 0.897);
+        float: left;
+        left: 0;
+        display: block;
+        height: 980px;
+        width: 260px;
+        position: fixed;
+        top: 0;
+        padding: 20px;
+        background-color: rgb(218, 211, 211);
+
+        .votes {
+            padding-top: 0px;
+        }
+    }
+
+    .sidebar-right {
+        border-left: 5px double rgb(218, 211, 211);
+        float: right;
+        right: 0;
+        display: block;
+        height: 980px;
+        width: 260px;
+        position: fixed;
+        top: 0;
+        padding: 30px;
+        padding-top: 0px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+    }
+
+    .content {
+        left: 320px;
+        right: 320px;
+        position: relative;
+
+        img[src] {
+            left: 260px;
+            max-width: 560px;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+}
+
+.comment {
+    text-align: center;
+    background-color: rgba(240, 234, 157, 0.897);
+    border: 5px double rgb(218, 211, 211);
+    max-width: 350px;
+    margin: 20px 20px;
+    padding: 5px;
+
+    .author {
+        background-color: rgba(180, 221, 226, 0.842);
+        background-size: cover;
+    }
+
+    .text {
+        list-style: none;
+    }
+}

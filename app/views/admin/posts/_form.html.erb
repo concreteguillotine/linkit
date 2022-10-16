@@ -1,0 +1,12 @@
+<%= form_with(model: [:admin, post], local: true) do |f| %>
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+        <%= f.submit %>
+    </div>
+<% end %>
