@@ -1,15 +1,12 @@
 <div class="post"> 
     <div class="sidebar-left">
             <div class="votes">
+                <td class="count"> <%= @post.name %> has <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
                 <% users_only do %>
                     <% if current_user.liked? @post %>
-                        <%= turbo_frame_tag "posts/unvote" do %>
                             <%= render "posts/unvote", post: @post %> 
-                        <% end %>
                     <% else %>
-                        <%= turbo_frame_tag "posts/vote" do %>
                             <%= render "posts/vote", post: @post %>
-                        <% end %>
                     <% end %>
                  <% end %>
             </div>
@@ -21,7 +18,7 @@
             <% end %>
             <% unless user_signed_in? %>
                 <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %> or </li>
-                <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "ign in", new_user_session_path %> to vote! </li>
+                <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %> to vote! </li>
             <% end %>
             
             <% if (current_user == @post.author) || (current_user.admin?) %>

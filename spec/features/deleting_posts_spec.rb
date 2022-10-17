@@ -1,13 +1,13 @@
 require "rails_helper"
 
-RSpec.feature "Admins can delete existing posts" do
-    before do
-        login_as(FactoryBot.create(:user, :admin))
-    end
+RSpec.feature "OP's and admins can delete existing posts" do
+    let(:user) { FactoryBot.create(:user, username: "user1") }
+    let(:admin) { FactoryBot.create(:user, :admin) }
+    let!(:post) { FactoryBot.create(:post, author: user) }
 
     scenario "successfully" do
-        FactoryBot.create(:post)
-
+        login_as(user)
+        
         visit "/"
 
         within(".posts") do

@@ -2,10 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root "posts#index" 
 
-  resources :posts, only: [:index, :show] do
-    resources :comments, only: [:index, :show]
-  end
-
   resources :users do
     resources :comments, except: [:index, :show]
   end
@@ -18,9 +14,11 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :posts, only: [:index, :show] do
+      resources :comments, only: [:index, :show]
+    end  
+
   namespace :admin do
     root "application#index"
-
-    resources :posts, except: [:index, :show] 
   end
 end

@@ -7,14 +7,13 @@
                 Signed in as <%= current_user.username %>.
 
                 <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+
+                <li><%= link_to "New post", new_post_path(@post), method: :get %></li>
+
             <% end %>
             <% unless user_signed_in? %>
                 <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
                 <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
-            <% end %>
-            
-            <% admins_only do %>
-                <li><%= link_to "New post", new_admin_post_path %></li>
             <% end %>
         </ul>
     </div>

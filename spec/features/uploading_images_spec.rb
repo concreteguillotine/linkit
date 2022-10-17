@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "admins can upload images" do
     before do
-        login_as(FactoryBot.create(:user, :admin))
+        login_as(FactoryBot.create(:user))
     end
     
     scenario "with only a name and image" do
