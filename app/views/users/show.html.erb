@@ -1,0 +1,9 @@
+<%= @user.username %>
+
+<% @posts.each do |post| %>
+    <% if post.author == @user %>
+        <%= link_to post.name, post %>
+    <% else %>
+        You have no posts, they'll show up here when added.
+    <% end %>
+<% end %>

@@ -5,7 +5,7 @@ This is a link agreggator / Reddit clone made using Rails 6.1.6
 <!-- TODO first: profiles, then restyle website -->
 
 On it, users can:                                     <!-- TODO: -->
-    - upload images, text, links                      <!-- regular users can upload posts
+    - upload images, text, links                      <!--
                                                            video embedding
                                                            thumbnails on the homepage for image posts
                                                            TBD -->

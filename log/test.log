@@ -14166,3 +14166,1235 @@ Processing by PostsController#show as HTML
   Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 4296)
 Completed 200 OK in 22ms (Views: 18.6ms | ActiveRecord: 1.1ms | Allocations: 4972)
   [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (15.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$wIpAHXU5MIuLfJrFNBE97.15jKTVGuUBESnQUjvn3y5nGWvxJYjhu"], ["created_at", "2022-10-17 14:43:41.075932"], ["updated_at", "2022-10-17 14:43:41.075932"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 14:43:41.252780"], ["updated_at", "2022-10-17 14:43:41.252780"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "lx9axit3m52it1k7l4xf4llkaa8q"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 14:43:41.329176"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 14:43:41.331433"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 14:43:41.337018"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (36.1ms) [0m[32mUploaded file to key: lx9axit3m52it1k7l4xf4llkaa8q (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 20e9d9c7-8efc-49df-a929-52fc8ae5cc6d) to Async(default) with arguments: #<GlobalID:0x000055ce2fab5948 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 10:43:41 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [20e9d9c7-8efc-49df-a929-52fc8ae5cc6d] Performing ActiveStorage::AnalyzeJob (Job ID: 20e9d9c7-8efc-49df-a929-52fc8ae5cc6d) from Async(default) enqueued at 2022-10-17T14:43:41Z with arguments: #<GlobalID:0x000055ce2dd38208 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [20e9d9c7-8efc-49df-a929-52fc8ae5cc6d] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: lx9axit3m52it1k7l4xf4llkaa8q[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [20e9d9c7-8efc-49df-a929-52fc8ae5cc6d] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [20e9d9c7-8efc-49df-a929-52fc8ae5cc6d]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [20e9d9c7-8efc-49df-a929-52fc8ae5cc6d]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [20e9d9c7-8efc-49df-a929-52fc8ae5cc6d]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [20e9d9c7-8efc-49df-a929-52fc8ae5cc6d] Performed ActiveStorage::AnalyzeJob (Job ID: 20e9d9c7-8efc-49df-a929-52fc8ae5cc6d) from Async(default) in 105.08ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 26.7ms | Allocations: 2275)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 102.9ms | Allocations: 3818)
+Completed 200 OK in 215ms (Views: 123.6ms | ActiveRecord: 0.6ms | Allocations: 8729)
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$9QtkDWj/3u1yUvBvoEN4vedlw68dlbqO8t9JIX6pVoPmG9R6EUYwa"], ["created_at", "2022-10-17 14:48:13.526337"], ["updated_at", "2022-10-17 14:48:13.526337"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 14:48:13.603471"], ["updated_at", "2022-10-17 14:48:13.603471"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "hnk03w9cfu0t2eiqzy4fvdyvpp6n"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 14:48:13.634368"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 14:48:13.636529"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 14:48:13.638369"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (27.6ms) [0m[32mUploaded file to key: hnk03w9cfu0t2eiqzy4fvdyvpp6n (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: e5a5c66e-8915-4acc-aa3d-bb6521359d90) to Async(default) with arguments: #<GlobalID:0x000055d34da29ee8 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 10:48:13 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e5a5c66e-8915-4acc-aa3d-bb6521359d90] Performing ActiveStorage::AnalyzeJob (Job ID: e5a5c66e-8915-4acc-aa3d-bb6521359d90) from Async(default) enqueued at 2022-10-17T14:48:13Z with arguments: #<GlobalID:0x000055d34da94388 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e5a5c66e-8915-4acc-aa3d-bb6521359d90] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: hnk03w9cfu0t2eiqzy4fvdyvpp6n[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e5a5c66e-8915-4acc-aa3d-bb6521359d90] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e5a5c66e-8915-4acc-aa3d-bb6521359d90]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e5a5c66e-8915-4acc-aa3d-bb6521359d90]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e5a5c66e-8915-4acc-aa3d-bb6521359d90]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e5a5c66e-8915-4acc-aa3d-bb6521359d90] Performed ActiveStorage::AnalyzeJob (Job ID: e5a5c66e-8915-4acc-aa3d-bb6521359d90) from Async(default) in 36.81ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 1551)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 1589)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms | Allocations: 5078)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$v7nom66HzdB0pHOrvGwAP.q32nbAWl3G.Gs4FBYwyUDQlZnqkKBIu"], ["created_at", "2022-10-17 14:48:43.875845"], ["updated_at", "2022-10-17 14:48:43.875845"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 14:48:43.942370"], ["updated_at", "2022-10-17 14:48:43.942370"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "4uez8zkcr8bep470vay5zgnf9bd9"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 14:48:43.973990"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 14:48:43.976884"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 14:48:43.978837"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (28.7ms) [0m[32mUploaded file to key: 4uez8zkcr8bep470vay5zgnf9bd9 (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f01ff3d2-bfc7-41f6-84eb-0da5240161a2) to Async(default) with arguments: #<GlobalID:0x000055807247c2d0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 10:48:44 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f01ff3d2-bfc7-41f6-84eb-0da5240161a2] Performing ActiveStorage::AnalyzeJob (Job ID: f01ff3d2-bfc7-41f6-84eb-0da5240161a2) from Async(default) enqueued at 2022-10-17T14:48:44Z with arguments: #<GlobalID:0x0000558073f6e0c0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f01ff3d2-bfc7-41f6-84eb-0da5240161a2] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: 4uez8zkcr8bep470vay5zgnf9bd9[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f01ff3d2-bfc7-41f6-84eb-0da5240161a2] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f01ff3d2-bfc7-41f6-84eb-0da5240161a2]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f01ff3d2-bfc7-41f6-84eb-0da5240161a2]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f01ff3d2-bfc7-41f6-84eb-0da5240161a2]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f01ff3d2-bfc7-41f6-84eb-0da5240161a2] Performed ActiveStorage::AnalyzeJob (Job ID: f01ff3d2-bfc7-41f6-84eb-0da5240161a2) from Async(default) in 35.03ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 3869)
+Completed 200 OK in 30ms (Views: 23.5ms | ActiveRecord: 0.6ms | Allocations: 7449)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 10:48:44 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 21.6ms | Allocations: 4467)
+  Rendered layout layouts/application.html.erb (Duration: 21.8ms | Allocations: 4500)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms | Allocations: 5483)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$VgROaY133wYWVVcX5jliQ.4wBiKZ997XE0iTulRXqzXpxe18NCUUq"], ["created_at", "2022-10-17 14:49:01.886945"], ["updated_at", "2022-10-17 14:49:01.886945"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 14:49:01.952909"], ["updated_at", "2022-10-17 14:49:01.952909"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "uzb81ai4uolbvzvkk4oz9be4lp6p"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 14:49:01.987322"]]
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 14:49:01.990890"]]
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 14:49:01.993971"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (21.2ms) [0m[32mUploaded file to key: uzb81ai4uolbvzvkk4oz9be4lp6p (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: afeec3bf-9549-46e7-8332-32c61782ceb2) to Async(default) with arguments: #<GlobalID:0x0000557c2bd23578 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 10:49:02 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [afeec3bf-9549-46e7-8332-32c61782ceb2] Performing ActiveStorage::AnalyzeJob (Job ID: afeec3bf-9549-46e7-8332-32c61782ceb2) from Async(default) enqueued at 2022-10-17T14:49:02Z with arguments: #<GlobalID:0x0000557c29b8c590 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [afeec3bf-9549-46e7-8332-32c61782ceb2] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: uzb81ai4uolbvzvkk4oz9be4lp6p[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [afeec3bf-9549-46e7-8332-32c61782ceb2] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [afeec3bf-9549-46e7-8332-32c61782ceb2]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [afeec3bf-9549-46e7-8332-32c61782ceb2]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [afeec3bf-9549-46e7-8332-32c61782ceb2]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [afeec3bf-9549-46e7-8332-32c61782ceb2] Performed ActiveStorage::AnalyzeJob (Job ID: afeec3bf-9549-46e7-8332-32c61782ceb2) from Async(default) in 148.43ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 9.8ms | Allocations: 2326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 3869)
+Completed 200 OK in 29ms (Views: 19.1ms | ActiveRecord: 0.5ms | Allocations: 7390)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 10:49:02 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1107)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 1140)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 2123)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$iuHw0Pa9AMM3hheh59sNY.jp2Faw5Z6y5/WM7wxuyXHeFjaj9as.6"], ["created_at", "2022-10-17 14:49:42.155212"], ["updated_at", "2022-10-17 14:49:42.155212"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 14:49:42.226592"], ["updated_at", "2022-10-17 14:49:42.226592"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "x5gzet96yish8is6xpb1nxlm3960"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 14:49:42.258144"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 14:49:42.260504"]]
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 14:49:42.262177"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (15.0ms) [0m[32mUploaded file to key: x5gzet96yish8is6xpb1nxlm3960 (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: cc4a9620-fc38-4378-94da-ce27647cacbc) to Async(default) with arguments: #<GlobalID:0x0000559e4b73f430 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 10:49:42 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc4a9620-fc38-4378-94da-ce27647cacbc] Performing ActiveStorage::AnalyzeJob (Job ID: cc4a9620-fc38-4378-94da-ce27647cacbc) from Async(default) enqueued at 2022-10-17T14:49:42Z with arguments: #<GlobalID:0x0000559e49a8d148 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc4a9620-fc38-4378-94da-ce27647cacbc] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: x5gzet96yish8is6xpb1nxlm3960[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc4a9620-fc38-4378-94da-ce27647cacbc] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc4a9620-fc38-4378-94da-ce27647cacbc]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc4a9620-fc38-4378-94da-ce27647cacbc]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc4a9620-fc38-4378-94da-ce27647cacbc]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc4a9620-fc38-4378-94da-ce27647cacbc] Performed ActiveStorage::AnalyzeJob (Job ID: cc4a9620-fc38-4378-94da-ce27647cacbc) from Async(default) in 34.08ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 3912)
+Completed 200 OK in 29ms (Views: 19.8ms | ActiveRecord: 0.5ms | Allocations: 7429)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 10:49:42 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 86)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1321)
+Completed 200 OK in 10ms (Views: 6.9ms | ActiveRecord: 0.2ms | Allocations: 2612)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$Por5byZmXnaev1dn0UEHw.Qc0k9VeAcchholroIOJCZb9m60djv/m"], ["created_at", "2022-10-17 14:50:11.381812"], ["updated_at", "2022-10-17 14:50:11.381812"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 14:50:11.460272"], ["updated_at", "2022-10-17 14:50:11.460272"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "ulw7s5q3n70656611wtxxi8q9ryy"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 14:50:11.491166"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 14:50:11.493363"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 14:50:11.495129"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (6.3ms) [0m[32mUploaded file to key: ulw7s5q3n70656611wtxxi8q9ryy (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 39d456c1-38a2-4365-b945-fd8a98d591d9) to Async(default) with arguments: #<GlobalID:0x000055b7736fa420 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 10:50:11 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [39d456c1-38a2-4365-b945-fd8a98d591d9] Performing ActiveStorage::AnalyzeJob (Job ID: 39d456c1-38a2-4365-b945-fd8a98d591d9) from Async(default) enqueued at 2022-10-17T14:50:11Z with arguments: #<GlobalID:0x000055b7719724e8 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [39d456c1-38a2-4365-b945-fd8a98d591d9] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: ulw7s5q3n70656611wtxxi8q9ryy[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [39d456c1-38a2-4365-b945-fd8a98d591d9] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [39d456c1-38a2-4365-b945-fd8a98d591d9]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [39d456c1-38a2-4365-b945-fd8a98d591d9]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [39d456c1-38a2-4365-b945-fd8a98d591d9]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [39d456c1-38a2-4365-b945-fd8a98d591d9] Performed ActiveStorage::AnalyzeJob (Job ID: 39d456c1-38a2-4365-b945-fd8a98d591d9) from Async(default) in 37.33ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 3912)
+Completed 200 OK in 33ms (Views: 22.7ms | ActiveRecord: 0.6ms | Allocations: 7428)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 10:50:11 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 86)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 1321)
+Completed 200 OK in 10ms (Views: 7.1ms | ActiveRecord: 0.3ms | Allocations: 2614)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$wOx.3f4C0gcd0WhvDWoGre8JfeqM6hBLUX23gBE19bUD6/Igm6POS"], ["created_at", "2022-10-17 14:58:20.341346"], ["updated_at", "2022-10-17 14:58:20.341346"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 14:58:20.406850"], ["updated_at", "2022-10-17 14:58:20.406850"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "geggcwm0ira6gr80g0gt9v26ra3s"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 14:58:20.436916"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 14:58:20.439000"]]
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 14:58:20.440621"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (21.4ms) [0m[32mUploaded file to key: geggcwm0ira6gr80g0gt9v26ra3s (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 034976e7-a6e1-439b-a0fe-d3941bd52b6f) to Async(default) with arguments: #<GlobalID:0x0000560784ea4548 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 10:58:20 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [034976e7-a6e1-439b-a0fe-d3941bd52b6f] Performing ActiveStorage::AnalyzeJob (Job ID: 034976e7-a6e1-439b-a0fe-d3941bd52b6f) from Async(default) enqueued at 2022-10-17T14:58:20Z with arguments: #<GlobalID:0x0000560786b612f8 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [034976e7-a6e1-439b-a0fe-d3941bd52b6f] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: geggcwm0ira6gr80g0gt9v26ra3s[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [034976e7-a6e1-439b-a0fe-d3941bd52b6f] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [034976e7-a6e1-439b-a0fe-d3941bd52b6f]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [034976e7-a6e1-439b-a0fe-d3941bd52b6f]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [034976e7-a6e1-439b-a0fe-d3941bd52b6f]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [034976e7-a6e1-439b-a0fe-d3941bd52b6f] Performed ActiveStorage::AnalyzeJob (Job ID: 034976e7-a6e1-439b-a0fe-d3941bd52b6f) from Async(default) in 33.4ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 3912)
+Completed 200 OK in 29ms (Views: 19.6ms | ActiveRecord: 0.5ms | Allocations: 7428)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 10:58:20 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms | Allocations: 674)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$mCWw7qOOKf.iZ1iXC7ky3.Mp6lb3cDZwMqJF33jk3xc1cs8C78MYa"], ["created_at", "2022-10-17 14:58:49.381620"], ["updated_at", "2022-10-17 14:58:49.381620"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 14:58:49.447217"], ["updated_at", "2022-10-17 14:58:49.447217"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "ucwbirp1o6q79gwafwsd8u83jfxw"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 14:58:49.483378"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 14:58:49.485569"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 14:58:49.487316"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (27.9ms) [0m[32mUploaded file to key: ucwbirp1o6q79gwafwsd8u83jfxw (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: d9216e6f-2626-4c02-b350-c38fe685acb8) to Async(default) with arguments: #<GlobalID:0x00005636de9ab1c0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 10:58:49 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9216e6f-2626-4c02-b350-c38fe685acb8] Performing ActiveStorage::AnalyzeJob (Job ID: d9216e6f-2626-4c02-b350-c38fe685acb8) from Async(default) enqueued at 2022-10-17T14:58:49Z with arguments: #<GlobalID:0x00005636e0683180 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9216e6f-2626-4c02-b350-c38fe685acb8] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: ucwbirp1o6q79gwafwsd8u83jfxw[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9216e6f-2626-4c02-b350-c38fe685acb8] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9216e6f-2626-4c02-b350-c38fe685acb8]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9216e6f-2626-4c02-b350-c38fe685acb8]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9216e6f-2626-4c02-b350-c38fe685acb8]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9216e6f-2626-4c02-b350-c38fe685acb8] Performed ActiveStorage::AnalyzeJob (Job ID: d9216e6f-2626-4c02-b350-c38fe685acb8) from Async(default) in 34.02ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 3869)
+Completed 200 OK in 29ms (Views: 19.9ms | ActiveRecord: 0.6ms | Allocations: 7389)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 10:58:49 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 644)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$lfLJdE2fqNI.jpLSahkVQ.C8t0XfSJQ.y2kBN7sf8bJMh6VNfSILC"], ["created_at", "2022-10-17 15:00:23.744295"], ["updated_at", "2022-10-17 15:00:23.744295"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:00:23.812831"], ["updated_at", "2022-10-17 15:00:23.812831"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "oug4xns1nmmgldayr17vnwfuwmz2"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:00:23.843165"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:00:23.845387"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:00:23.847047"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (27.4ms) [0m[32mUploaded file to key: oug4xns1nmmgldayr17vnwfuwmz2 (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: cf486359-0638-4710-88f8-3041c096b603) to Async(default) with arguments: #<GlobalID:0x00005650b762f508 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:00:23 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf486359-0638-4710-88f8-3041c096b603] Performing ActiveStorage::AnalyzeJob (Job ID: cf486359-0638-4710-88f8-3041c096b603) from Async(default) enqueued at 2022-10-17T15:00:23Z with arguments: #<GlobalID:0x00005650b76a1630 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf486359-0638-4710-88f8-3041c096b603] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: oug4xns1nmmgldayr17vnwfuwmz2[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf486359-0638-4710-88f8-3041c096b603] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf486359-0638-4710-88f8-3041c096b603]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf486359-0638-4710-88f8-3041c096b603]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf486359-0638-4710-88f8-3041c096b603]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf486359-0638-4710-88f8-3041c096b603] Performed ActiveStorage::AnalyzeJob (Job ID: cf486359-0638-4710-88f8-3041c096b603) from Async(default) in 28.67ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 3912)
+Completed 200 OK in 29ms (Views: 19.2ms | ActiveRecord: 0.6ms | Allocations: 7429)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:00:23 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (Duration: 31.0ms | Allocations: 3633)
+  Rendered layout layouts/application.html.erb (Duration: 31.2ms | Allocations: 3666)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 1.5ms | Allocations: 5132)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$tu03W37.f.jmoQe2ZUnmGup0UpGqfsGZsqxK8KwoHe5Detj1wNlmK"], ["created_at", "2022-10-17 15:00:37.238232"], ["updated_at", "2022-10-17 15:00:37.238232"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:00:37.305417"], ["updated_at", "2022-10-17 15:00:37.305417"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "tlb84ap7cffsz9gtrap8wjx8vj23"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:00:37.335576"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:00:37.337718"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:00:37.339561"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: tlb84ap7cffsz9gtrap8wjx8vj23 (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 127a0de3-10f4-4809-8a15-32fd81926557) to Async(default) with arguments: #<GlobalID:0x0000559707083e20 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:00:37 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [127a0de3-10f4-4809-8a15-32fd81926557] Performing ActiveStorage::AnalyzeJob (Job ID: 127a0de3-10f4-4809-8a15-32fd81926557) from Async(default) enqueued at 2022-10-17T15:00:37Z with arguments: #<GlobalID:0x00005597070f9d00 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [127a0de3-10f4-4809-8a15-32fd81926557] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: tlb84ap7cffsz9gtrap8wjx8vj23[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [127a0de3-10f4-4809-8a15-32fd81926557] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [127a0de3-10f4-4809-8a15-32fd81926557]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [127a0de3-10f4-4809-8a15-32fd81926557]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [127a0de3-10f4-4809-8a15-32fd81926557]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [127a0de3-10f4-4809-8a15-32fd81926557] Performed ActiveStorage::AnalyzeJob (Job ID: 127a0de3-10f4-4809-8a15-32fd81926557) from Async(default) in 34.31ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 3912)
+Completed 200 OK in 30ms (Views: 20.1ms | ActiveRecord: 0.6ms | Allocations: 7429)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:00:37 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" WHERE "posts"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1619)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 1652)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.5ms | Allocations: 3129)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$kGlhwP2dURDLd.FPpM3Tve4irUsmoHOcPB5Pvv46Ix9xpyIbKhjF6"], ["created_at", "2022-10-17 15:03:05.337729"], ["updated_at", "2022-10-17 15:03:05.337729"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:03:05.403078"], ["updated_at", "2022-10-17 15:03:05.403078"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "n62d6xjzyek18uc9ff0y1hbqo3hq"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:03:05.433428"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:03:05.435547"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:03:05.437180"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (1.0ms) [0m[32mUploaded file to key: n62d6xjzyek18uc9ff0y1hbqo3hq (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 8c6de9d1-9a68-4053-9e82-8c87f2fe8d47) to Async(default) with arguments: #<GlobalID:0x0000564aec6518b8 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:03:05 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8c6de9d1-9a68-4053-9e82-8c87f2fe8d47] Performing ActiveStorage::AnalyzeJob (Job ID: 8c6de9d1-9a68-4053-9e82-8c87f2fe8d47) from Async(default) enqueued at 2022-10-17T15:03:05Z with arguments: #<GlobalID:0x00007fda4002f6a8 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8c6de9d1-9a68-4053-9e82-8c87f2fe8d47] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: n62d6xjzyek18uc9ff0y1hbqo3hq[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8c6de9d1-9a68-4053-9e82-8c87f2fe8d47] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8c6de9d1-9a68-4053-9e82-8c87f2fe8d47]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8c6de9d1-9a68-4053-9e82-8c87f2fe8d47]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8c6de9d1-9a68-4053-9e82-8c87f2fe8d47]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8c6de9d1-9a68-4053-9e82-8c87f2fe8d47] Performed ActiveStorage::AnalyzeJob (Job ID: 8c6de9d1-9a68-4053-9e82-8c87f2fe8d47) from Async(default) in 34.0ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 3912)
+Completed 200 OK in 29ms (Views: 19.8ms | ActiveRecord: 0.5ms | Allocations: 7429)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:03:05 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 18.0ms | Allocations: 3848)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 3881)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.8ms | Allocations: 5353)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$jiKhSLfO8iqxfS238BqnlOCnMqOmbkZIedh4A87zuaIIj7cd1KWPq"], ["created_at", "2022-10-17 15:03:31.380725"], ["updated_at", "2022-10-17 15:03:31.380725"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:03:31.456903"], ["updated_at", "2022-10-17 15:03:31.456903"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "rju2vl1sc790yonepd6miufjnxal"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:03:31.487223"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:03:31.489319"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:03:31.490865"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: rju2vl1sc790yonepd6miufjnxal (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: caacfc9b-538d-4fd6-a68f-ea7a97b311d5) to Async(default) with arguments: #<GlobalID:0x000055c2973f8130 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:03:31 -0400
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [caacfc9b-538d-4fd6-a68f-ea7a97b311d5] Performing ActiveStorage::AnalyzeJob (Job ID: caacfc9b-538d-4fd6-a68f-ea7a97b311d5) from Async(default) enqueued at 2022-10-17T15:03:31Z with arguments: #<GlobalID:0x000055c2990b1038 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [caacfc9b-538d-4fd6-a68f-ea7a97b311d5] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: rju2vl1sc790yonepd6miufjnxal[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [caacfc9b-538d-4fd6-a68f-ea7a97b311d5] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [caacfc9b-538d-4fd6-a68f-ea7a97b311d5]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [caacfc9b-538d-4fd6-a68f-ea7a97b311d5]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [caacfc9b-538d-4fd6-a68f-ea7a97b311d5]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [caacfc9b-538d-4fd6-a68f-ea7a97b311d5] Performed ActiveStorage::AnalyzeJob (Job ID: caacfc9b-538d-4fd6-a68f-ea7a97b311d5) from Async(default) in 34.25ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 2326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 3869)
+Completed 200 OK in 30ms (Views: 19.9ms | ActiveRecord: 0.6ms | Allocations: 7389)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:03:31 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (Duration: 13.5ms | Allocations: 2617)
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 2650)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.5ms | Allocations: 3938)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$XR/E8WJZRJdEgUszc7GWgehEBq6C.UKc4Bdcz0bS08wyqS68Ohze6"], ["created_at", "2022-10-17 15:04:38.128718"], ["updated_at", "2022-10-17 15:04:38.128718"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:04:38.193718"], ["updated_at", "2022-10-17 15:04:38.193718"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "w5or13ui98lx485hdjz3te10844g"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:04:38.224314"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:04:38.226402"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:04:38.228238"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: w5or13ui98lx485hdjz3te10844g (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 6946eef9-210c-4c08-977f-06d9cfdeca26) to Async(default) with arguments: #<GlobalID:0x00005631447d8360 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:04:38 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6946eef9-210c-4c08-977f-06d9cfdeca26] Performing ActiveStorage::AnalyzeJob (Job ID: 6946eef9-210c-4c08-977f-06d9cfdeca26) from Async(default) enqueued at 2022-10-17T15:04:38Z with arguments: #<GlobalID:0x00005631462c5a10 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6946eef9-210c-4c08-977f-06d9cfdeca26] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: w5or13ui98lx485hdjz3te10844g[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6946eef9-210c-4c08-977f-06d9cfdeca26] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6946eef9-210c-4c08-977f-06d9cfdeca26]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6946eef9-210c-4c08-977f-06d9cfdeca26]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6946eef9-210c-4c08-977f-06d9cfdeca26]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6946eef9-210c-4c08-977f-06d9cfdeca26] Performed ActiveStorage::AnalyzeJob (Job ID: 6946eef9-210c-4c08-977f-06d9cfdeca26) from Async(default) in 28.38ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 29.5ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.5ms | Allocations: 3912)
+Completed 200 OK in 61ms (Views: 47.7ms | ActiveRecord: 0.6ms | Allocations: 7429)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:04:38 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1169)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 1202)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms | Allocations: 2479)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$cyOYAwJepw9z35Hq9Gn2cO6TAB.Dv3GcMp3MrAoXtb4SMUTRg4AgS"], ["created_at", "2022-10-17 15:07:33.441114"], ["updated_at", "2022-10-17 15:07:33.441114"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:07:33.509763"], ["updated_at", "2022-10-17 15:07:33.509763"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "96uqvzsczkmolvbk0d9s6gij5dqa"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:07:33.544996"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:07:33.547048"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:07:33.548767"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (1.0ms) [0m[32mUploaded file to key: 96uqvzsczkmolvbk0d9s6gij5dqa (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: fc55d5b6-c747-445a-ac03-411447ff13b9) to Async(default) with arguments: #<GlobalID:0x000055ccf83cf468 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:07:33 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc55d5b6-c747-445a-ac03-411447ff13b9] Performing ActiveStorage::AnalyzeJob (Job ID: fc55d5b6-c747-445a-ac03-411447ff13b9) from Async(default) enqueued at 2022-10-17T15:07:33Z with arguments: #<GlobalID:0x000055ccf8438800 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc55d5b6-c747-445a-ac03-411447ff13b9] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: 96uqvzsczkmolvbk0d9s6gij5dqa[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc55d5b6-c747-445a-ac03-411447ff13b9] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc55d5b6-c747-445a-ac03-411447ff13b9]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc55d5b6-c747-445a-ac03-411447ff13b9]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc55d5b6-c747-445a-ac03-411447ff13b9]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc55d5b6-c747-445a-ac03-411447ff13b9] Performed ActiveStorage::AnalyzeJob (Job ID: fc55d5b6-c747-445a-ac03-411447ff13b9) from Async(default) in 31.96ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 3912)
+Completed 200 OK in 29ms (Views: 19.4ms | ActiveRecord: 0.5ms | Allocations: 7429)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:07:33 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 7.4ms | Allocations: 1856)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 1889)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.7ms | Allocations: 3359)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$iPdg6FFaUOA2dJV7Bi7TNeOfnZau7Qxeirh1QxwJDQgFrljFGfBgK"], ["created_at", "2022-10-17 15:08:10.712071"], ["updated_at", "2022-10-17 15:08:10.712071"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:08:10.800464"], ["updated_at", "2022-10-17 15:08:10.800464"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "tlj2jy4eaec2blw8wbiggui1vfvt"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:08:10.839820"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:08:10.842088"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:08:10.843802"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.5ms) [0m[32mUploaded file to key: tlj2jy4eaec2blw8wbiggui1vfvt (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 02fbac95-49e2-4100-b800-6c5ef4ac4c5f) to Async(default) with arguments: #<GlobalID:0x000055a47b1b2ae0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:08:10 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [02fbac95-49e2-4100-b800-6c5ef4ac4c5f] Performing ActiveStorage::AnalyzeJob (Job ID: 02fbac95-49e2-4100-b800-6c5ef4ac4c5f) from Async(default) enqueued at 2022-10-17T15:08:10Z with arguments: #<GlobalID:0x00007f9098027da0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [02fbac95-49e2-4100-b800-6c5ef4ac4c5f] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: tlj2jy4eaec2blw8wbiggui1vfvt[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [02fbac95-49e2-4100-b800-6c5ef4ac4c5f] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [02fbac95-49e2-4100-b800-6c5ef4ac4c5f]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [02fbac95-49e2-4100-b800-6c5ef4ac4c5f]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [02fbac95-49e2-4100-b800-6c5ef4ac4c5f]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [02fbac95-49e2-4100-b800-6c5ef4ac4c5f] Performed ActiveStorage::AnalyzeJob (Job ID: 02fbac95-49e2-4100-b800-6c5ef4ac4c5f) from Async(default) in 38.18ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 2326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 3869)
+Completed 200 OK in 29ms (Views: 19.6ms | ActiveRecord: 0.6ms | Allocations: 7389)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:08:10 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 19.9ms | Allocations: 3848)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 3881)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.8ms | Allocations: 5358)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$.9.sGjDgQvJJDAMUdi.7gehzTS.OrhsPFHYvGAlIbdvTUQkc5CWF2"], ["created_at", "2022-10-17 15:11:10.006099"], ["updated_at", "2022-10-17 15:11:10.006099"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:11:10.071724"], ["updated_at", "2022-10-17 15:11:10.071724"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "1k5efziqso4eeplbsmk3bv5xgjiy"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:11:10.102015"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:11:10.104149"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:11:10.105803"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: 1k5efziqso4eeplbsmk3bv5xgjiy (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: beea0557-a409-427c-9002-b6e47937495a) to Async(default) with arguments: #<GlobalID:0x0000562131dc5de0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:11:10 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [beea0557-a409-427c-9002-b6e47937495a] Performing ActiveStorage::AnalyzeJob (Job ID: beea0557-a409-427c-9002-b6e47937495a) from Async(default) enqueued at 2022-10-17T15:11:10Z with arguments: #<GlobalID:0x0000562131e341c8 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [beea0557-a409-427c-9002-b6e47937495a] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: 1k5efziqso4eeplbsmk3bv5xgjiy[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [beea0557-a409-427c-9002-b6e47937495a] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [beea0557-a409-427c-9002-b6e47937495a]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [beea0557-a409-427c-9002-b6e47937495a]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [beea0557-a409-427c-9002-b6e47937495a]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [beea0557-a409-427c-9002-b6e47937495a] Performed ActiveStorage::AnalyzeJob (Job ID: beea0557-a409-427c-9002-b6e47937495a) from Async(default) in 28.49ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 3912)
+Completed 200 OK in 29ms (Views: 18.9ms | ActiveRecord: 0.5ms | Allocations: 7429)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:11:10 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 637)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 671)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.4ms | Allocations: 2142)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$toJ62Og6SQ5uA8UeyIHhbOkoTEn14Fo/eNR/pWkg8AGkT3qn37h1G"], ["created_at", "2022-10-17 15:12:06.667112"], ["updated_at", "2022-10-17 15:12:06.667112"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:12:06.732571"], ["updated_at", "2022-10-17 15:12:06.732571"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "7c130ey9y53u97ebp6kxf42vf5m0"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:12:06.762886"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:12:06.765010"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:12:06.766690"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: 7c130ey9y53u97ebp6kxf42vf5m0 (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 9d3b444a-c31d-4959-afba-0e10685a4ac9) to Async(default) with arguments: #<GlobalID:0x000055fa9fe15f60 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:12:06 -0400
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9d3b444a-c31d-4959-afba-0e10685a4ac9] Performing ActiveStorage::AnalyzeJob (Job ID: 9d3b444a-c31d-4959-afba-0e10685a4ac9) from Async(default) enqueued at 2022-10-17T15:12:06Z with arguments: #<GlobalID:0x000055fa9fe699f8 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9d3b444a-c31d-4959-afba-0e10685a4ac9] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: 7c130ey9y53u97ebp6kxf42vf5m0[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9d3b444a-c31d-4959-afba-0e10685a4ac9] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9d3b444a-c31d-4959-afba-0e10685a4ac9]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9d3b444a-c31d-4959-afba-0e10685a4ac9]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9d3b444a-c31d-4959-afba-0e10685a4ac9]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9d3b444a-c31d-4959-afba-0e10685a4ac9] Performed ActiveStorage::AnalyzeJob (Job ID: 9d3b444a-c31d-4959-afba-0e10685a4ac9) from Async(default) in 54.49ms
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 3912)
+Completed 200 OK in 28ms (Views: 19.1ms | ActiveRecord: 0.6ms | Allocations: 6666)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:12:06 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 23.9ms | Allocations: 3892)
+  Rendered layout layouts/application.html.erb (Duration: 24.2ms | Allocations: 3925)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.9ms | Allocations: 5399)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$aeMMr4/PsfylPlzZGyXPu.jA0T2lvlD3WZEOZYzjIjMdThe.6ReuG"], ["created_at", "2022-10-17 15:12:27.115682"], ["updated_at", "2022-10-17 15:12:27.115682"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:12:27.181800"], ["updated_at", "2022-10-17 15:12:27.181800"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "uxtuibrhwqhezyar3il9fok1jam7"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:12:27.212577"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:12:27.214677"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:12:27.216443"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: uxtuibrhwqhezyar3il9fok1jam7 (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: c660789d-25ab-4919-ad50-a0e6180de786) to Async(default) with arguments: #<GlobalID:0x000055ac32a26820 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:12:27 -0400
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c660789d-25ab-4919-ad50-a0e6180de786] Performing ActiveStorage::AnalyzeJob (Job ID: c660789d-25ab-4919-ad50-a0e6180de786) from Async(default) enqueued at 2022-10-17T15:12:27Z with arguments: #<GlobalID:0x000055ac32a8d7f0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c660789d-25ab-4919-ad50-a0e6180de786] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: uxtuibrhwqhezyar3il9fok1jam7[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c660789d-25ab-4919-ad50-a0e6180de786] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c660789d-25ab-4919-ad50-a0e6180de786]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c660789d-25ab-4919-ad50-a0e6180de786]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c660789d-25ab-4919-ad50-a0e6180de786]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c660789d-25ab-4919-ad50-a0e6180de786] Performed ActiveStorage::AnalyzeJob (Job ID: c660789d-25ab-4919-ad50-a0e6180de786) from Async(default) in 28.23ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 3912)
+Completed 200 OK in 30ms (Views: 20.3ms | ActiveRecord: 0.6ms | Allocations: 7429)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:12:27 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 19.6ms | Allocations: 3894)
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | Allocations: 3927)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.8ms | Allocations: 5397)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$l770AdSFFn5YhapuojhVK.yG35E26wFHSGEIHzhQpAQqoJjhYOEkK"], ["created_at", "2022-10-17 15:14:07.655719"], ["updated_at", "2022-10-17 15:14:07.655719"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:14:07.723245"], ["updated_at", "2022-10-17 15:14:07.723245"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "htbf68pcgy5l03wvcztxycx6xnm1"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:14:07.754380"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:14:07.756504"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:14:07.758333"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: htbf68pcgy5l03wvcztxycx6xnm1 (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 5da15beb-f87c-4935-849e-63816db7dd92) to Async(default) with arguments: #<GlobalID:0x000055d273c10c00 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:14:07 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5da15beb-f87c-4935-849e-63816db7dd92] Performing ActiveStorage::AnalyzeJob (Job ID: 5da15beb-f87c-4935-849e-63816db7dd92) from Async(default) enqueued at 2022-10-17T15:14:07Z with arguments: #<GlobalID:0x00007f6db002bb90 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5da15beb-f87c-4935-849e-63816db7dd92] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: htbf68pcgy5l03wvcztxycx6xnm1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5da15beb-f87c-4935-849e-63816db7dd92] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5da15beb-f87c-4935-849e-63816db7dd92]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5da15beb-f87c-4935-849e-63816db7dd92]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5da15beb-f87c-4935-849e-63816db7dd92]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5da15beb-f87c-4935-849e-63816db7dd92] Performed ActiveStorage::AnalyzeJob (Job ID: 5da15beb-f87c-4935-849e-63816db7dd92) from Async(default) in 35.14ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 2326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 3869)
+Completed 200 OK in 29ms (Views: 18.9ms | ActiveRecord: 0.6ms | Allocations: 7390)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:14:07 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 26.5ms | Allocations: 3892)
+  Rendered layout layouts/application.html.erb (Duration: 26.8ms | Allocations: 3925)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.8ms | Allocations: 5396)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$UnDdW/FTjQ3mTRFJaUEnAuIBMCzVBYQLZT/pLI0xjOISHznDnXpO2"], ["created_at", "2022-10-17 15:14:52.862146"], ["updated_at", "2022-10-17 15:14:52.862146"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:14:52.929352"], ["updated_at", "2022-10-17 15:14:52.929352"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "h2gjdqpv9dt2sz6f1szcuek5hz4i"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:14:52.959990"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:14:52.962146"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:14:52.963879"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: h2gjdqpv9dt2sz6f1szcuek5hz4i (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f7724155-c0c1-4a11-9ec8-4513914cd264) to Async(default) with arguments: #<GlobalID:0x000055edc3c2ac20 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:14:52 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f7724155-c0c1-4a11-9ec8-4513914cd264] Performing ActiveStorage::AnalyzeJob (Job ID: f7724155-c0c1-4a11-9ec8-4513914cd264) from Async(default) enqueued at 2022-10-17T15:14:52Z with arguments: #<GlobalID:0x000055edc1e975f0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f7724155-c0c1-4a11-9ec8-4513914cd264] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: h2gjdqpv9dt2sz6f1szcuek5hz4i[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f7724155-c0c1-4a11-9ec8-4513914cd264] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f7724155-c0c1-4a11-9ec8-4513914cd264]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f7724155-c0c1-4a11-9ec8-4513914cd264]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f7724155-c0c1-4a11-9ec8-4513914cd264]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f7724155-c0c1-4a11-9ec8-4513914cd264] Performed ActiveStorage::AnalyzeJob (Job ID: f7724155-c0c1-4a11-9ec8-4513914cd264) from Async(default) in 30.52ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 2326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 3869)
+Completed 200 OK in 30ms (Views: 19.5ms | ActiveRecord: 0.7ms | Allocations: 7389)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:14:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 3892)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 3925)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.8ms | Allocations: 5392)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$/JctVwxqyq6vCArbdFYwje4Z0n9.oID3xxG8pOWtC76l8sQQLHpVq"], ["created_at", "2022-10-17 15:15:29.858775"], ["updated_at", "2022-10-17 15:15:29.858775"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:15:29.923835"], ["updated_at", "2022-10-17 15:15:29.923835"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "f2tgqk6qoygss4lefn9ayw46o6u4"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:15:29.953892"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:15:29.955936"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:15:29.957728"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: f2tgqk6qoygss4lefn9ayw46o6u4 (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: c317533b-6997-4661-a3d5-0ef9f6c7215e) to Async(default) with arguments: #<GlobalID:0x00005590dbf54f30 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:15:29 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c317533b-6997-4661-a3d5-0ef9f6c7215e] Performing ActiveStorage::AnalyzeJob (Job ID: c317533b-6997-4661-a3d5-0ef9f6c7215e) from Async(default) enqueued at 2022-10-17T15:15:29Z with arguments: #<GlobalID:0x00005590ddc32580 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c317533b-6997-4661-a3d5-0ef9f6c7215e] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: f2tgqk6qoygss4lefn9ayw46o6u4[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c317533b-6997-4661-a3d5-0ef9f6c7215e] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c317533b-6997-4661-a3d5-0ef9f6c7215e]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c317533b-6997-4661-a3d5-0ef9f6c7215e]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c317533b-6997-4661-a3d5-0ef9f6c7215e]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c317533b-6997-4661-a3d5-0ef9f6c7215e] Performed ActiveStorage::AnalyzeJob (Job ID: c317533b-6997-4661-a3d5-0ef9f6c7215e) from Async(default) in 30.31ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 3912)
+Completed 200 OK in 29ms (Views: 18.9ms | ActiveRecord: 0.5ms | Allocations: 7428)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:15:30 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2430)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 2463)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.7ms | Allocations: 3938)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$h2It.20gNsqloVgPQHnRIuWlA7I/fI5JlHtMI142WG7Yr/Hhyv67."], ["created_at", "2022-10-17 15:21:38.075781"], ["updated_at", "2022-10-17 15:21:38.075781"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:21:38.142999"], ["updated_at", "2022-10-17 15:21:38.142999"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "sg345t7jdln700gka45z4xo2f5as"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:21:38.173917"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:21:38.176225"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:21:38.178008"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: sg345t7jdln700gka45z4xo2f5as (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a4a3aaf2-344b-4b3c-b3b8-08a20df809e7) to Async(default) with arguments: #<GlobalID:0x000055b61246ba18 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:21:38 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4a3aaf2-344b-4b3c-b3b8-08a20df809e7] Performing ActiveStorage::AnalyzeJob (Job ID: a4a3aaf2-344b-4b3c-b3b8-08a20df809e7) from Async(default) enqueued at 2022-10-17T15:21:38Z with arguments: #<GlobalID:0x000055b6124dd668 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4a3aaf2-344b-4b3c-b3b8-08a20df809e7] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: sg345t7jdln700gka45z4xo2f5as[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4a3aaf2-344b-4b3c-b3b8-08a20df809e7] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4a3aaf2-344b-4b3c-b3b8-08a20df809e7]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4a3aaf2-344b-4b3c-b3b8-08a20df809e7]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4a3aaf2-344b-4b3c-b3b8-08a20df809e7]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4a3aaf2-344b-4b3c-b3b8-08a20df809e7] Performed ActiveStorage::AnalyzeJob (Job ID: a4a3aaf2-344b-4b3c-b3b8-08a20df809e7) from Async(default) in 37.63ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 3912)
+Completed 200 OK in 37ms (Views: 19.5ms | ActiveRecord: 0.5ms | Allocations: 7428)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:21:38 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 15.3ms | Allocations: 3185)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 3218)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.5ms | Allocations: 4686)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$GmeQT2yV60W1/.fEj9DuiulSG6u3sZqx5T9y0JTPNa.qL11RS0bsu"], ["created_at", "2022-10-17 15:21:59.133216"], ["updated_at", "2022-10-17 15:21:59.133216"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:21:59.204213"], ["updated_at", "2022-10-17 15:21:59.204213"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "vb0h8w200yxo29h120o5f5w4b3r5"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:21:59.234385"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:21:59.236474"]]
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:21:59.238337"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.8ms) [0m[32mUploaded file to key: vb0h8w200yxo29h120o5f5w4b3r5 (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a121ca97-6651-4a8a-b35c-552dd1f0c640) to Async(default) with arguments: #<GlobalID:0x0000556ae2050508 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:21:59 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a121ca97-6651-4a8a-b35c-552dd1f0c640] Performing ActiveStorage::AnalyzeJob (Job ID: a121ca97-6651-4a8a-b35c-552dd1f0c640) from Async(default) enqueued at 2022-10-17T15:21:59Z with arguments: #<GlobalID:0x0000556ae3d29ee0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a121ca97-6651-4a8a-b35c-552dd1f0c640] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: vb0h8w200yxo29h120o5f5w4b3r5[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a121ca97-6651-4a8a-b35c-552dd1f0c640] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a121ca97-6651-4a8a-b35c-552dd1f0c640]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a121ca97-6651-4a8a-b35c-552dd1f0c640]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a121ca97-6651-4a8a-b35c-552dd1f0c640]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a121ca97-6651-4a8a-b35c-552dd1f0c640] Performed ActiveStorage::AnalyzeJob (Job ID: a121ca97-6651-4a8a-b35c-552dd1f0c640) from Async(default) in 51.46ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 21.8ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.6ms | Allocations: 3912)
+Completed 200 OK in 73ms (Views: 48.6ms | ActiveRecord: 0.6ms | Allocations: 7428)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:21:59 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 20.5ms | Allocations: 3656)
+  Rendered layout layouts/application.html.erb (Duration: 20.8ms | Allocations: 3689)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.5ms | Allocations: 4968)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testaccount1"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test1@example.com"], ["encrypted_password", "$2a$04$1HkDQnS2/VNLkmg.0kc4a.1wYpI2MYJ6JyFXcIm5amc8FuF5hQEVm"], ["created_at", "2022-10-17 15:22:15.347359"], ["updated_at", "2022-10-17 15:22:15.347359"], ["username", "testaccount1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "author_id") VALUES (?, ?, ?, ?)[0m  [["name", "Example post"], ["created_at", "2022-10-17 15:22:15.413300"], ["updated_at", "2022-10-17 15:22:15.413300"], ["author_id", 1]]
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "9watdhlqnk5l2f5rfaq085psxafx"], ["filename", "logo.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "test"], ["byte_size", 14291], ["checksum", "umH4ozCUiGZ5ScZrMcqu7g=="], ["created_at", "2022-10-17 15:22:15.444493"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-17 15:22:15.446488"]]
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2022-10-17 15:22:15.448263"], ["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[36m  Disk Storage (0.5ms) [0m[32mUploaded file to key: 9watdhlqnk5l2f5rfaq085psxafx (checksum: umH4ozCUiGZ5ScZrMcqu7g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 0b16a906-22f1-4fac-a224-383d2e83954f) to Async(default) with arguments: #<GlobalID:0x000055e3503ff4b0 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Started GET "/" for 127.0.0.1 at 2022-10-17 11:22:15 -0400
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0b16a906-22f1-4fac-a224-383d2e83954f] Performing ActiveStorage::AnalyzeJob (Job ID: 0b16a906-22f1-4fac-a224-383d2e83954f) from Async(default) enqueued at 2022-10-17T15:22:15Z with arguments: #<GlobalID:0x000055e3520eb3f8 @uri=#<URI::GID gid://projectmargot/ActiveStorage::Blob/1>>
+Processing by PostsController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0b16a906-22f1-4fac-a224-383d2e83954f] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: 9watdhlqnk5l2f5rfaq085psxafx[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0b16a906-22f1-4fac-a224-383d2e83954f] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0b16a906-22f1-4fac-a224-383d2e83954f]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0b16a906-22f1-4fac-a224-383d2e83954f]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0b16a906-22f1-4fac-a224-383d2e83954f]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0b16a906-22f1-4fac-a224-383d2e83954f] Performed ActiveStorage::AnalyzeJob (Job ID: 0b16a906-22f1-4fac-a224-383d2e83954f) from Async(default) in 38.16ms
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.7ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 3912)
+Completed 200 OK in 34ms (Views: 20.8ms | ActiveRecord: 0.6ms | Allocations: 7428)
+Started GET "/users/1" for 127.0.0.1 at 2022-10-17 11:22:15 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (Duration: 9.5ms | Allocations: 682)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 1917)
+Completed 200 OK in 31ms (Views: 25.3ms | ActiveRecord: 0.6ms | Allocations: 3223)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
