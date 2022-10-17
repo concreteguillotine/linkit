@@ -24,9 +24,9 @@
                 <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "ign in", new_user_session_path %> to vote! </li>
             <% end %>
             
-            <% admins_only do %>
-                <li><%= link_to "Edit post", edit_admin_post_path(@post) %></li>
-                <li><%= link_to "Remove post", admin_post_path(@post),
+            <% if (current_user == @post.author) || (current_user.admin?) %>
+                <li><%= link_to "Edit post", edit_post_path(@post) %></li>
+                <li><%= link_to "Remove post", post_path(@post),
                 method: :delete,
                 data: { confirm: "Do you want to remove this post?" } %></li>
             <% end %>

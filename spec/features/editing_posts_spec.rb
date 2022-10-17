@@ -1,9 +1,11 @@
 require "rails_helper"
 
-RSpec.feature "Admins can edit existing posts" do
+RSpec.feature "Users can edit existing posts" do
+    let(:user) { FactoryBot.create(:user, username: "user1") }
+    let!(:post) { FactoryBot.create(:post, author: user) }
+
     before do
-        login_as(FactoryBot.create(:user, :admin))
-        FactoryBot.create(:post)
+        login_as(user)
 
         visit "/"
 

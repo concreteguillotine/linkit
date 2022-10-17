@@ -6,7 +6,7 @@
     <div class="text">
         <%= simple_format(comment.text) %>
     </div>
-      <% if (current_user == comment.author) || (current_user == post.author) || (current_user == user.admin?) %>
+      <% if (current_user == comment.author) || (current_user == post.author) || (current_user.admin?) %>
         <%= link_to "Delete Comment",
           post_comment_path(comment.post, comment),
           data: { turbo_method: :delete, turbo_confirm: "Delete this comment?" } %>
