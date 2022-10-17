@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :username, uniqueness: true
   acts_as_voter
+  has_many :posts
 
   def email_changed?
     false
