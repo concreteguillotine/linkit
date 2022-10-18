@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   acts_as_voter
   has_many :posts
+  has_one_attached :image
 
   def email_changed?
     false

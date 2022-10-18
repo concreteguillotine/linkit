@@ -59,9 +59,9 @@ class PostsController < ApplicationController
 
     def set_post
         @post = Post.find(params[:id])
-    # rescue ActiveRecord::RecordNotFound
-    #     flash[:alert] = "This post does not exist!"
-    #     redirect_to posts_path
+    rescue ActiveRecord::RecordNotFound
+        flash[:alert] = "This post does not exist!"
+        redirect_to posts_path
     end
 
     def post_params

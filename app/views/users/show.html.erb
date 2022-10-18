@@ -1,9 +1,31 @@
-<%= @user.username %>
+<body>
+    <div class="sidebar-left">
+        <div class="about">
+            <div class="avatar">
+                <% if @user.image.present? %>
+                    <%= image_tag @user.image %>
+                <% end %>
+            </div>
+            <div class="username"> <%= @user.username %> </div>
+            <div class="about_me"> <%= @user.about %> </div>
+        </div>
 
-<% @posts.each do |post| %>
-    <% if post.author == @user %>
-        <%= link_to post.name, post %>
-    <% else %>
-        You have no posts, they'll show up here when added.
-    <% end %>
-<% end %>
+        <% if @user = current_user %>
+            <ul class="actions">
+                <li><%= link_to "Edit sign in information", edit_user_registration_path%></li>
+                <li><%= link_to "Edit profile", edit_user_path %></li>
+                <li><%= link_to "Return home", root_path %></li>
+            </ul>
+        <% end %>
+    </div>
+
+    <div class="content">
+        <% @posts.each do |post| %>
+            <% if post.author == @user %>
+                <li><%= link_to post.name, post %></li>
+            <% else %>
+                You have no posts, they'll show up here when added.
+            <% end %>
+        <% end %>
+    </div>
+</body>

@@ -13,6 +13,17 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  Tell us about yourself!
+  <div class="field">
+    <%= f.label :about %><br />
+    <%= f.text_area :about, autofocus: true, autocomplete: "about me" %>
+  </div>
+
+  Upload an avatar, keep in mind that it will be scaled down!
+  <div class="field">
+    <%= f.file_field :image, label: "Avatar" %>
+  </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
