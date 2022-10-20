@@ -1,0 +1,13 @@
+.posts {
+    position: relative;
+    margin-left: 18%;
+
+    .posts::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
+    
+
+}
+

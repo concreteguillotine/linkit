@@ -1,0 +1,37 @@
+.sidebar {
+    display: inline-block;
+    border-right: var(--border);
+    height: 100%;
+    width: 16%;
+    position: fixed;
+    padding-right: var(--space-xs);
+    padding-left: 0;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--color-secondary);
+
+      .username {
+        text-align: center;
+        border-bottom: var(--border);
+        margin-left: 1.5rem;
+        margin-right: 1rem;
+        padding-bottom: .25rem;
+      }
+
+      .about_me {
+        text-align: left;
+        margin-left: 1.5rem;
+        margin-right: 1rem;
+
+        .header {
+          margin-bottom: -.75rem;
+        }
+        
+        .about {
+          border-top: var(--border);
+          padding-top: .75rem;
+        }
+      }
+
+}  

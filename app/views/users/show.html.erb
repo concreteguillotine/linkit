@@ -1,14 +1,18 @@
 <body>
-    <div class="sidebar-left">
-        <div class="about">
-            <div class="avatar">
-                <% if @user.image.present? %>
-                    <%= image_tag @user.image %>
-                <% end %>
-            </div>
-            <div class="username"> <%= @user.username %> </div>
-            <div class="about_me"> <%= @user.about %> </div>
-        </div>
+    <div class="sidebar">
+
+            <h4 class="username"> <%= @user.username %> </h4>
+            
+                <div class="avatar">
+                    <% if @user.image.present? %>
+                        <%= image_tag @user.image %>
+                    <% end %>
+                </div>
+
+                <div class="about_me">
+                    <h4 class="header"> About me: </h4>
+                        <p class= "about"><%= @user.about %></p>
+                </div>
 
         <% if @user = current_user %>
             <ul class="actions">
@@ -19,10 +23,13 @@
         <% end %>
     </div>
 
-    <div class="content">
+    <div class="user-posts">
         <% @posts.each do |post| %>
             <% if post.author == @user %>
-                <li><%= link_to post.name, post %></li>
+                <div class="ind-posts">
+                    <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+                    <li class="title"><%= link_to post.name, post %></li> <%= post.get_likes.size %> votes</li>
+                </div>
             <% else %>
                 You have no posts, they'll show up here when added.
             <% end %>

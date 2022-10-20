@@ -11,7 +11,7 @@ RSpec.feature "Users have a profile" do
     scenario "they can access it from the sidebar and see their username and posts" do
         visit "/"
         click_link "Your profile"
-        expect(page).to have_content "testaccount1"
+        expect(page).to have_content user.username
         expect(page).to have_content "Example post"
     end
 end

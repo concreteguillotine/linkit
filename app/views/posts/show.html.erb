@@ -1,5 +1,5 @@
 <div class="post"> 
-    <div class="sidebar-left">
+    <div class="sidebar">
             <div class="votes">
                 <td class="count"> <%= @post.name %> has <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
                 <% users_only do %>
@@ -31,7 +31,12 @@
             <li><%= link_to "Return to home...", posts_path %></li>
     </div>
 
-    <div class="sidebar-right">
+    <div class="content">
+        <p class="title"><%= @post.name %></p>
+        <p class="image"><%= image_tag @post.image %></p>
+        <p class="author">Posted by <%= link_to @post.author.username, @post.author %></p>
+    </div>
+
         <div class="comments">
             <header> <h3> Comments: </h3> </header>
 
@@ -46,9 +51,4 @@
                 <%= render "comments/form", post: @post, comment: @comment %>
             <% end %>
         </div>
-    </div>
-
-    <div class="content">
-        <p class="image"><%= image_tag @post.image %></p>
-    </div>
 </div>
