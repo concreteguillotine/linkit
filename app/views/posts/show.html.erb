@@ -33,7 +33,15 @@
 
     <div class="content">
         <p class="title"><%= @post.name %></p>
-        <p class="image"><%= image_tag @post.image %></p>
+        <% if @post.image.present? %>
+            <p class="image"><%= image_tag @post.image %></p>
+        <% elsif @post.image.present? && @post.text.present? %>
+            <p class="image"><%= image_tag @post.image %></p>
+            <p class="caption"><%= @post.text %>
+        <% else %>
+            <p class="text"><%= @post.text %>
+        <% end %>
+
         <p class="author">Posted by <%= link_to @post.author.username, @post.author %></p>
     </div>
 

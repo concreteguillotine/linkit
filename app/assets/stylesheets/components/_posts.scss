@@ -1,13 +1,30 @@
 .posts {
-    position: relative;
-    margin-left: 18%;
+    position: absolute;
+    margin-left: 17%;
+    flex: 1 1 auto;
+    flex-direction: row;
+    width: 100%;
+    list-style: none;
 
-    .posts::after {
+
+    .ind-posts {
+        border-bottom: var(--border);
+        margin: 1rem;
+    }
+}
+.thumbnail {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    .thumbnail::after {
         content: "";
         display: block;
         padding-bottom: 100%;
     }
-    
-
+    img{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
-

@@ -1,5 +1,5 @@
 <body>
-    <div class="sidebar-left">
+    <div class="sidebar">
        <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
        <h4> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
        <ul class="actions">
@@ -18,32 +18,18 @@
             <% end %>
         </ul>
     </div>
-
-    <div class="sidebar-right">
-        <div class="allhof">
-            <figure class="hof">
-                <% if Post.maximum(:cached_votes_total) == 0 %>
-                    There is no Hall of Famer at the moment!
-                <% elsif post = Post.find_by(cached_votes_total:Post.maximum(:cached_votes_total)) %>
-                    <% last = Post.order("cached_votes_total DESC").last %>
-                        <p class="img"><%= link_to (image_tag post.image), post %></p>
-                        <h3>  The Hall of Famer  <br>
-                        with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></h3> 
-                        
-
-                    Last place is <%= last.name %> with <%= last.get_likes.size %>!
-                    <p class="img"><%= link_to (image_tag last.image), last %></p>
-                <% end %>
-            </figure>
-        </div>
-    </div>
-
-    <div class="content">
+    <div class="posts">
+        <div class="ind-posts">
             <% @posts.each do |post| %>
-                <figure class="posts"> <%= link_to (image_tag post.image), post %>
-                    <figcaption> <%= link_to post.name, post %> </figcaption>
-                </figure>
+                <% if post.image.present? %>
+                    <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+                <% else %>
+                    <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")) %></div>
+                <% end %>
+
+                <li class="title"><%= link_to post.name, post %> by <%= post.author.username %> with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
             <% end %>
+        </div>
     </div>
 
 </body>

@@ -15058,3 +15058,1323 @@ Processing by ActiveStorage::DiskController#show as JPEG
 Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
 
 
+Started GET "/" for 127.0.0.1 at 2022-10-20 19:18:37 -0400
+  [1m[35m (10.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."cached_votes_total" = ? LIMIT ?[0m  [["cached_votes_total", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY cached_votes_total ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (8.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:34
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  Rendered posts/index.html.erb within layouts/application (Duration: 708.2ms | Allocations: 36159)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7448.2ms | Allocations: 70800)
+Completed 200 OK in 7563ms (Views: 7459.6ms | ActiveRecord: 16.5ms | Allocations: 76207)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--343e904f6a9881af9fc72d53248b9bcb3f646a16/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-20 19:18:45 -0400
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c029c787506d494296b8408be3b2c04be541c1ea/votebtn.png" for 127.0.0.1 at 2022-10-20 19:18:45 -0400
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--343e904f6a9881af9fc72d53248b9bcb3f646a16", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c029c787506d494296b8408be3b2c04be541c1ea", "filename"=>"votebtn"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (336.2ms) [0m[34mGenerated URL for file at key: zhq84whtudx9z61yg1lvi440p18e (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMFQyMzoyMzo0Ni40NDNaIiwicHVyIjoiYmxvYl9rZXkifX0=--0a5e1f6c37c9f9c4952f18c8c634b662925c4e38/votebtn.png)[0m
+[36m  Disk Storage (430.8ms) [0m[34mGenerated URL for file at key: qru93i7q3dpbbwio0tusj94h2ums (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjBUMjM6MjM6NDYuNDkyWiIsInB1ciI6ImJsb2Jfa2V5In19--f044b969d0894b316f1ec682ce08374aafe6fb4c/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMFQyMzoyMzo0Ni40NDNaIiwicHVyIjoiYmxvYl9rZXkifX0=--0a5e1f6c37c9f9c4952f18c8c634b662925c4e38/votebtn.png
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjBUMjM6MjM6NDYuNDkyWiIsInB1ciI6ImJsb2Jfa2V5In19--f044b969d0894b316f1ec682ce08374aafe6fb4c/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg
+Completed 302 Found in 449ms (ActiveRecord: 1.2ms | Allocations: 12662)
+
+
+Completed 302 Found in 466ms (ActiveRecord: 0.2ms | Allocations: 13251)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjBUMjM6MjM6NDYuNDkyWiIsInB1ciI6ImJsb2Jfa2V5In19--f044b969d0894b316f1ec682ce08374aafe6fb4c/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-20 19:18:47 -0400
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMFQyMzoyMzo0Ni40NDNaIiwicHVyIjoiYmxvYl9rZXkifX0=--0a5e1f6c37c9f9c4952f18c8c634b662925c4e38/votebtn.png" for 127.0.0.1 at 2022-10-20 19:18:47 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"votebtn"}
+Completed 200 OK in 244ms (ActiveRecord: 0.0ms | Allocations: 728)
+
+
+Completed 200 OK in 277ms (ActiveRecord: 0.0ms | Allocations: 921)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-10-20 19:18:52 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 13.1ms | Allocations: 624)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 73.3ms | Allocations: 3289)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 105.3ms | Allocations: 9043)
+Completed 200 OK in 180ms (Views: 114.9ms | ActiveRecord: 5.2ms | Allocations: 16693)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2022-10-20 19:19:00 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"adminseth", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (34.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "adminseth"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (12.0ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_created_at", "2022-10-20 23:19:01.674695"], ["updated_at", "2022-10-20 23:19:01.675511"], ["id", 3]]
+  [1m[36mTRANSACTION (21.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 813ms (ActiveRecord: 68.4ms | Allocations: 10706)
+
+
+Started GET "/" for 127.0.0.1 at 2022-10-20 19:19:01 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."cached_votes_total" = ? LIMIT ?[0m  [["cached_votes_total", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY cached_votes_total ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:34
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mActiveStorage::Blob Load (5.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  Rendered posts/index.html.erb within layouts/application (Duration: 287.1ms | Allocations: 15437)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 319.0ms | Allocations: 21210)
+Completed 200 OK in 326ms (Views: 317.1ms | ActiveRecord: 8.4ms | Allocations: 21621)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjBUMjM6MjM6NDYuNDkyWiIsInB1ciI6ImJsb2Jfa2V5In19--f044b969d0894b316f1ec682ce08374aafe6fb4c/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-20 19:19:02 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 298)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMFQyMzoyMzo0Ni40NDNaIiwicHVyIjoiYmxvYl9rZXkifX0=--0a5e1f6c37c9f9c4952f18c8c634b662925c4e38/votebtn.png" for 127.0.0.1 at 2022-10-20 19:19:02 -0400
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"votebtn"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2022-10-20 19:19:04 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:17
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/users/show.html.erb:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[36mActiveStorage::Blob Load (3.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:31
+  Rendered users/show.html.erb within layouts/application (Duration: 160.2ms | Allocations: 12678)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 201.2ms | Allocations: 18345)
+Completed 200 OK in 220ms (Views: 202.7ms | ActiveRecord: 5.4ms | Allocations: 20107)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5789b8255cfecbdb81d3abe1ffaf4f8971f7699/unvote.png" for 127.0.0.1 at 2022-10-20 19:19:04 -0400
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5789b8255cfecbdb81d3abe1ffaf4f8971f7699", "filename"=>"unvote"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Disk Storage (2.8ms) [0m[34mGenerated URL for file at key: 3s9dqt185vgy7xzjz3fx68kyc8hi (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yMFQyMzoyNDowNC41MjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--6c6bf25d76ed0ba33ca1f6430c41ba9105daa2b2/unvote.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yMFQyMzoyNDowNC41MjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--6c6bf25d76ed0ba33ca1f6430c41ba9105daa2b2/unvote.png
+Completed 302 Found in 15ms (ActiveRecord: 0.1ms | Allocations: 1440)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yMFQyMzoyNDowNC41MjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--6c6bf25d76ed0ba33ca1f6430c41ba9105daa2b2/unvote.png" for 127.0.0.1 at 2022-10-20 19:19:04 -0400
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"unvote"}
+Completed 200 OK in 10ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2022-10-20 19:21:22 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (15.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:17
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/users/show.html.erb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:31
+  Rendered users/show.html.erb within layouts/application (Duration: 466.9ms | Allocations: 11029)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1551.9ms | Allocations: 44000)
+Completed 200 OK in 1663ms (Views: 1567.1ms | ActiveRecord: 19.7ms | Allocations: 44962)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjBUMjM6MjM6NDYuNDkyWiIsInB1ciI6ImJsb2Jfa2V5In19--f044b969d0894b316f1ec682ce08374aafe6fb4c/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-20 19:21:26 -0400
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMFQyMzoyMzo0Ni40NDNaIiwicHVyIjoiYmxvYl9rZXkifX0=--0a5e1f6c37c9f9c4952f18c8c634b662925c4e38/votebtn.png" for 127.0.0.1 at 2022-10-20 19:21:26 -0400
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yMFQyMzoyNDowNC41MjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--6c6bf25d76ed0ba33ca1f6430c41ba9105daa2b2/unvote.png" for 127.0.0.1 at 2022-10-20 19:21:26 -0400
+Processing by ActiveStorage::DiskController#show as PNG
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"unvote"}
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"votebtn"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/" for 127.0.0.1 at 2022-10-20 19:54:27 -0400
+  [1m[35m (11.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (7.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."cached_votes_total" = ? LIMIT ?[0m  [["cached_votes_total", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY cached_votes_total ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:34
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  Rendered posts/index.html.erb within layouts/application (Duration: 652.1ms | Allocations: 42655)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4889.4ms | Allocations: 90781)
+Completed 200 OK in 5022ms (Views: 4896.7ms | ActiveRecord: 20.2ms | Allocations: 96252)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-10-20 19:54:37 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 184.6ms | Allocations: 3778)
+  Rendered posts/new.html.erb within layouts/application (Duration: 192.0ms | Allocations: 4135)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 239.6ms | Allocations: 9948)
+Completed 200 OK in 246ms (Views: 244.1ms | ActiveRecord: 0.0ms | Allocations: 10489)
+
+
+Started POST "/posts" for 127.0.0.1 at 2022-10-20 19:55:57 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"name"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "text"=>"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""}, "commit"=>"Create Post"}
+  [1m[36mUser Load (280.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (19.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:16:in `create'
+  [1m[36mPost Create (133.8ms)[0m  [1m[32mINSERT INTO "posts" ("name", "created_at", "updated_at", "text", "author_id") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."], ["created_at", "2022-10-20 23:55:58.306558"], ["updated_at", "2022-10-20 23:55:58.306558"], ["text", "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""], ["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (60.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:16:in `create'
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 1354ms (ActiveRecord: 493.7ms | Allocations: 6361)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2022-10-20 19:55:59 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:61:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/show.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/show.html.erb:4
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 3], ["voter_type", "User"], ["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  Rendered posts/_vote.html.erb (Duration: 13.6ms | Allocations: 252)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:24
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:36
+  [1m[36mComment Exists? (66.2ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:52
+  Rendered comments/_form.html.erb (Duration: 202.2ms | Allocations: 922)
+  Rendered posts/show.html.erb within layouts/application (Duration: 420.8ms | Allocations: 9413)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1509.1ms | Allocations: 15095)
+Completed 200 OK in 1684ms (Views: 1442.7ms | ActiveRecord: 68.8ms | Allocations: 20708)
+
+
+Started GET "/posts" for 127.0.0.1 at 2022-10-20 19:56:22 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:25
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("posts"."cached_votes_total") FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."cached_votes_total" = ? LIMIT ?[0m  [["cached_votes_total", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:27
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY cached_votes_total ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:29
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:31
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:34
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:42
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:43
+  Rendered posts/index.html.erb within layouts/application (Duration: 267.2ms | Allocations: 18453)
+  Rendered layout layouts/application.html.erb (Duration: 268.2ms | Allocations: 18517)
+Completed 500 Internal Server Error in 271ms (ActiveRecord: 2.5ms | Allocations: 18899)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    40: 
+    41:     <div class="content">
+    42:             <% @posts.each do |post| %>
+    43:                 <figure class="posts"> <%= link_to (image_tag post.image), post %>
+    44:                     <figcaption> <%= link_to post.name, post %> </figcaption>
+    45:                 </figure>
+    46:             <% end %>
+  
+app/views/posts/index.html.erb:43
+app/views/posts/index.html.erb:42
+Started GET "/posts" for 127.0.0.1 at 2022-10-20 20:04:36 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 22.9ms | Allocations: 1458)
+  Rendered layout layouts/application.html.erb (Duration: 23.5ms | Allocations: 1524)
+Completed 500 Internal Server Error in 155ms (Allocations: 2834)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <body>
+    <div class="sidebar-left">
+       <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
+       <h4> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
+       <ul class="actions">
+            <% if user_signed_in? %>
+                Signed in as <%= current_user.username %>.
+                <li><%= link_to "Your profile", user_path(current_user) %>
+
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+
+                <li><%= link_to "New post", new_post_path(@post), method: :get %></li>
+
+            <% end %>
+            <% unless user_signed_in? %>
+                <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
+                <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="ind-posts">
+        <% @posts.each do |posts| %>
+            <% if post.image.present? %>
+                <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+            <% else %>
+                <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png") %></div>
+            <% end %>
+
+            <li class="title"><%= link_to post.name, post %> by <%= post.author.username %> with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+    </div>
+
+</body>
+
+):
+1:    <body>
+2:        <div class="sidebar-left">
+3:           <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
+4:           <h4> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
+5:           <ul class="actions">
+6:                <% if user_signed_in? %>
+7:                    Signed in as <%= current_user.username %>.
+8:                    <li><%= link_to "Your profile", user_path(current_user) %>
+9:    
+10:                    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+11:    
+12:                    <li><%= link_to "New post", new_post_path(@post), method: :get %></li>
+13:    
+14:                <% end %>
+15:                <% unless user_signed_in? %>
+16:                    <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
+17:                    <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
+18:                <% end %>
+19:            </ul>
+20:        </div>
+21:    
+22:        <div class="ind-posts">
+23:            <% @posts.each do |posts| %>
+24:                <% if post.image.present? %>
+25:                    <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+26:                <% else %>
+27:                    <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png") %></div>
+28:                <% end %>
+29:    
+30:                <li class="title"><%= link_to post.name, post %> by <%= post.author.username %> with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+31:        </div>
+32:    
+33:    </body>
+  
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:36: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:36: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:36: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:36: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:36: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:36: syntax error, unexpected `end', expecting ')'
+Started GET "/posts" for 127.0.0.1 at 2022-10-20 20:05:06 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1471)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 1536)
+Completed 500 Internal Server Error in 20ms (Allocations: 2728)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <body>
+    <div class="sidebar-left">
+       <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
+       <h4> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
+       <ul class="actions">
+            <% if user_signed_in? %>
+                Signed in as <%= current_user.username %>.
+                <li><%= link_to "Your profile", user_path(current_user) %>
+
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+
+                <li><%= link_to "New post", new_post_path(@post), method: :get %></li>
+
+            <% end %>
+            <% unless user_signed_in? %>
+                <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
+                <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="ind-posts">
+        <% @posts.each do |posts| %>
+            <% if post.image.present? %>
+                <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+            <% else %>
+                <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png") %></div>
+            <% end %>
+
+            <li class="title"><%= link_to post.name, post %> by <%= post.author.username %> with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+        <% end %>
+    </div>
+
+</body>
+
+):
+1:    <body>
+2:        <div class="sidebar-left">
+3:           <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
+4:           <h4> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
+5:           <ul class="actions">
+6:                <% if user_signed_in? %>
+7:                    Signed in as <%= current_user.username %>.
+8:                    <li><%= link_to "Your profile", user_path(current_user) %>
+9:    
+10:                    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+11:    
+12:                    <li><%= link_to "New post", new_post_path(@post), method: :get %></li>
+13:    
+14:                <% end %>
+15:                <% unless user_signed_in? %>
+16:                    <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
+17:                    <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
+18:                <% end %>
+19:            </ul>
+20:        </div>
+21:    
+22:        <div class="ind-posts">
+23:            <% @posts.each do |posts| %>
+24:                <% if post.image.present? %>
+25:                    <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+26:                <% else %>
+27:                    <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png") %></div>
+28:                <% end %>
+29:    
+30:                <li class="title"><%= link_to post.name, post %> by <%= post.author.username %> with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+31:            <% end %>
+32:        </div>
+33:    
+34:    </body>
+  
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+Started GET "/posts" for 127.0.0.1 at 2022-10-20 20:05:58 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1471)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 1536)
+Completed 500 Internal Server Error in 19ms (Allocations: 2728)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <body>
+    <div class="sidebar-left">
+       <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
+       <h4> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
+       <ul class="actions">
+            <% if user_signed_in? %>
+                Signed in as <%= current_user.username %>.
+                <li><%= link_to "Your profile", user_path(current_user) %>
+
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+
+                <li><%= link_to "New post", new_post_path(@post), method: :get %></li>
+
+            <% end %>
+            <% unless user_signed_in? %>
+                <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
+                <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="ind-posts">
+        <% @posts.each do |post| %>
+            <% if post.image.present? %>
+                <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+            <% else %>
+                <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png") %></div>
+            <% end %>
+
+            <li class="title"><%= link_to post.name, post %> by <%= post.author.username %> with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+        <% end %>
+    </div>
+
+</body>
+
+):
+1:    <body>
+2:        <div class="sidebar-left">
+3:           <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
+4:           <h4> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
+5:           <ul class="actions">
+6:                <% if user_signed_in? %>
+7:                    Signed in as <%= current_user.username %>.
+8:                    <li><%= link_to "Your profile", user_path(current_user) %>
+9:    
+10:                    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+11:    
+12:                    <li><%= link_to "New post", new_post_path(@post), method: :get %></li>
+13:    
+14:                <% end %>
+15:                <% unless user_signed_in? %>
+16:                    <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
+17:                    <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
+18:                <% end %>
+19:            </ul>
+20:        </div>
+21:    
+22:        <div class="ind-posts">
+23:            <% @posts.each do |post| %>
+24:                <% if post.image.present? %>
+25:                    <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+26:                <% else %>
+27:                    <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png") %></div>
+28:                <% end %>
+29:    
+30:                <li class="title"><%= link_to post.name, post %> by <%= post.author.username %> with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+31:            <% end %>
+32:        </div>
+33:    
+34:    </body>
+  
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:28: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:37: syntax error, unexpected `end', expecting ')'
+Started GET "/posts" for 127.0.0.1 at 2022-10-20 20:07:05 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (24.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  Rendered posts/index.html.erb within layouts/application (Duration: 416.3ms | Allocations: 16508)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 2608.6ms | Allocations: 49890)
+Completed 200 OK in 2624ms (Views: 2620.9ms | ActiveRecord: 42.2ms | Allocations: 51121)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--343e904f6a9881af9fc72d53248b9bcb3f646a16/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-20 20:07:08 -0400
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c029c787506d494296b8408be3b2c04be541c1ea/votebtn.png" for 127.0.0.1 at 2022-10-20 20:07:08 -0400
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--343e904f6a9881af9fc72d53248b9bcb3f646a16", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c029c787506d494296b8408be3b2c04be541c1ea", "filename"=>"votebtn"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[36m  Disk Storage (41.2ms) [0m[34mGenerated URL for file at key: qru93i7q3dpbbwio0tusj94h2ums (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjFUMDA6MTI6MDkuMjAzWiIsInB1ciI6ImJsb2Jfa2V5In19--44d0ccd478bfd32c3503e6ca44e36eeb6e9067ce/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjFUMDA6MTI6MDkuMjAzWiIsInB1ciI6ImJsb2Jfa2V5In19--44d0ccd478bfd32c3503e6ca44e36eeb6e9067ce/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg
+Completed 302 Found in 142ms (ActiveRecord: 0.2ms | Allocations: 3057)
+
+
+  [1m[36mActiveStorage::Blob Load (14.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: zhq84whtudx9z61yg1lvi440p18e (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjowOS4yODdaIiwicHVyIjoiYmxvYl9rZXkifX0=--d9cf9f2a9229b8d7ad1e625e3ad461c4c00a723f/votebtn.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjowOS4yODdaIiwicHVyIjoiYmxvYl9rZXkifX0=--d9cf9f2a9229b8d7ad1e625e3ad461c4c00a723f/votebtn.png
+Completed 302 Found in 130ms (ActiveRecord: 23.4ms | Allocations: 4095)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjFUMDA6MTI6MDkuMjAzWiIsInB1ciI6ImJsb2Jfa2V5In19--44d0ccd478bfd32c3503e6ca44e36eeb6e9067ce/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-20 20:07:09 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjowOS4yODdaIiwicHVyIjoiYmxvYl9rZXkifX0=--d9cf9f2a9229b8d7ad1e625e3ad461c4c00a723f/votebtn.png" for 127.0.0.1 at 2022-10-20 20:07:09 -0400
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"votebtn"}
+Completed 200 OK in 67ms (ActiveRecord: 0.0ms | Allocations: 624)
+
+
+Completed 200 OK in 56ms (ActiveRecord: 0.0ms | Allocations: 589)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2022-10-20 20:07:18 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1475)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 1541)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.4ms | Allocations: 3272)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <body>
+    <div class="sidebar">
+
+            <h4 class="username"> <%= @user.username %> </h4>
+            
+                <div class="avatar">
+                    <% if @user.image.present? %>
+                        <%= image_tag @user.image %>
+                    <% end %>
+                </div>
+
+                <div class="about_me">
+                    <h4 class="header"> About me: </h4>
+                        <p class= "about"><%= @user.about %></p>
+                </div>
+
+        <% if @user = current_user %>
+            <ul class="actions">
+                <li><%= link_to "Edit sign in information", edit_user_registration_path%></li>
+                <li><%= link_to "Edit profile", edit_user_path %></li>
+                <li><%= link_to "Return home", root_path %></li>
+            </ul>
+        <% end %>
+    </div>
+
+    <div class="posts">
+        <% @posts.each do |post| %>
+            <% if post.author == @user %>
+                <div class="ind-posts">
+
+                    <% if post.image.present? %>
+                        <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+                    <% else %>
+                        <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png") %></div>
+                    <% end %>
+
+                        <li class="title"><%= link_to post.name, post %> <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+                </div>
+            <% else %>
+                You have no posts, they'll show up here when added.
+            <% end %>
+        <% end %>
+    </div>
+</body>
+
+):
+1:    <body>
+2:        <div class="sidebar">
+3:    
+4:                <h4 class="username"> <%= @user.username %> </h4>
+5:                
+6:                    <div class="avatar">
+7:                        <% if @user.image.present? %>
+8:                            <%= image_tag @user.image %>
+9:                        <% end %>
+10:                    </div>
+11:    
+12:                    <div class="about_me">
+13:                        <h4 class="header"> About me: </h4>
+14:                            <p class= "about"><%= @user.about %></p>
+15:                    </div>
+16:    
+17:            <% if @user = current_user %>
+18:                <ul class="actions">
+19:                    <li><%= link_to "Edit sign in information", edit_user_registration_path%></li>
+20:                    <li><%= link_to "Edit profile", edit_user_path %></li>
+21:                    <li><%= link_to "Return home", root_path %></li>
+22:                </ul>
+23:            <% end %>
+24:        </div>
+25:    
+26:        <div class="posts">
+27:            <% @posts.each do |post| %>
+28:                <% if post.author == @user %>
+29:                    <div class="ind-posts">
+30:    
+31:                        <% if post.image.present? %>
+32:                            <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+33:                        <% else %>
+34:                            <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png") %></div>
+35:                        <% end %>
+36:    
+37:                            <li class="title"><%= link_to post.name, post %> <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+38:                    </div>
+39:                <% else %>
+40:                    You have no posts, they'll show up here when added.
+41:                <% end %>
+42:            <% end %>
+43:        </div>
+44:    </body>
+  
+app/views/users/show.html.erb:35: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:39: syntax error, unexpected `else', expecting ')'
+app/views/users/show.html.erb:41: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:47: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:35: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:39: syntax error, unexpected `else', expecting ')'
+app/views/users/show.html.erb:41: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:47: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:35: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:39: syntax error, unexpected `else', expecting ')'
+app/views/users/show.html.erb:41: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:47: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:35: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:39: syntax error, unexpected `else', expecting ')'
+app/views/users/show.html.erb:41: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:47: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:35: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:39: syntax error, unexpected `else', expecting ')'
+app/views/users/show.html.erb:41: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:47: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:35: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:39: syntax error, unexpected `else', expecting ')'
+app/views/users/show.html.erb:41: syntax error, unexpected `end', expecting ')'
+app/views/users/show.html.erb:47: syntax error, unexpected `end', expecting ')'
+Started GET "/users/3" for 127.0.0.1 at 2022-10-20 20:07:45 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:17
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/users/show.html.erb:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:32
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:32
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  Rendered users/show.html.erb within layouts/application (Duration: 242.2ms | Allocations: 17167)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 292.0ms | Allocations: 23120)
+Completed 200 OK in 318ms (Views: 299.1ms | ActiveRecord: 3.5ms | Allocations: 24893)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5789b8255cfecbdb81d3abe1ffaf4f8971f7699/unvote.png" for 127.0.0.1 at 2022-10-20 20:07:45 -0400
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5789b8255cfecbdb81d3abe1ffaf4f8971f7699", "filename"=>"unvote"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: 3s9dqt185vgy7xzjz3fx68kyc8hi (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjo0NS43NzhaIiwicHVyIjoiYmxvYl9rZXkifX0=--2f7f0538c0cc6e24a0220455c2ba6b0239162d51/unvote.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjo0NS43NzhaIiwicHVyIjoiYmxvYl9rZXkifX0=--2f7f0538c0cc6e24a0220455c2ba6b0239162d51/unvote.png
+Completed 302 Found in 27ms (ActiveRecord: 0.2ms | Allocations: 2142)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjo0NS43NzhaIiwicHVyIjoiYmxvYl9rZXkifX0=--2f7f0538c0cc6e24a0220455c2ba6b0239162d51/unvote.png" for 127.0.0.1 at 2022-10-20 20:07:45 -0400
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"unvote"}
+Completed 200 OK in 19ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjowOS4yODdaIiwicHVyIjoiYmxvYl9rZXkifX0=--d9cf9f2a9229b8d7ad1e625e3ad461c4c00a723f/votebtn.png" for 127.0.0.1 at 2022-10-20 20:07:46 -0400
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"votebtn"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjFUMDA6MTI6MDkuMjAzWiIsInB1ciI6ImJsb2Jfa2V5In19--44d0ccd478bfd32c3503e6ca44e36eeb6e9067ce/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-20 20:07:46 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2022-10-20 20:08:08 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:17
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/users/show.html.erb:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:32
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:32
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  Rendered users/show.html.erb within layouts/application (Duration: 260.8ms | Allocations: 16434)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 305.4ms | Allocations: 22465)
+Completed 200 OK in 326ms (Views: 311.4ms | ActiveRecord: 2.7ms | Allocations: 24239)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjo0NS43NzhaIiwicHVyIjoiYmxvYl9rZXkifX0=--2f7f0538c0cc6e24a0220455c2ba6b0239162d51/unvote.png" for 127.0.0.1 at 2022-10-20 20:08:08 -0400
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"unvote"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjowOS4yODdaIiwicHVyIjoiYmxvYl9rZXkifX0=--d9cf9f2a9229b8d7ad1e625e3ad461c4c00a723f/votebtn.png" for 127.0.0.1 at 2022-10-20 20:08:08 -0400
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"votebtn"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjFUMDA6MTI6MDkuMjAzWiIsInB1ciI6ImJsb2Jfa2V5In19--44d0ccd478bfd32c3503e6ca44e36eeb6e9067ce/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-20 20:08:08 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/" for 127.0.0.1 at 2022-10-20 20:08:13 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  Rendered posts/index.html.erb within layouts/application (Duration: 248.5ms | Allocations: 14569)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 286.9ms | Allocations: 20378)
+Completed 200 OK in 303ms (Views: 298.2ms | ActiveRecord: 2.5ms | Allocations: 21377)
+
+
+Started GET "/" for 127.0.0.1 at 2022-10-20 20:08:59 -0400
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[36mActiveStorage::Attachment Load (2.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  Rendered posts/index.html.erb within layouts/application (Duration: 229.4ms | Allocations: 14579)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 276.5ms | Allocations: 20611)
+Completed 200 OK in 292ms (Views: 285.6ms | ActiveRecord: 4.3ms | Allocations: 21826)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yMVQwMDoxMjowOS4yODdaIiwicHVyIjoiYmxvYl9rZXkifX0=--d9cf9f2a9229b8d7ad1e625e3ad461c4c00a723f/votebtn.png" for 127.0.0.1 at 2022-10-20 20:09:00 -0400
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"votebtn"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjFUMDA6MTI6MDkuMjAzWiIsInB1ciI6ImJsb2Jfa2V5In19--44d0ccd478bfd32c3503e6ca44e36eeb6e9067ce/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-20 20:09:00 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/" for 127.0.0.1 at 2022-10-23 00:46:00 -0400
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (19.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/index.html.erb:30
+  Rendered posts/index.html.erb within layouts/application (Duration: 528.4ms | Allocations: 43377)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 2096.1ms | Allocations: 78869)
+Completed 200 OK in 2296ms (Views: 2117.4ms | ActiveRecord: 25.4ms | Allocations: 84276)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c029c787506d494296b8408be3b2c04be541c1ea/votebtn.png" for 127.0.0.1 at 2022-10-23 00:46:03 -0400
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--343e904f6a9881af9fc72d53248b9bcb3f646a16/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-23 00:46:03 -0400
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c029c787506d494296b8408be3b2c04be541c1ea", "filename"=>"votebtn"}
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--343e904f6a9881af9fc72d53248b9bcb3f646a16", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[36m  Disk Storage (186.7ms) [0m[34mGenerated URL for file at key: qru93i7q3dpbbwio0tusj94h2ums (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjNUMDQ6NTE6MDQuMzI2WiIsInB1ciI6ImJsb2Jfa2V5In19--2cb4e75620ad66e848848ce8bc80a2dd3951e8d4/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjNUMDQ6NTE6MDQuMzI2WiIsInB1ciI6ImJsb2Jfa2V5In19--2cb4e75620ad66e848848ce8bc80a2dd3951e8d4/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg
+Completed 302 Found in 252ms (ActiveRecord: 1.0ms | Allocations: 13134)
+
+
+[36m  Disk Storage (245.6ms) [0m[34mGenerated URL for file at key: zhq84whtudx9z61yg1lvi440p18e (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yM1QwNDo1MTowNC4zMjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--6e57ff3f92db17a8517d23eb28704d0e5b174875/votebtn.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yM1QwNDo1MTowNC4zMjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--6e57ff3f92db17a8517d23eb28704d0e5b174875/votebtn.png
+Completed 302 Found in 281ms (ActiveRecord: 0.2ms | Allocations: 14012)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjNUMDQ6NTE6MDQuMzI2WiIsInB1ciI6ImJsb2Jfa2V5In19--2cb4e75620ad66e848848ce8bc80a2dd3951e8d4/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-23 00:46:04 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yM1QwNDo1MTowNC4zMjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--6e57ff3f92db17a8517d23eb28704d0e5b174875/votebtn.png" for 127.0.0.1 at 2022-10-23 00:46:04 -0400
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 344)
+
+
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"votebtn"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2022-10-23 00:46:18 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:17
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/users/show.html.erb:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:32
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:32
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:28
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:31
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/users/show.html.erb:37
+  Rendered users/show.html.erb within layouts/application (Duration: 115.8ms | Allocations: 17055)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 125.2ms | Allocations: 22731)
+Completed 200 OK in 140ms (Views: 131.0ms | ActiveRecord: 1.9ms | Allocations: 24435)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5789b8255cfecbdb81d3abe1ffaf4f8971f7699/unvote.png" for 127.0.0.1 at 2022-10-23 00:46:18 -0400
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5789b8255cfecbdb81d3abe1ffaf4f8971f7699", "filename"=>"unvote"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: 3s9dqt185vgy7xzjz3fx68kyc8hi (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yM1QwNDo1MToxOC4zMDdaIiwicHVyIjoiYmxvYl9rZXkifX0=--4720de426eb51bb2ce09db07cbc52276af67ce96/unvote.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yM1QwNDo1MToxOC4zMDdaIiwicHVyIjoiYmxvYl9rZXkifX0=--4720de426eb51bb2ce09db07cbc52276af67ce96/unvote.png
+Completed 302 Found in 8ms (ActiveRecord: 0.2ms | Allocations: 1461)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNM001WkhGME1UZzFkbWQ1TjNoNmFub3pabmcyT0d0NVl6aG9hUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5WdWRtOTBaUzV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozVnVkbTkwWlM1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0xMC0yM1QwNDo1MToxOC4zMDdaIiwicHVyIjoiYmxvYl9rZXkifX0=--4720de426eb51bb2ce09db07cbc52276af67ce96/unvote.png" for 127.0.0.1 at 2022-10-23 00:46:18 -0400
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"unvote"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2022-10-23 00:46:29 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:61:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/show.html.erb:4
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/show.html.erb:4
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `users_only'
+  [1m[36mActsAsVotable::Vote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ? LIMIT ?[0m  [["voter_id", 3], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  Rendered posts/_vote.html.erb (Duration: 15.8ms | Allocations: 253)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:24
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:36
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:37
+  [1m[36mComment Exists? (9.6ms)[0m  [1m[34mSELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."id" IS NOT NULL LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:52
+  Rendered comments/_form.html.erb (Duration: 39.0ms | Allocations: 1084)
+  Rendered posts/show.html.erb within layouts/application (Duration: 118.5ms | Allocations: 10367)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 124.9ms | Allocations: 16043)
+Completed 200 OK in 187ms (Views: 123.2ms | ActiveRecord: 11.2ms | Allocations: 24190)
+
+

@@ -23,12 +23,18 @@
         <% end %>
     </div>
 
-    <div class="user-posts">
+    <div class="posts">
         <% @posts.each do |post| %>
             <% if post.author == @user %>
                 <div class="ind-posts">
-                    <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
-                    <li class="title"><%= link_to post.name, post %></li> <%= post.get_likes.size %> votes</li>
+
+                    <% if post.image.present? %>
+                        <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+                    <% else %>
+                        <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")) %></div>
+                    <% end %>
+
+                        <li class="title"><%= link_to post.name, post %> <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
                 </div>
             <% else %>
                 You have no posts, they'll show up here when added.
