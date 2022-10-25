@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :show]
     end  
 
-    resources :tags, only: [:index, :show] do
+    resources :tags, only: [:show] do
       collection do
         get ":id", to: "tags#show", as: :show
       end

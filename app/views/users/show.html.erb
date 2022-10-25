@@ -1,28 +1,6 @@
 <body>
-    <div class="sidebar">
 
-            <h4 class="title"> <%= @user.username %> </h4>
-            
-                <div class="avatar">
-                    <% if @user.image.present? %>
-                        <%= image_tag @user.image %>
-                    <% end %>
-                </div>
-
-                <div class="about_me">
-                    <h4 class="header"> About me: </h4>
-                        <p class= "about"><%= @user.about %></p>
-                </div>
-
-        <% if @user = current_user %>
-            <ul class="actions">
-                <li><%= link_to "Edit sign in information", edit_user_registration_path%></li>
-                <li><%= link_to "Edit profile", edit_user_path %></li>
-                <li><%= link_to "Return home", root_path %></li>
-            </ul>
-        <% end %>
-    </div>
-
+    <%= render "users/sidebar", user: @user %>
     <div class="posts">
         <% if @posts.any? %>
             <% @posts.each do |post| %>

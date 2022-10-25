@@ -1,49 +1,5 @@
 <body>
-    <div class="sidebar">
-        <table class="attributes">
-            <h4 class="title"><%= @post.name %></h4>
-                <p class="author">Posted by <%= link_to @post.author.username, @post.author %></p>
-
-                <div class="votes">
-                    <td class="count"> <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
-                    <% users_only do %>
-                        <% if current_user.liked? @post %>
-                                <%= render "posts/unvote", post: @post %> 
-                        <% else %>
-                                <%= render "posts/vote", post: @post %>
-                        <% end %>
-                    <% end %>
-                </div>
-
-                <% if @post.tags.any? %>
-                    <tr>
-                        <th> Tags: </th>
-                        <td class="tags"> <%= render @post.tags, post: @post %> </td>
-                    </tr>
-                <% end %>
-        </table>
-            
-            <ul class="actions">
-                <% if user_signed_in? %>
-                    Signed in as <%= current_user.username %>.
-
-                    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
-                <% end %>
-                <% unless user_signed_in? %>
-                    <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %> or </li>
-                    <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %> to vote! </li>
-                <% end %>
-                
-                <% if (current_user == @post.author) %>
-                    <li><%= link_to "Edit post", edit_post_path(@post) %></li>
-                    <li><%= link_to "Remove post", post_path(@post),
-                    method: :delete,
-                    data: { confirm: "Do you want to remove this post?" } %></li>
-                <% end %>
-
-                <li><%= link_to "Return to home...", posts_path %></li>
-            </ul>
-    </div>
+    <%= render "posts/sidebar", post: @post %>
     <div class="content">
         <div class="post">
             <% if @post.image.present? %>
