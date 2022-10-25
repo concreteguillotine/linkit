@@ -13,6 +13,10 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.author = current_user
 
+        @post.tags = params[:tag_names].split(",").map do |tag|
+            Tag.find_or_initialize_by(name: tag.strip)
+        end
+
         if @post.save
             flash[:notice] = "This post has been added!"
             redirect_to @post

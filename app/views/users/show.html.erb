@@ -1,7 +1,7 @@
 <body>
     <div class="sidebar">
 
-            <h4 class="username"> <%= @user.username %> </h4>
+            <h4 class="title"> <%= @user.username %> </h4>
             
                 <div class="avatar">
                     <% if @user.image.present? %>
@@ -34,7 +34,7 @@
                         <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")) %></div>
                     <% end %>
 
-                        <li class="title"><%= link_to post.name, post %> <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+                        <li class="title"><%= link_to post.name, post %> | <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
                 </div>
             <% else %>
                 You have no posts, they'll show up here when added.

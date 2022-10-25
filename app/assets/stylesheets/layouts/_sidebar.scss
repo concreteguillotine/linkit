@@ -1,5 +1,5 @@
 .sidebar {
-    display: inline-block;
+    display: block;
     border-right: var(--border);
     height: 100%;
     width: 16%;
@@ -11,18 +11,34 @@
     margin-right: auto;
     background-color: var(--color-secondary);
 
-      .username {
+      .title, 
+      .author {
         text-align: center;
-        border-bottom: var(--border);
         margin-left: 1.5rem;
         margin-right: 1rem;
         padding-bottom: .25rem;
       }
 
-      .about_me {
+      .title {
+        border-bottom: var(--border);
+      }
+
+      .author {
+        margin-top: -1rem;
+      }
+
+      .logo {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .about_me, 
+      .actions, 
+      .votes {
         text-align: left;
         margin-left: 1.5rem;
         margin-right: 1rem;
+        list-style: none;
 
         .header {
           margin-bottom: -.75rem;
