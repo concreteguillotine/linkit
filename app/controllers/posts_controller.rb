@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.all
+        @tags = Tag.all
     end
 
     def new
@@ -13,9 +14,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.author = current_user
 
-        @post.tags = params[:tag_names].split(",").map do |tag|
-            Tag.find_or_initialize_by(name: tag.strip)
-        end
+        @post.tags = processed_tags
 
         if @post.save
             flash[:notice] = "This post has been added!"
@@ -46,10 +45,12 @@ class PostsController < ApplicationController
     end
 
     def update
-        @post.update(post_params)
+        if @post.update(post_params)
+            @post.tags << processed_tags
 
         flash[:notice] = "This post's name has been changed!"
         redirect_to @post
+        end
     end
 
     def destroy
@@ -70,5 +71,11 @@ class PostsController < ApplicationController
 
     def post_params
         params.require(:post).permit(:name, :image, :text)
+    end
+
+    def processed_tags
+        params[:tag_names].split(",").map do |tag|
+            Tag.find_or_initialize_by(name: tag.strip)
+        end
     end
 end

@@ -1,26 +1,27 @@
 <body>
     <div class="sidebar">
-    <table class="attributes">
-        <h4 class="title"><%= @post.name %></h4>
-            <p class="author">Posted by <%= link_to @post.author.username, @post.author %></p>
+        <table class="attributes">
+            <h4 class="title"><%= @post.name %></h4>
+                <p class="author">Posted by <%= link_to @post.author.username, @post.author %></p>
 
-            <div class="votes">
-                <td class="count"> <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
-                <% users_only do %>
-                    <% if current_user.liked? @post %>
-                            <%= render "posts/unvote", post: @post %> 
-                    <% else %>
-                            <%= render "posts/vote", post: @post %>
+                <div class="votes">
+                    <td class="count"> <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
+                    <% users_only do %>
+                        <% if current_user.liked? @post %>
+                                <%= render "posts/unvote", post: @post %> 
+                        <% else %>
+                                <%= render "posts/vote", post: @post %>
+                        <% end %>
                     <% end %>
-                 <% end %>
-            </div>
+                </div>
 
-            <% if @post.tags.any? %>
-                <tr>
-                    <th> Tags: </th>
-                    <td class="tags"> <%= render @post.tags %> </td>
-                </tr>
-            <% end %>
+                <% if @post.tags.any? %>
+                    <tr>
+                        <th> Tags: </th>
+                        <td class="tags"> <%= render @post.tags, post: @post %> </td>
+                    </tr>
+                <% end %>
+        </table>
             
             <ul class="actions">
                 <% if user_signed_in? %>
@@ -33,7 +34,7 @@
                     <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %> to vote! </li>
                 <% end %>
                 
-                <% if (current_user == @post.author) || (current_user.admin?) %>
+                <% if (current_user == @post.author) %>
                     <li><%= link_to "Edit post", edit_post_path(@post) %></li>
                     <li><%= link_to "Remove post", post_path(@post),
                     method: :delete,

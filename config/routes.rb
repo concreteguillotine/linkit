@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
     resources :posts, except: [:index, :show] do
+      delete "tags/remove/:id", to: "tags#remove", as: :remove_tag
       resources :comments, except: [:index, :show]
       member do
         post "like", to: "posts#like"
@@ -17,6 +18,12 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show] do
       resources :comments, only: [:index, :show]
     end  
+
+    resources :tags, only: [:index, :show] do
+      collection do
+        get ":id", to: "tags#show", as: :show
+      end
+    end
 
   namespace :admin do
     root "application#index"

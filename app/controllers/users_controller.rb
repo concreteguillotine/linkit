@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     before_action :set_user, only: %i(show edit update)
 
     def show
-        @posts = Post.all
+        @posts = Post.where(author: @user)
     end
 
     def edit

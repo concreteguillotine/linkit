@@ -1,0 +1,11 @@
+.tag {
+    border: var(--border);
+
+    a {
+        color: black;
+        
+        &.remove {
+            content: "x";
+        }
+    }
+}

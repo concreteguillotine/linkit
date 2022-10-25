@@ -24,21 +24,21 @@
     </div>
 
     <div class="posts">
-        <% @posts.each do |post| %>
-            <% if post.author == @user %>
-                <div class="ind-posts">
+        <% if @posts.any? %>
+            <% @posts.each do |post| %>
+                    <div class="ind-posts">
 
-                    <% if post.image.present? %>
-                        <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
-                    <% else %>
-                        <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")) %></div>
-                    <% end %>
+                        <% if post.image.present? %>
+                            <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+                        <% else %>
+                            <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")) %></div>
+                        <% end %>
 
-                        <li class="title"><%= link_to post.name, post %> | <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
-                </div>
-            <% else %>
-                You have no posts, they'll show up here when added.
+                            <li class="title"><%= link_to post.name, post %> | <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+                    </div>
             <% end %>
+        <% else %>
+            You have no posts, they'll show up here when added.
         <% end %>
     </div>
 </body>

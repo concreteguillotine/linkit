@@ -17,21 +17,11 @@
                 <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
             <% end %>
         </ul>
+
+        <th> Tags: </th>
+            <td class="tags"> <%= render "tags/tag_index", tags: @tags, posts: @posts %> </td>
     </div>
 
-    <div class="posts">
-            <% @posts.each do |post| %>
-                <div class="ind-posts">
-                    <% if post.image.present? %>
-                        <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
-                    <% else %>
-                        <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")) %></div>
-                    <% end %>
-
-                    <li class="title"><%= link_to post.name, post %> by <%= post.author.username %>
-                     | <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
-                </div>
-            <% end %>
-    </div>
+    <%= render "posts", posts: @posts, tags: @tags %>
 
 </body>
