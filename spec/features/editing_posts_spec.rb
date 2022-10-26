@@ -18,7 +18,6 @@ RSpec.feature "Users can edit existing posts" do
     scenario "to change the name (for now)" do
         
         within(".post") do
-            expect(page).to have_content "Example post"
             expect(page).to have_css("img[src*='logo.jpg']")
         end
 

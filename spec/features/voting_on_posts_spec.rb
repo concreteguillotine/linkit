@@ -20,19 +20,6 @@ RSpec.feature "Users can vote on posts" do
         end
     end
 
-    scenario "posts with the most votes show up at the top" do
-
-        click_link('vote')
-
-        visit "/"
-
-        within(".hof") do
-            expect(page).to have_content "Chi Ball"
-            expect(page).to have_content "with 1 vote!"
-            expect(page).not_to have_content "Dragonmode"
-        end
-    end
-
     scenario "clicking the button again takes the vote away" do
     
         click_link('vote')

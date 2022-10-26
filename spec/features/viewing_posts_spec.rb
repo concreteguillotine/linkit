@@ -15,7 +15,7 @@ RSpec.feature "Posts can be seen on the homepage" do
         click_button "Create Post"
         expect(page). to have_content "This post has been added!"
 
-        click_link "Return to home"
+        click_link "Return home"
         
         within(".posts") do
             expect(page).to have_content "Chi Ball"

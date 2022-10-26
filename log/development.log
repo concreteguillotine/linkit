@@ -35872,3 +35872,131 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 39ms (Views: 34.7ms | ActiveRecord: 1.3ms | Allocations: 19423)
 
 
+Started GET "/posts" for 127.0.0.1 at 2022-10-25 19:56:38 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_main_sidebar.html.erb:6
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags"[0m
+  ↳ app/views/tags/_tag_index.html.erb:2
+  Rendered tags/_tag_index.html.erb (Duration: 5.6ms | Allocations: 2181)
+  Rendered posts/_main_sidebar.html.erb (Duration: 20.6ms | Allocations: 10472)
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/_posts.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:4
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:10
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:4
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:4
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:4
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:4
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 5], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 5], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  Rendered posts/_posts.html.erb (Duration: 134.0ms | Allocations: 43340)
+  Rendered posts/index.html.erb within layouts/application (Duration: 158.2ms | Allocations: 54597)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 197.9ms | Allocations: 73997)
+Completed 200 OK in 221ms (Views: 195.0ms | ActiveRecord: 6.6ms | Allocations: 83482)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbWh4T0RSM2FIUjFaSGc1ZWpZeGVXY3hiSFpwTkRRd2NERTRaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5admRHVmlkRzR1Y0c1bklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZDJiM1JsWW5SdUxuQnVad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG1sdFlXZGxMM0J1WndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0xMC0yNVQyMzo1OTowMi45MzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--ddd451a02d7b4630e3f1a943123477fe1380e84d/votebtn.png" for 127.0.0.1 at 2022-10-25 19:56:38 -0400
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEoxT1ROcE4zRXpaSEJpWW5kcGJ6QjBkWE5xT1RSb01uVnRjd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGRXMWliSEpmTm1VM01HWTNNRFJqWVRNM1pEaG1OMlEzTTJRd09ESTNZelJsWXpFd1lUbGZaRE14Tm1aa05HUmZOalF3TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25kSFZ0WW14eVh6WmxOekJtTnpBMFkyRXpOMlE0Wmpka056TmtNRGd5TjJNMFpXTXhNR0U1WDJRek1UWm1aRFJrWHpZME1DNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjVUMjM6NTg6NTMuODE3WiIsInB1ciI6ImJsb2Jfa2V5In19--36aa24d8dc15c4a34619a25b56886cb64c4d8f97/tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640.jpg" for 127.0.0.1 at 2022-10-25 19:56:38 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"tumblr_6e70f704ca37d8f7d73d0827c4ec10a9_d316fd4d_640"}
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"votebtn"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 691)
+
+
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 347)
+
+
+Started GET "/tags/4" for 127.0.0.1 at 2022-10-25 19:57:47 -0400
+Processing by TagsController#show as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tags_controller.rb:6:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering tags/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_main_sidebar.html.erb:6
+  Rendered tags/_tag_index.html.erb (Duration: 2.4ms | Allocations: 2132)
+  Rendered posts/_main_sidebar.html.erb (Duration: 5.8ms | Allocations: 3781)
+  Rendered tags/show.html.erb within layouts/application (Duration: 6.5ms | Allocations: 4093)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4158)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.3ms | Allocations: 6067)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <div class="tag">
+    2:     <% tags.each do |tag|%>
+    3:         <%= link_to tag.name, 
+    4:             show_tags_path(tag), method: :get,
+    5:                                             class: "get",
+  
+app/views/tags/_tag_index.html.erb:2
+app/views/posts/_main_sidebar.html.erb:21
+app/views/tags/show.html.erb:1
+Started GET "/tags/4" for 127.0.0.1 at 2022-10-25 19:58:13 -0400
+Processing by TagsController#show as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tags_controller.rb:6:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering tags/show.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "posts_tags" ON "posts"."id" = "posts_tags"."post_id" WHERE "posts_tags"."tag_id" = ?[0m  [["tag_id", 4]]
+  ↳ app/views/posts/_posts.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:4
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_posts.html.erb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 5], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 5], ["votable_type", "Post"], ["vote_flag", 1]]
+  ↳ app/views/posts/_posts.html.erb:11
+  Rendered posts/_posts.html.erb (Duration: 15.5ms | Allocations: 7859)
+  Rendered tags/show.html.erb within layouts/application (Duration: 19.3ms | Allocations: 9710)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.2ms | Allocations: 15843)
+Completed 200 OK in 31ms (Views: 26.9ms | ActiveRecord: 1.0ms | Allocations: 17768)
+
+
