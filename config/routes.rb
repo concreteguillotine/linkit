@@ -16,13 +16,21 @@ Rails.application.routes.draw do
     end
 
     resources :posts, only: [:index, :show] do
-      resources :comments, only: [:index, :show]
+      resources :comments, only: [:index, :show] do
+          post "like", to: "comments#like"
+          post "unlike", to: "comments#unlike"
+      end
     end  
 
     resources :tags, only: [:show] do
       collection do
         get ":id", to: "tags#show", as: :show
       end
+    end
+
+    resources :comments do
+      post "like", to: "comments#like"
+      post "unlike", to: "comments#unlike"
     end
 
   namespace :admin do

@@ -17,7 +17,7 @@
             <header> <h3> Comments: </h3> </header>
 
             <% comments = @post.comments.persisted.ordered %>
-                <% if comments.any? %>
+                <% if comments.any?  %>
                     <%= render comments %>
                 <% else %>
                     <p> No comments yet! </p>

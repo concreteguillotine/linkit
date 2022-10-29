@@ -1,5 +1,5 @@
 <div class="sidebar">
-       <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
+       <p class="logo"> <%= link_to image_tag("/assets/linkitlogo.png"), posts_path %> </p>
        <h4 class="title"> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
        <ul class="actions">
             <li><%= link_to "Return home", root_path %></li>
@@ -18,6 +18,6 @@
 
         <ul class="attributes">
             <h3> Tags: </h3>
-                <ul class="tags"> <li> <%= render "tags/tag_index", tags: @tags, posts: @posts %> </li> </ul>
+                <ul class="taglist"> <li class="tags"> <%= render "tags/tag_index", tags: @tags, posts: @posts %> </li> </ul>
         </ul>
 </div>

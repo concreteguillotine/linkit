@@ -4,11 +4,20 @@
         &mdash; <%= comment.author.username %>
     </div>
     <div class="message">
-        <%= simple_format(comment.text) %>
+      <%= simple_format(comment.text) %>
     </div>
+    <div class="likes">
+      <%= comment.get_likes.size %> <%= (comment.get_likes.size) == 1 ? "vote!" : "votes!" %>
+    <div class="actions">
       <% if (current_user == comment.author) || (current_user == post.author) || (current_user.admin?) %>
         <%= link_to "Delete Comment",
           post_comment_path(comment.post, comment),
           data: { turbo_method: :delete, turbo_confirm: "Delete this comment?" } %>
       <% end %>
+    <button id="vote"><%= link_to "Like", post_comment_like_path(@post, comment), method: :post, data: { turbo_frame: "like" } %> </button>
+    <button id="vote"><%= link_to "Unike", post_comment_unlike_path(@post, comment), method: :post, data: { turbo_frame: "unlike" } %> </button>
+
+
+
+    </div>
 </div>

@@ -14,6 +14,18 @@ class CommentsController < ApplicationController
         end
     end
 
+    def like
+        @comment = @post.comments.find(params[:comment_id])
+        @comment.like_by current_user
+        redirect_to @post
+    end
+
+    def unlike
+        @comment = @post.comments.find(params[:comment_id])
+        @comment.unliked_by current_user
+        redirect_to @post
+    end
+
     def destroy
         @comment = @post.comments.find(params[:id])
         @comment.destroy
