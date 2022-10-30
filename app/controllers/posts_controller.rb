@@ -70,7 +70,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:name, :image, :text)
+        params.require(:post).permit(:name, :image, :text, :url, :youtubeurl)
     end
 
     def processed_tags

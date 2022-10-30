@@ -8,5 +8,10 @@ class Comment < ApplicationRecord
   validates :text, presence: true, length: { maximum: 100 }
 
   scope :persisted, -> { where.not(id: nil) }
-  scope :ordered, -> { order(created_at: :asc) }
+
+  # scope for ordered by time created at
+  scope :orderedt, -> { order(created_at: :asc) }
+
+  # ordered by amount of votes
+  scope :orderedl, -> { order(cached_votes_total: :desc) }
 end

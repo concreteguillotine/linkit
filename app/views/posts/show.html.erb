@@ -2,23 +2,28 @@
     <%= render "posts/sidebar", post: @post %>
     <div class="content">
         <div class="post">
-            <% if @post.image.present? %>
-                <div class="image"><%= image_tag @post.image %></p>
-            <% elsif @post.image.present? && @post.text.present? %>
-                <div class="image"><%= image_tag @post.image %></p>
+                <% if @post.image.present? %>
+                    <div class="image"><%= image_tag @post.image %></p>
+                <% end %>
+                <% if @post.youtubeurl.present? %>
+                    <iframe width=525 height=370 src="<%= Post.youtube_embed_url(@post.youtubeurl) %>"></iframe>
+                <% end %>
+                <% if @post.url.present? %>
+                    <%= link_to @post.url, @post.url %>
+                <% end %>
                 <p class="caption"><%= @post.text %>
-            <% else %>
-                <p class="text"><%= @post.text %>
-            <% end %>
+    
         </div>
     </div>
 
         <div class="comments">
             <header> <h3> Comments: </h3> </header>
 
-            <% comments = @post.comments.persisted.ordered %>
-                <% if comments.any?  %>
+            
+            <% comments = @post.comments.persisted.orderedl %>
+            <% if comments.any? %>
                     <%= render comments %>
+ 
                 <% else %>
                     <p> No comments yet! </p>
                 <% end %>

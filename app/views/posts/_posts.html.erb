@@ -3,12 +3,16 @@
                 <div class="ind-posts">
                     <% if post.image.present? %>
                         <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+                    <% elsif post.url.present? %>
+                        <% urllink = LinkThumbnailer.generate(post.url)%>
+                            <div class="thumbnail"> <%= link_to (image_tag(urllink.images.first.src.to_s)), post %></div>
                     <% else %>
-                        <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")) %></div>
+                        <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")), post %></div>
                     <% end %>
 
                     <li class="title"><%= link_to post.name, post %> by <%= post.author.username %>
-                     | <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
+                     | <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote" : "votes" %>
+                     | <%= post.comments.size %> <%= (post.comments.size) == 1 ? "comment" : "comments" %> </li>
                 </div>
             <% end %>
     </div>

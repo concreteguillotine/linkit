@@ -1,5 +1,15 @@
 <h1> Uploading new post</h1>
 
-<%= render "form", post: @post %>
+Image post:
+<%= render "imgform", post: @post %>
+
+Text post:
+<%= render "txtform", post: @post %>
+
+Article post:
+<%= render "linkform", post: @post %>
+
+Video post:
+<%= render "vidform", post: @post %>
 
 Or... <%= link_to "return to home", posts_path %>

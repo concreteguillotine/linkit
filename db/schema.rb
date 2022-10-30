@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_28_174354) do
+ActiveRecord::Schema.define(version: 2022_10_30_035700) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -48,7 +48,10 @@ ActiveRecord::Schema.define(version: 2022_10_28_174354) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "reply_id"
     t.integer "parent_id"
+    t.integer "cached_votes_total", default: 0
+    t.text "scope", default: "orderedt"
     t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["cached_votes_total"], name: "index_comments_on_cached_votes_total"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["reply_id"], name: "index_comments_on_reply_id"
@@ -61,6 +64,8 @@ ActiveRecord::Schema.define(version: 2022_10_28_174354) do
     t.integer "cached_votes_total", default: 0
     t.text "text"
     t.integer "author_id", null: false
+    t.text "youtubeurl"
+    t.text "url"
     t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["cached_votes_total"], name: "index_posts_on_cached_votes_total"
   end

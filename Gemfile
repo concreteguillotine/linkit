@@ -29,6 +29,7 @@ gem 'jquery-rails'
 # Sending HTML instead of JSON over the wire
 gem 'hotwire-rails'
 
+gem 'link_thumbnailer'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
