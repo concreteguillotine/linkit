@@ -19,5 +19,7 @@
         <ul class="attributes">
             <h3> Tags: </h3>
                 <ul class="taglist"> <li class="tags"> <%= render "tags/tag_index", tags: @tags, posts: @posts %> </li> </ul>
+                <li> <%= link_to "likes", sort_posts_path(:scope => "likes") %> </li>
+
         </ul>
 </div>

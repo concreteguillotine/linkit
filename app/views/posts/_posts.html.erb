@@ -1,3 +1,4 @@
+
 <div class="posts">
             <% posts.each do |post| %>
                 <div class="ind-posts">
@@ -12,7 +13,7 @@
 
                     <li class="title"><%= link_to post.name, post %> by <%= post.author.username %>
                      | <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote" : "votes" %>
-                     | <%= post.comments.size %> <%= (post.comments.size) == 1 ? "comment" : "comments" %> </li>
+                     | <%= post.comments.size %> <%= link_to ((post.comments.size) == 1 ? "comment" : "comments"), post %> </li>
                 </div>
             <% end %>
     </div>

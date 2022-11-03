@@ -14,6 +14,23 @@ class CommentsController < ApplicationController
         end
     end
 
+    def new
+        @comment = @post.comments.new(parent_id: params[:parent_id])
+    end
+
+    def index
+        @comment = @post.comments.build
+        @comments = @post.comments.where(params[:post_id])
+
+        if params[:scope] == "likes"
+            @comments = @comments.orderedl
+        else
+            @comments = @comments.orderedt
+        end
+
+        render "posts/show"
+    end
+
     def like
         @comment = @post.comments.find(params[:comment_id])
         @comment.like_by current_user
@@ -41,6 +58,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-        params.require(:comment).permit(:text)
+        params.require(:comment).permit(:text, :scope)
     end
 end

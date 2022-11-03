@@ -2,10 +2,28 @@ class PostsController < ApplicationController
     before_action :set_post, only: %i(show like unlike edit update destroy)
 
     def index
-        @posts = Post.all
         @tags = Tag.all
+        @posts = Post.all
+
+        if params[:scope] == "likes"
+            @posts = @posts.orderedl
+        else
+            @posts = @posts.orderedt
+        end
     end
 
+    def tag_index
+        @tags = Tag.all 
+        @tag = Tag.find(params[:tag_id])
+        @posts = Post.where(params[:tag_id] == @tag.id)
+
+        if params[:scope] == "likes"
+            @posts = @posts.orderedl
+        else
+            @posts = @posts.orderedt
+        end
+    end
+    
     def new
         @post = Post.new
     end
@@ -27,6 +45,7 @@ class PostsController < ApplicationController
 
     def show
         @comment = @post.comments.build
+        @comments = @post.comments.where(params[:post_id])
     end
 
     def like
@@ -71,6 +90,10 @@ class PostsController < ApplicationController
 
     def post_params
         params.require(:post).permit(:name, :image, :text, :url, :youtubeurl)
+    end
+
+    def comment_params
+        params.permit(:id, :text, :scope)
     end
 
     def processed_tags

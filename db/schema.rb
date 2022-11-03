@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2022_10_30_035700) do
     t.integer "reply_id"
     t.integer "parent_id"
     t.integer "cached_votes_total", default: 0
-    t.text "scope", default: "orderedt"
+    t.text "scope"
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["cached_votes_total"], name: "index_comments_on_cached_votes_total"
     t.index ["parent_id"], name: "index_comments_on_parent_id"

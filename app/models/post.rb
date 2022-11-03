@@ -3,8 +3,15 @@ class Post < ApplicationRecord
     has_one_attached :image
     has_many :comments, dependent: :destroy
     belongs_to :author, class_name: "User"
-    has_and_belongs_to_many :tags
+    has_and_belongs_to_many :tags, default: "all"
+    validates :name, presence: true, length: { maximum: 100 }
 
+    # scope for ordered by time created at
+    scope :orderedt, -> { order(created_at: :asc) }
+
+    # ordered by amount of votes
+    scope :orderedl, -> { order(cached_votes_total: :desc) }
+    
     URL_FORMATS = {
         regular: /^(https?:\/\/)?(www\.)?youtube.com\/watch\?(.*\&)?v=(?<id>[^&]+)/,
         shortened: /^(https?:\/\/)?(www\.)?youtu.be\/(?<id>[^&]+)/,
