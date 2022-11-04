@@ -93,7 +93,7 @@ class PostsController < ApplicationController
     end
 
     def comment_params
-        params.permit(:id, :text, :scope)
+        params.permit(:id, :text, :scope, :post_id, :parent_id)
     end
 
     def processed_tags

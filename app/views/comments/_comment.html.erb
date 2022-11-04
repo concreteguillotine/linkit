@@ -17,7 +17,7 @@
       <%= comment.get_likes.size %> <%= (comment.get_likes.size) == 1 ? "vote!" : "votes!" %>
     <div class="actions">
       <% if user_signed_in? %>
-        <%= link_to "Reply", new_post_comment_path(@post, parent_id: comment.id) %>
+        <%= link_to "Reply", new_post_comment_path(post, parent_id: post.comment.id) %>
         <% if (current_user == comment.author) || (current_user == @post.author) || (current_user.admin?) %>
           <%= link_to "Delete Comment",
             post_comment_path(comment.post, comment),

@@ -1,8 +1,8 @@
-<div class="tag">
+<%# <div class="tag">
     <%= link_to "<span></span>".html_safe, 
         post_remove_tag_path(post, tag), method: :delete,
                                          remote: true,
                                          class: "remove",
-                                         title: "Remove tag" %>
-    <%= tag.name %>
-</div>
+                                         title: "Remove tag" 
+    <%= tag.name
+</div> %>

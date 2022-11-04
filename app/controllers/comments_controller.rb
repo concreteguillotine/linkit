@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
     before_action :set_post
 
     def create
-        @comment = @post.comments.build(comment_params)
+        @comment = @post.comments.new(comment_params)
         @comment.author = current_user
 
         if @comment.save
@@ -58,6 +58,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-        params.require(:comment).permit(:text, :scope)
+        params.require(:comment).permit(:text, :scope, :post_id, :parent_id)
     end
 end

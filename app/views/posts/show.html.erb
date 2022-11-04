@@ -20,8 +20,8 @@
             <header> <h3> Comments: </h3> </header>
             Sort by:
             <%= link_to "By likes", sort_post_comments_path(@post, :scope => "likes") %>
-            <% if @comments.any? %>
-                <% @comments.each do |comment| %>
+            <% if @post.comments.any? %>
+                <% @post.comments.persisted.each do |comment| %>
                     <%= render "comments/comment", comment: comment %>
                 <% end %>
                 <% else %>

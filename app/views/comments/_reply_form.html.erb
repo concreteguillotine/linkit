@@ -1,5 +1,5 @@
-<%= form_with(model: [@post, @comment]) do |f| %>
-      <%= f.hidden_field :parent_id %>
+<%= form_with(model: [comment.post, comment.new]) do |f| %>
+      <%= f.hidden_field :parent_id, comment.parent.id %>
       <div class="form-group">
         <%= f.label 'Reply' %>
         <%= f.text_area :body, class: 'form-control' %>

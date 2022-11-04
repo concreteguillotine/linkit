@@ -113,6 +113,9 @@ GEM
       image_size (~> 2.0)
       typhoeus (~> 1.0)
     image_size (2.1.2)
+    importmap-rails (1.1.5)
+      actionpack (>= 6.0.0)
+      railties (>= 6.0.0)
     iso8601 (0.9.1)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -308,6 +311,7 @@ DEPENDENCIES
   devise (~> 4.7.3)
   factory_bot_rails (~> 6.1)
   hotwire-rails
+  importmap-rails
   jbuilder (~> 2.7)
   jquery-rails
   link_thumbnailer

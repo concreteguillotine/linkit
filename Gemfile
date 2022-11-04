@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'hotwire-rails'
 
 gem 'link_thumbnailer'
+gem 'importmap-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
