@@ -17,14 +17,14 @@
       <%= comment.get_likes.size %> <%= (comment.get_likes.size) == 1 ? "vote!" : "votes!" %>
     <div class="actions">
       <% if user_signed_in? %>
-        <%= link_to "Reply", new_post_comment_path(post, parent_id: post.comment.id) %>
+        <%= link_to "Reply", new_post_comment_path(comment.post, parent_id: comment.id) %>
         <% if (current_user == comment.author) || (current_user == @post.author) || (current_user.admin?) %>
           <%= link_to "Delete Comment",
             post_comment_path(comment.post, comment),
             data: { turbo_method: :delete, turbo_confirm: "Delete this comment?" } %>
         <% end %>
-          <button id="vote"><%= link_to "Like", post_comment_like_path(@post, comment), method: :post, data: { turbo_frame: "like" } %> </button>
-          <button id="vote"><%= link_to "Unike", post_comment_unlike_path(@post, comment), method: :post, data: { turbo_frame: "unlike" } %> </button>
+          <button id="vote"><%= link_to "Like", like_post_comment_path(@post, comment), method: :post, data: { turbo_frame: "like" } %> </button>
+          <button id="vote"><%= link_to "Unike", unlike_post_comment_path(@post, comment), method: :post, data: { turbo_frame: "unlike" } %> </button>
       <% end %>
     </div>
 

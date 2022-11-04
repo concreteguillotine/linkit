@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     end
 
     def new
-        @comment = @post.comments.new(parent_id: params[:parent_id])
+        @comment = @post.comments.build(parent_id: params[:parent_id])
     end
 
     def index

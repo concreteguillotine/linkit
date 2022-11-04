@@ -8,18 +8,18 @@ Rails.application.routes.draw do
     collection do
       get "sort", to: "posts#index"
     end
-
-    resources :comments, except: [:show] do
-      collection do
-        get "sort", to: "comments#index", as: :sort
-      end
-      member do
-        post "like", to: "comments#like"
-        post "unlike", to: "comments#unlike"
+  end
+    resources :posts, except: [:index, :show] do
+      resources :comments, except: [:show] do
+        collection do
+          get "sort", to: "comments#index", as: :sort
+        end
+        member do
+          post "like", to: "comments#like"
+          post "unlike", to: "comments#unlike"
+        end
       end
     end
-
-  end
 
   resources :posts, except: [:index, :show] do
     member do
