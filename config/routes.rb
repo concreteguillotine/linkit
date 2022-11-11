@@ -3,10 +3,18 @@ Rails.application.routes.draw do
   root "posts#index" 
 
   resources :users
+  resources :posts
   
-  resources :posts, only: [:index, :show] do
+  resources :posts, only: [:index] do
     collection do
       get "sort", to: "posts#index"
+    end
+  end
+
+  resources :posts, only: [:show] do
+    member do
+      post "like", to: "posts#like"
+      post "unlike", to: "posts#unlike"
     end
   end
     resources :posts, except: [:index, :show] do
@@ -21,14 +29,10 @@ Rails.application.routes.draw do
       end
     end
 
-  resources :posts, except: [:index, :show] do
-    member do
-      post "like", to: "posts#like"
-      post "unlike", to: "posts#unlike"
-    end
-  end
-
   resources :tags, only: [:show] do
+    collection do
+      get "/search", to: "tags#show"
+    end
     resources :posts, only: [:index] do
       collection do
         get "sort", to: "posts#tag_index", as: :sort

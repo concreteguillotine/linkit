@@ -18,7 +18,7 @@
 
                 <h3> Tags: </h3>
                 <% if @post.tags.any? %>
-                        <ul class="tags"> <li> <%= render @post.tags, post: @post %> </li> </ul>
+                        <ul class="tags"> <li> <%= render @post.tags %> </li> </ul>
                 <% else %>
                         There are no tags for this post!
                 <% end %>

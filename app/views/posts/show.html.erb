@@ -15,14 +15,15 @@
     
         </div>
 
-
         <div class="comments">
             <header> <h3> Comments: </h3> </header>
             Sort by:
             <%= link_to "By likes", sort_post_comments_path(@post, :scope => "likes") %>
             <% if @post.comments.any? %>
                 <% @post.comments.persisted.each do |comment| %>
-                    <%= render "comments/comment", comment: comment %>
+                    <% unless comment.parent_id %>
+                        <%= render "comments/comment", comment: comment %>
+                    <% end %>
                 <% end %>
                 <% else %>
                     <p> No comments yet! </p>

@@ -3,7 +3,13 @@ class TagsController < ApplicationController
     end
 
     def show
-        @tags = Tag.all
+        if params[:search].present?
+            @parameter = params[:search].downcase
+            @tags = Tag.where("lower(name) LIKE ?", "%#{@parameter}%")
+        else
+            @tags = Tag.all
+        end
+
         @tag = Tag.find(params[:id])
 
         @posts = Post.where(params[:tag_id] == @tag.id)

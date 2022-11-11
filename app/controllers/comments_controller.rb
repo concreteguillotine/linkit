@@ -32,13 +32,13 @@ class CommentsController < ApplicationController
     end
 
     def like
-        @comment = @post.comments.find(params[:comment_id])
+        @comment = @post.comments.find(params[:id])
         @comment.like_by current_user
         redirect_to @post
     end
 
     def unlike
-        @comment = @post.comments.find(params[:comment_id])
+        @comment = @post.comments.find(params[:id])
         @comment.unliked_by current_user
         redirect_to @post
     end

@@ -17,7 +17,7 @@
       <%= comment.get_likes.size %> <%= (comment.get_likes.size) == 1 ? "vote!" : "votes!" %>
     <div class="actions">
       <% if user_signed_in? %>
-        <%= link_to "Reply", new_post_comment_path(comment.post, parent_id: comment.id) %>
+        <%= link_to "Reply", new_post_comment_path(@post, :parent_id => comment.id) %>
         <% if (current_user == comment.author) || (current_user == @post.author) || (current_user.admin?) %>
           <%= link_to "Delete Comment",
             post_comment_path(comment.post, comment),
@@ -27,12 +27,10 @@
           <button id="vote"><%= link_to "Unike", unlike_post_comment_path(@post, comment), method: :post, data: { turbo_frame: "unlike" } %> </button>
       <% end %>
     </div>
+  </div>
 
     <% if comment.replies.any? %>
       <% comment.replies.each do |reply| %>
-        <%= render partial: 'comments/reply', locals: { reply: reply } %>
+        <%= render 'comments/comment', comment: reply %>
       <% end %>
     <% end %>
-
-    <div id="reply-form-<%= comment.id %>"> </div>
-</div>

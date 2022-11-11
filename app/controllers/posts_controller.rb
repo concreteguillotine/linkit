@@ -2,7 +2,13 @@ class PostsController < ApplicationController
     before_action :set_post, only: %i(show like unlike edit update destroy)
 
     def index
-        @tags = Tag.all
+        if params[:search].present?
+            @parameter = params[:search].downcase
+            @tags = Tag.where("lower(name) LIKE ?", "%#{@parameter}%")
+        else
+            @tags = Tag.all
+        end
+        
         @posts = Post.all
 
         if params[:scope] == "likes"
