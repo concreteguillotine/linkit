@@ -8,7 +8,7 @@ class PostsController < ApplicationController
         else
             @tags = Tag.all
         end
-        
+
         @posts = Post.all
 
         if params[:scope] == "likes"
@@ -32,6 +32,16 @@ class PostsController < ApplicationController
     
     def new
         @post = Post.new
+        
+        if params[:query] == "text"
+            render "posts/_textform"
+        elsif params[:query] == "image"
+            render "posts/_imageform"
+        elsif params[:query] == "video"
+            render "posts/_videoform"
+        elsif params[:query] == "link"
+            render "posts/_linkform"
+        end
     end
 
     def create
@@ -95,7 +105,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:name, :image, :text, :url, :youtubeurl)
+        params.require(:post).permit(:name, :image, :text, :url, :youtubeurl, :query)
     end
 
     def comment_params

@@ -8,7 +8,7 @@ RSpec.feature "Posts can be seen on the homepage" do
 
     scenario "and clicking the image or name will take you to the post" do
 
-        click_link "New post"
+        click_link "Image post"
 
         fill_in "Name", with: "Chi Ball"
         attach_file("Image", "spec/fixtures/logo.jpg")

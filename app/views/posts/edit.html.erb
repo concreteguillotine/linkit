@@ -1,3 +1,11 @@
 <h1> Editing post </h1>
 
-<%= render "form", post: @post, user: @user  %>
+<% if @post.image.present? %>
+    <%= render "imageform" %>
+<% elsif @post.url.present? %>
+    <%= render "linkform" %>
+<% elsif @post.youtubeurl.present? %>
+    <%= render "videoform" %>
+<% else %>
+    <%= render "textform" %>
+<% end %>

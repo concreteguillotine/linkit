@@ -3,15 +3,19 @@
     <%= render "imgform", post: @post %>
 </div>
 
-<div class="txtpost">
-    Text post:
-    <%= render "txtform", post: @post %>
-</div>
+<% if [:query] == "text" %>
+    <div class="txtpost">
+        Text post:
+        <%= render "txtform", post: @post %>
+    </div>
+<% end %>
 
+<% if [:scope] == "link" %>
 <div class="lnkpost">
     Article post:
     <%= render "linkform", post: @post %>
 </div>
+<% end %>
 
 <div class="vidpost">
     Video post:

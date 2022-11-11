@@ -4,7 +4,7 @@ RSpec.feature "users can create posts" do
     before do
         login_as(FactoryBot.create(:user))
         visit "/"
-        click_link "New post"
+        click_link "Image post"
     end
     
     scenario "with only a name and image" do
@@ -21,7 +21,7 @@ RSpec.feature "users can create posts" do
 
     scenario "with tags as well" do
         fill_in "Name", with: "Example post"
-        fill_in "Text", with: "This is an example post"
+        fill_in "Caption", with: "This is an example post"
         fill_in "Tags", with: "test, text"
         click_button "Create Post"
 

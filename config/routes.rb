@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "posts#index" 
 
   resources :users
-  resources :posts
+  resources :posts, only: [:new]
   
   resources :posts, only: [:index] do
     collection do
