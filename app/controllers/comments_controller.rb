@@ -16,16 +16,21 @@ class CommentsController < ApplicationController
 
     def new
         @comment = @post.comments.build(parent_id: params[:parent_id])
+
+        if @comment.save
+            flash[:notice] = "Reply created!"
+            redirect_to @post
+        end
     end
 
     def index
         @comment = @post.comments.build
-        @comments = @post.comments.where(params[:post_id])
+        @post.comments = @post.comments.where(params[:post_id])
 
         if params[:scope] == "likes"
-            @comments = @comments.orderedl
+            @post.comments = @post.comments.orderedl
         else
-            @comments = @comments.orderedt
+            @post.comments = @post.comments.orderedt
         end
 
         render "posts/show"

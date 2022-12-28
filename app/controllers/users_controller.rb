@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: %i(show edit update)
+    before_action :set_user, except: %i( replies comments )
 
     def show
-        @posts = Post.where(author: @user)
+        @posts = Post.order(cached_votes_total: :desc).where(author: @user)
+        @comments = Comment.where(author: @user)
     end
 
     def edit
@@ -13,6 +14,16 @@ class UsersController < ApplicationController
 
         flash[:notice] = "Profile updated!"
         redirect_to @user
+    end
+    
+    def replies
+        @user = User.find(params[:id])
+        @comments = Comment.where(author: @user)
+    end
+
+    def comments
+        @user = User.find(params[:id])
+        @posts = Post.order(cached_votes_total: :desc).where(author: @user)
     end
 
     private

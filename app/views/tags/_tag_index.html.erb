@@ -1,8 +1,5 @@
 <div class="tag">
-    <% tags.each do |tag|%>
-        <%= link_to tag.name, 
-            tag_path(tag), method: :get,
-                           class: "get",
-                           title: "Get posts" %>
+    <% tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag), method: :get %> <%= "#{tag.followers.size}" %>
     <% end %>
 </div>

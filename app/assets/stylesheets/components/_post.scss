@@ -1,27 +1,96 @@
-.content {
-    position: absolute;
-    margin-left: 17%;
+.comments {
     display: block;
-    width: 100%;
-}
-.post {
-    margin-left: 5rem;
-    margin-right: 5rem;
-    .image {
-        position: relative;
+    top: 0;
+    position: sticky;
+    text-align: start;
+    width: 380.6px;
+    margin-left: 80%;
+    border-left: var(--border);
+    padding: .5rem;
+    min-height: fit-content;
+    height: 950px;
 
+    .comment {
+        padding: .5rem;
+    
+    .avatar {
+        position: relative;
         height: auto;
-        width: 600px;
-        .image::after {
+        width: 64px;
+        margin-left: 0;
+        margin-bottom: -.5rem;
+
+        .avatar::after {
             content: "";
             display: block;
             padding-bottom: 100%;
         }
+
         img {
             position: relative;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+    }
+
+    .message {
+        border: dotted grey 1px;
+        padding: .5rem;
+        margin-bottom: .25rem;
+    }
+}
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        border-bottom: var(--border);
+        padding-bottom: .25rem;
+        background-color: var(--color-secondary);
+    }
+}
+
+.replies {
+    margin-left: .25rem;
+    background-color: var(--color-secondary);
+    border-left: var(--border);
+}
+
+.post {
+    position: relative;
+    width: 100%;
+    margin: 1rem;
+    margin-left: 20%;
+
+    .image {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        height: auto;
+        width: 600px;
+
+        .image::after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .caption {
+        border: var(--border);
+        max-width: 800px;
+        height: auto;
+        padding: .75rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin: 2rem;
     }
 }

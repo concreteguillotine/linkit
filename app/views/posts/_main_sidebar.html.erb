@@ -1,37 +1,57 @@
 <div class="sidebar">
        <p class="logo"> <%= link_to image_tag("/assets/linkitlogo.png"), posts_path %> </p>
-       <h4 class="title"> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
+       <h4 class="welcome"> Welcome to the Linkit! Create an account to vote for and comment on posts! </h4>
        <ul class="actions">
-            <li><%= link_to "Return home", root_path %></li>
             <% if user_signed_in? %>
                 Signed in as <%= current_user.username %>
 
-                <li>Create a new post:
-                    <%= link_to "Text post", new_post_path(@post, :query => "text"), method: :get %></li>
-                    <%= link_to "Image post", new_post_path(@post, :query => "image"), method: :get %></li>
-                    <%= link_to "Video post", new_post_path(@post, :query => "video"), method: :get %></li>
-                    <%= link_to "Link post", new_post_path(@post, :query => "link"), method: :get %></li>
+                <h4> Create a new post: </h4>
+                <%= turbo_frame_tag "newpost_frame" do %>
+                    <div class="new_post">
+                        <li><%= link_to "#{image_tag("/assets/textbutton.png", alt: "text post")}Text".html_safe, new_post_path(@post, :query => "text") %></li>
+                    </div>
 
-                <li><%= link_to "Your profile", user_path(current_user) %>
-                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+                    <div class="new_post">
+                        <li><%= link_to "#{image_tag("/assets/imagebutton.png", alt: "image post")}Image".html_safe, new_post_path(@post, :query => "image") %></li>
+                    </div>
+
+                    <div class="new_post">
+                        <li><%= link_to "#{image_tag("/assets/videobutton.png", alt: "video post")}Video".html_safe, new_post_path(@post, :query => "video") %></li>
+                    </div>
+
+                    <div class="new_post">
+                        <li><%= link_to "#{image_tag("/assets/linkbutton.png", alt: "link post")}Link".html_safe, new_post_path(@post, :query => "link")%></li>
+                    </div>
+                <% end %>
+            
+                <li><%= link_to "Your profile", user_path(current_user) %></li>
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             <% end %>
 
             <% unless user_signed_in? %>
-                <li><%= link_to "Sign up", new_user_registration_path %></li>
-                <li><%= link_to "Sign in", new_user_session_path %></li>
+                <%= turbo_frame_tag "sign_up_frame" do %>
+                    <div class="sign_up"> <li><%= link_to "Sign up", new_user_registration_path %></li> </div>
+                <% end %>
+
+                <%= turbo_frame_tag "sign_in_frame" do %>
+                    <div class="sign_in"> <li><%= link_to "Sign in", new_user_session_path %></li></div>
+                <% end %>
             <% end %>
         </ul>
 
         <ul class="attributes">
-        <%= form_tag(@tags_path, method: :get) do %>
-            <%= label_tag "Search tags" %>
-            <%= search_field_tag :search, params[:search] %>
-                <%= submit_tag "Search" %>
-        <% end %>
-            <h3> Tags: </h3>
-                <ul class="taglist"> <li class="tags"> <%= render "tags/tag_index", tags: @tags, posts: @posts %> </li> </ul>
-                Sort by:
-                    <li> <%= link_to "likes", sort_posts_path(:scope => "likes") %> </li>
-                    <li> <%= link_to "time created", sort_posts_path(:scope => "time") %> </li>
+            <h4> Tags: </h4>
+                <% if @toptags.present?%>
+                    <ul class="taglist"> <li class="tags"> <%= render "tags/tag_index", tags: @toptags, posts: @posts %> </li> </ul>
+                <% else %>
+                    <ul class="taglist"> <li class="tags"> No tags yet, create a new post above to get started! </li> </ul>
+                <% end %>
+
+                <h4> Search for tags here, they'll show up in the box above! </h4>
+                <%= form_tag(@tags_path, method: :get) do %>
+                    <%= label_tag "Search tags" %>
+                        <%= search_field_tag :search, params[:search] %>
+                    <%= submit_tag "Search" %>
+                <% end %>
         </ul>
 </div>

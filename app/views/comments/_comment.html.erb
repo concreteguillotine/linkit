@@ -1,36 +1,40 @@
 <div class="comment">
-
-    <div class="author">
-        <% if comment.author.image.exists? %>
-          <div class="user_avatar"> <%= link_to (image_tag comment.author.image), comment.author %> </div>
-        <% else %>
-          <div class="user_avatar"> <%= link_to (image_tag("/assets/avatar.png")), comment.author %> </div>
-        <% end %>
-
-        <div class="username"> <%= time_ago_in_words(comment.created_at) %> ago 
-        &mdash; <%= link_to comment.author.username, comment.author %> </div>
-    </div>
-    <div class="message">
-      <%= simple_format(comment.text) %>
-    </div>
-    <div class="likes">
-      <%= comment.get_likes.size %> <%= (comment.get_likes.size) == 1 ? "vote!" : "votes!" %>
-    <div class="actions">
-      <% if user_signed_in? %>
-        <%= link_to "Reply", new_post_comment_path(@post, :parent_id => comment.id) %>
-        <% if (current_user == comment.author) || (current_user == @post.author) || (current_user.admin?) %>
-          <%= link_to "Delete Comment",
-            post_comment_path(comment.post, comment),
-            data: { turbo_method: :delete, turbo_confirm: "Delete this comment?" } %>
-        <% end %>
-          <button id="vote"><%= link_to "Like", like_post_comment_path(@post, comment), method: :post, data: { turbo_frame: "like" } %> </button>
-          <button id="vote"><%= link_to "Unike", unlike_post_comment_path(@post, comment), method: :post, data: { turbo_frame: "unlike" } %> </button>
-      <% end %>
-    </div>
+  <div class="author">
+    <div class="avatar"> <%= user_avatar(comment.author) %> </div>
+    <%= link_to comment.author.username, comment.author %>
+        &mdash; <%= time_ago_in_words(comment.created_at) %> ago
+  </div>
+  <div class="message">
+    <%= simple_format(comment.text) %>
   </div>
 
-    <% if comment.replies.any? %>
-      <% comment.replies.each do |reply| %>
-        <%= render 'comments/comment', comment: reply %>
+  <div class="actions">
+    <% if user_signed_in? %>
+      <%= turbo_frame_tag "comment_reply" do %>
+        <%= link_to "Reply", new_post_comment_path(@post, :parent_id => comment.id) %>
+      <% end %>
+      <% if (current_user == comment.author) || (current_user == @post.author) || (current_user.admin?) %>  
+        <%= link_to "Delete Comment",
+            post_comment_path(comment.post, comment),
+            data: { turbo_method: :delete, turbo_confirm: "Delete this comment?" } %>
+      <% end %>
+      <%= turbo_frame_tag "like" do %>
+        <div class="likes">
+          <%= comment.get_likes.size %> <%= (comment.get_likes.size) == 1 ? "like!" : "likes!" %>
+            <% if current_user.liked? comment %>
+              <%= link_to image_tag("/assets/unlikebutton.png", alt: "unlike"), unlike_post_comment_path(@post, comment), method: :post %>
+            <% else %>
+              <%= link_to image_tag("/assets/likebutton.png", alt: "like"), like_post_comment_path(@post, comment), method: :post %>
+            <% end %>
+        </div>
       <% end %>
     <% end %>
+  </div>
+    <% if comment.replies.any? %>
+      <div class="replies">
+        <% comment.replies.each do |reply| %>
+          <%= render 'comments/comment', comment: reply %>
+        <% end %>
+      </div>
+    <% end %>
+</div>

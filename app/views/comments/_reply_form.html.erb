@@ -1,9 +1,0 @@
-<%= form_with(model: [@post, comment], local: true) do |f| %>
-      <%= f.hidden_field :parent_id, comment.parent.id %>
-      <div class="form-group">
-        <%= f.label 'Reply' %>
-        <%= f.text_area :text, class: 'form-control' %>
-      </div>
-      <%= f.submit 'Submit', class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', post_path(@post), class: 'btn btn-secondary' %>
-    <% end %>

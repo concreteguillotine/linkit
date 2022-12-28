@@ -1,11 +1,13 @@
-<h1> Editing post </h1>
+<%= turbo_frame_tag "edit_post_frame" do%>
+    <h1> Editing post </h1>
 
-<% if @post.image.present? %>
-    <%= render "imageform" %>
-<% elsif @post.url.present? %>
-    <%= render "linkform" %>
-<% elsif @post.youtubeurl.present? %>
-    <%= render "videoform" %>
-<% else %>
-    <%= render "textform" %>
+    <% if @post.image.present? %>
+        <%= render "imageform" %>
+    <% elsif @post.url.present? %>
+        <%= render "linkform" %>
+    <% elsif @post.youtubeurl.present? %>
+        <%= render "videoform" %>
+    <% else %>
+        <%= render "textform" %>
+    <% end %>
 <% end %>

@@ -1,36 +1,55 @@
-<body>
-    <%= render "posts/sidebar", post: @post %>
-    <div class="content">
-        <div class="post">
-                <% if @post.image.present? %>
-                    <div class="image"><%= image_tag @post.image %></div>
-                <% end %>
-                <% if @post.youtubeurl.present? %>
-                    <iframe width=525 height=370 src="<%= Post.youtube_embed_url(@post.youtubeurl) %>"></iframe>
-                <% end %>
-                <% if @post.url.present? %>
-                    <%= link_to @post.url, @post.url %>
-                <% end %>
-                <p class="caption"><%= @post.text %> </p>
-    
+<div class="container text-center justify-content-center">
+    <div class="row">
+        <div class="col">
+            <%= render "posts/sidebar", post: @post %>
         </div>
+        <div class="col-8 justify-self-center">
+                <div class="post">
+                     <h3 class="title"><%= @post.name %> by <%= link_to @post.author.username, @post.author %></h3>
 
-        <div class="comments">
-            <header> <h3> Comments: </h3> </header>
-            Sort by:
-            <%= link_to "By likes", sort_post_comments_path(@post, :scope => "likes") %>
-            <% if @post.comments.any? %>
-                <% @post.comments.persisted.each do |comment| %>
-                    <% unless comment.parent_id %>
-                        <%= render "comments/comment", comment: comment %>
+            <div class="votes">
+                <%= turbo_frame_tag "vote" do%>
+                    <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "like" : "likes" %>
+                        <% users_only do %>
+                        <% if current_user.liked? @post %>
+                             <%= link_to image_tag("/assets/unlikebutton.png", alt: "unlike"), unlike_post_path(@post), method: :post, remote: :true %>
+                        <% else %>
+                            <%= link_to image_tag("/assets/likebutton.png", alt: "like"), like_post_path(@post), method: :post, remote: :true %>
+                        <% end %>
                     <% end %>
                 <% end %>
-                <% else %>
-                    <p> No comments yet! </p>
-                <% end %>
-                <% users_only do %>
-                    <%= render "comments/form", post: @post, comment: @comment %>
-                <% end %>
+            </div>
+                        <% if @post.image.present? %>
+                            <div class="image"><%= image_tag @post.image %></div>
+                        <% end %>
+                        <% if @post.youtubeurl.present? %>
+                            <iframe width=600 height=455 src="<%= Post.youtube_embed_url(@post.youtubeurl) %>"></iframe>
+                        <% end %>
+                        <% if @post.url.present? %>
+                            From <%= link_to @post.url, @post.url %>
+                        <% end %>
+                        <p class="caption"> <%= @post.text %> </p>
+                </div>
         </div>
-     </div>
-</body>
+
+        <div class="col">
+                <div class="comments">
+                    <h5> Comments: </h5>
+
+                        <% users_only do %>
+                            <%= render "comments/form", post: @post, comment: @comment %>
+                        <% end %>
+
+                        <% if @post.comments.any? %>
+                            <% @post.comments.persisted.each do |comment| %>
+                                <% unless comment.parent_id %>
+                                    <%= render "comments/comment", comment: comment %>
+                                <% end %>
+                            <% end %>
+                        <% else %>
+                            <p> No comments yet! </p>
+                        <% end %>
+                </div>
+        </div>
+    </div>
+</div>

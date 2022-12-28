@@ -1,33 +1,42 @@
 <div class="sidebar">
     <p class="logo"> <%= link_to image_tag("/assets/linkitlogo.png"), posts_path %> </p>
-        <div class="attributes">
-            <h4 class="title"> <%= @user.username %> </h4>
+        <%= turbo_frame_tag "edit_info_frame" do %>
+            <div class="attributes">
+                <h4 class="username"> <%= @user.username %> </h4>
+
+                <div class="about">    
+                    <%= user_avatar(@user) %>
+
+                    <h4 class="title"> About me:</h4>
+                    <%= @user.about %>
+
+                    <p class="user-likes">
+                        <% posts_sum = @posts.map { |post| post.get_likes.size }.sum %>
+                        <%= posts_sum %> post <%= posts_sum == 1 ? "like" : "likes" %>
                 
-            <div class="avatar">
-                <% if @user.image.present? %>
-                    <%= image_tag @user.image %>
-                <% end %>
+                        <% comments_sum = @comments.map { |comment| comment.get_likes.size }.sum %> <br>
+                        <%= comments_sum %> comment <%= comments_sum == 1 ? "like" : "likes" %>
+                    </p>
+                </div>
             </div>
 
-            <div class="about_me">
-                <h4 class="title"> About me: </h4>
-                <p class= "about"><%= @user.about %></p>
-            </div>
-        </div>
-
-       <ul class="actions">
-            <% if user_signed_in? %>
-                <% if @user == current_user %>
-                    <li><%= link_to "Edit sign in information", edit_user_registration_path%></li>
-                    <li><%= link_to "Edit profile", edit_user_path %></li>
+        <ul class="actions">
+                <% if user_signed_in? %>
+                    <% if @user == current_user %>
+                        <li><%= link_to "Edit sign in information", edit_user_registration_path%></li>
+                        <li><%= link_to "Edit profile", edit_user_path %></li>  
+                    <% end %>
+                    <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
                 <% end %>
-                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
-                Signed in as <%= current_user.username %>.
-            <% end %>
-
+        <% end %>
             <% unless user_signed_in? %>
-                <li><%= link_to "Sign up", new_user_registration_path %></li>
-                <li><%= link_to "Sign in", new_user_session_path %></li>
+                <%= turbo_frame_tag "sign_up_frame" do %>
+                    <div class="sign_up"> <li><%= link_to "Sign up", new_user_registration_path %></li> </div>
+                <% end %>
+
+                <%= turbo_frame_tag "sign_in_frame" do %>
+                    <div class="sign_in"> <li><%= link_to "Sign in", new_user_session_path %></li></div>
+                <% end %>
             <% end %>
 
             <li><%= link_to "Return home", root_path %></li>

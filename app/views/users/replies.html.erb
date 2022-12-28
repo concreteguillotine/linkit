@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "replies" do %>
+    <h6> Recent comment replies: | <%= link_to "Show post comments", comments_user_path(@user) %> </h6>
+        <% @comments.each do |comment| %>
+            <% if comment.replies.any? %>
+                <% comment.replies.order(created_at: :desc).each do |reply| %>
+                    <div class="user-reply">
+                        <div class="author">
+                                <div class="username"> <%= time_ago_in_words(reply.created_at) %> ago 
+                                &mdash; From <%= link_to reply.author.username, reply.author %> on your comment: "<%= comment.text.truncate(10) %>" in <%= link_to comment.post.name.truncate(16), comment.post %> </div>
+                        </div>
+                        <div class="message">
+                            <%= simple_format(reply.text) %>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+<% end %>

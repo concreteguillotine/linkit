@@ -1,5 +1,20 @@
-<body>    
-<%= render "tags/tag_sidebar", posts: @posts, tags: @tags %>
+<div class="container text-center">
+    <div class="row justify-content-start">
+        <div class="col-2 align-self-start">
+            <%= render "posts/main_sidebar", posts: @posts, tags: @toptags %>
+        </div>
+        <div class="col-8 text-start">
 
-<%= render "posts/posts", posts: @tag.posts %>
-</body>
+        <% users_only do %>
+            <% if current_user.tags.include?(@tag) %>
+                <%= link_to "Unfollow", unfollow_tag_path(@tag) %> this tag
+            <% else %>
+                <%= link_to "Follow", follow_tag_path(@tag) %> this tag
+            <% end %>
+        <% end %>
+
+                <h3 class="tag-title"> Posts in the "<%= @tag.name %>" tag: </h3>
+                    <%= render "posts/posts", posts: @tag.posts %>
+        </div>
+    </div>
+</div>

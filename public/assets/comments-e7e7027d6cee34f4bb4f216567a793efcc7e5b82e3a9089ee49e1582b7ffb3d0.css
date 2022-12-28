@@ -1,0 +1,38 @@
+/* line 4, app/assets/stylesheets/comments.scss */
+.comments {
+  max-width: fit-content;
+}
+
+/* line 7, app/assets/stylesheets/comments.scss */
+.comments .avatar {
+  position: relative;
+  height: auto;
+  width: 80px;
+  align-content: start;
+}
+
+/* line 13, app/assets/stylesheets/comments.scss */
+.comments .avatar .avatar::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+/* line 19, app/assets/stylesheets/comments.scss */
+.comments .avatar img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* line 27, app/assets/stylesheets/comments.scss */
+.comments h3 {
+  border-bottom: var(--border);
+  padding-bottom: .25rem;
+}
+
+/* line 32, app/assets/stylesheets/comments.scss */
+.replies {
+  margin-left: .75rem;
+}

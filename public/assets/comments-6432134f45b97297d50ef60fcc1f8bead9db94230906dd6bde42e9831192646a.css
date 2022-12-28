@@ -1,0 +1,14 @@
+/* line 4, app/assets/stylesheets/comments.scss */
+.comments {
+  max-width: fit-content;
+}
+
+/* line 7, app/assets/stylesheets/comments.scss */
+.comments h3 {
+  border-bottom: var(--border);
+}
+
+/* line 11, app/assets/stylesheets/comments.scss */
+.replies {
+  margin-left: 20px;
+}

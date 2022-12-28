@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: %i(show like unlike edit update destroy)
+    before_action :set_post, only: %i(show like unlike edit update image destroy)
 
     def index
         if params[:search].present?
@@ -9,7 +9,23 @@ class PostsController < ApplicationController
             @tags = Tag.all
         end
 
-        @posts = Post.all
+        if user_signed_in?
+            if params[:scope] == "all"
+                @tags = Tag.all
+                @posts = Post.all
+            else
+                @toptags = Tag.all
+                @tags = current_user.tags
+                
+                @posts = Post.where(params[:tag_id] == @tags.ids)
+            end
+        end
+        
+        # if params[:tag_id].present?
+        #     @posts = Post.where(params[:tag_id] == @tag.id)
+        # else
+        #     @posts = Post.all
+        # end
 
         if params[:scope] == "likes"
             @posts = @posts.orderedl
@@ -19,7 +35,7 @@ class PostsController < ApplicationController
     end
 
     def tag_index
-        @tags = Tag.all 
+        @toptags = Tag.all 
         @tag = Tag.find(params[:tag_id])
         @posts = Post.where(params[:tag_id] == @tag.id)
 
@@ -61,19 +77,19 @@ class PostsController < ApplicationController
 
     def show
         @comment = @post.comments.build
-        @comments = @post.comments.where(params[:post_id])
+        @post.comments = @post.comments.where(params[:post_id])
     end
 
     def like
         @post.like_by current_user
 
-        redirect_to @post
+        redirect_back(fallback_location: root_path)
     end
 
     def unlike
         @post.unliked_by current_user
 
-        redirect_to @post
+        redirect_back(fallback_location: root_path)
     end
 
     def edit
@@ -86,6 +102,9 @@ class PostsController < ApplicationController
         flash[:notice] = "This post's name has been changed!"
         redirect_to @post
         end
+    end
+
+    def image
     end
 
     def destroy

@@ -1,5 +1,6 @@
 <h1> Uploading new post</h1>
-
+<%= turbo_frame_tag "new_post_frame" do %>
 <%= render "form" %>
+<% end %>
 
 Or... <%= link_to "return to home", posts_path %>

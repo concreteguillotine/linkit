@@ -1,22 +1,91 @@
-<body>
+<div class="container text-center justify-content-center">
+    <div class="row">
 
-    <%= render "users/sidebar", user: @user %>
-    <div class="posts">
-        <% if @posts.any? %>
-            <% @posts.each do |post| %>
-                    <div class="ind-posts">
+        <div class="col align-self-start">
+            <%= render "users/sidebar", user: @user %>
+        </div>
 
-                        <% if post.image.present? %>
-                            <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+        <div class="col-8 text-start">
+            <div class="user-posts">
+                <h5 class="user-posts-title"> <%= current_user == @user ? "Your posts:" : "#{@user.username}'s posts:" %> </h5>
+                    <% if @posts.any? %>
+                        <% @posts.each do |post| %>
+                                <div class="ind-posts">
+                                    <% if post.image.present? %>
+                                        <div class="thumbnail"> <%= link_to (image_tag post.image), post %></div>
+                                    <% elsif post.url.present? %>
+                                        <% urllink = LinkThumbnailer.generate(post.url)%>
+                                            <% if urllink.images.present? %>
+                                                <div class="thumbnail"> <%= link_to (image_tag(urllink.images.first.src.to_s)), post.url %></div>
+                                            <% else %>
+                                                <div class="thumbnail"> <%= link_to (image_tag("/assets/linkthumb.png")), post.url %></div>
+                                            <% end %>
+                                    <% elsif post.youtubeurl.present? %>
+                                        <% urllink = LinkThumbnailer.generate(post.youtubeurl)%>
+                                            <% if urllink.images.present? %>
+                                                <div class="thumbnail"> <%= link_to (image_tag(urllink.images.first.src.to_s)), post.youtubeurl %></div>
+                                            <% else %>
+                                                <div class="thumbnail"> <%= link_to (image_tag("/assets/linkthumb.png")), post.youtubeurl %></div>
+                                            <% end %>
+                                    <% else %>
+                                        <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")) %></div>
+                                    <% end %>
+                                        <%= link_to post.name, post %> | <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "like" : "likes" %> |
+                                        <%= post.comments.size %> <%= link_to ((post.comments.size) == 1 ? "comment" : "comments"), post %>
+                                </div>
+                        <% end %>
+                    <% else %>
+                        No posts yet, they'll show up here when added.
+                    <% end %>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="comments"> 
+                <% if current_user == @user %>
+                    <%= turbo_frame_tag "replies" do %>
+                        <h6> Recent post comments: | <%= link_to "Show comment replies", replies_user_path(@user) %> </h6>
+                            <% @posts.each do |post| %>
+                                <% if post.comments.any? %>
+                                    <% post.comments.order(created_at: :desc).each do |reply| %>
+                                        <div class="user-reply">
+                                            <div class="author">
+                                                    <div class="username"> <%= time_ago_in_words(reply.created_at) %> ago 
+                                                    &mdash; From <%= link_to reply.author.username, reply.author %> on <%= link_to post.name.truncate(16), post %> </div>
+                                            </div>
+                                            <div class="message">
+                                                <%= simple_format(reply.text) %>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                    <% end %>
+                <% else %>
+                    <h6> Recent comments: </h6>
+                        <% if @comments.persisted.any? %> 
+                            <% @comments.order(created_at: :desc).each do |comment| %>
+
+                                <div class="user-reply">
+
+                                    <div class="author">
+                                        <div class="username"> <%= time_ago_in_words(comment.created_at) %> ago 
+                                                &mdash; In <%= link_to comment.post.name.truncate(24), comment.post %> </div>
+                                        </div>
+
+                                        <div class="message">
+                                            <%= simple_format(comment.text) %>
+                                        </div>
+                                    </div>
+
+                            <% end %>
                         <% else %>
-                            <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")) %></div>
+                            This user hasn't made any comments yet!
                         <% end %>
 
-                            <li class="title"><%= link_to post.name, post %> | <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></li>
-                    </div>
-            <% end %>
-        <% else %>
-            You have no posts, they'll show up here when added.
-        <% end %>
+                <% end %>
+            </div>
+        </div>
+
     </div>
-</body>
+</div>
