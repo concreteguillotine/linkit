@@ -26,13 +26,6 @@ class CommentsController < ApplicationController
     def index
         @comment = @post.comments.build
         @post.comments = @post.comments.where(params[:post_id])
-
-        if params[:scope] == "likes"
-            @post.comments = @post.comments.orderedl
-        else
-            @post.comments = @post.comments.orderedt
-        end
-
         render "posts/show"
     end
 

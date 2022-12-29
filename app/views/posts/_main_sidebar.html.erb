@@ -39,8 +39,8 @@
             <% end %>
         </ul>
 
-        <ul class="attributes">
-            <h4> Tags: </h4>
+        <ol class="attributes">
+            <h5> Top tags: </h5>
                 <% if @toptags.present?%>
                     <ul class="taglist"> <li class="tags"> <%= render "tags/tag_index", tags: @toptags, posts: @posts %> </li> </ul>
                 <% else %>
@@ -53,5 +53,5 @@
                         <%= search_field_tag :search, params[:search] %>
                     <%= submit_tag "Search" %>
                 <% end %>
-        </ul>
+        </ol>
 </div>

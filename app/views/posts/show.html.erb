@@ -5,22 +5,22 @@
         </div>
         <div class="col-8 justify-self-center">
                 <div class="post">
-                     <h3 class="title"><%= @post.name %> by <%= link_to @post.author.username, @post.author %></h3>
+                     <h3 class="title"> <%= @post.name %> by <%= link_to @post.author.username, @post.author %> </h3>
 
             <div class="votes">
                 <%= turbo_frame_tag "vote" do%>
                     <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "like" : "likes" %>
                         <% users_only do %>
                         <% if current_user.liked? @post %>
-                             <%= link_to image_tag("/assets/unlikebutton.png", alt: "unlike"), unlike_post_path(@post), method: :post, remote: :true %>
+                             <%= link_to image_tag("/assets/unlikebutton.png", alt: "unlike"), unlike_post_path(@post) %>
                         <% else %>
-                            <%= link_to image_tag("/assets/likebutton.png", alt: "like"), like_post_path(@post), method: :post, remote: :true %>
+                            <%= link_to image_tag("/assets/likebutton.png", alt: "like"), like_post_path(@post) %>
                         <% end %>
                     <% end %>
                 <% end %>
             </div>
                         <% if @post.image.present? %>
-                            <div class="image"><%= image_tag @post.image %></div>
+                            <div class="image"> <%= image_tag @post.image %> </div>
                         <% end %>
                         <% if @post.youtubeurl.present? %>
                             <iframe width=600 height=455 src="<%= Post.youtube_embed_url(@post.youtubeurl) %>"></iframe>

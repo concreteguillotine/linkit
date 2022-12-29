@@ -1,59 +1,57 @@
 <div class="posts">
-    <div class="sort">
-            <h5> Sort posts by: </h5>   
-                <%= link_to "likes", sort_posts_path(:scope => "likes") %> |
-                <%= link_to "time created", sort_posts_path(:scope => "time") %> 
-    </div>
-            <% posts.each do |post| %>
-                <div class="ind-posts">
+        <h6 class="sort"> <%= link_to "All posts", root_path(:query => "all") %> |
 
-                    <% if post.image.present? %>
-                        <%= turbo_frame_tag "image" do %>
-                            <div class="img-post-thumbnail"> 
-                                <div class="thumbnail"> <%= link_to (image_tag post.image, alt: "expand image"), image_post_path(post), method: :get %> </div>
-                            </div>
-                        <% end %>
-                                <%= link_to post.name, post %> <span class="url-small"> <%= link_to "(#{post_path(post)})", post %> </span>
+        <%= link_to "Your home", root_path %> </h6>
 
-                    <% elsif post.url.present? %>
-                        <% urllink = LinkThumbnailer.generate(post.url)%>
-                            <% if urllink.images.present? %>
-                                <div class="thumbnail"> <%= link_to (image_tag(urllink.images.first.src.to_s)), post.url %> </div>
-                            <% else %>
-                                <div class="thumbnail"> <%= link_to (image_tag("/assets/linkthumb.png")), post.url %> </div>
-                            <% end %>
-                                <%= link_to post.name, post %> <span class="url-small"> <%= link_to "(#{post.url})", post.url %> </span>
+    <% posts.each do |post| %>
+        <div class="ind-posts">
 
-                    <% elsif post.youtubeurl.present? %>
-                        <% urllink = LinkThumbnailer.generate(post.youtubeurl)%>
-                            <% if urllink.images.present? %>
-                                <div class="thumbnail"> <%= link_to (image_tag(urllink.images.first.src.to_s)), post %> </div>
-                            <% else %>
-                                <div class="thumbnail"> <%= link_to (image_tag("/assets/linkthumb.png")), post %> </div>
-                            <% end %>
-                                <%= link_to post.name, post %> <span class="url-small"> <%= link_to "(#{post.youtubeurl})", post.youtubeurl %> </span>
+            <% if post.image.present? %>
+                <%= turbo_frame_tag "image" do %>
+                    <div class="img-post-thumbnail"> 
+                        <div class="thumbnail"> <%= link_to (image_tag post.image, alt: "expand image"), image_post_path(post), method: :get %> </div>
+                    </div>
+                <% end %>
+                        <%= link_to post.name, post %> <span class="url-small"> <%= link_to "(#{post_path(post)})", post %> </span>
 
+            <% elsif post.url.present? %>
+                <% urllink = LinkThumbnailer.generate(post.url)%>
+                    <% if urllink.images.present? %>
+                        <div class="thumbnail"> <%= link_to (image_tag(urllink.images.first.src.to_s)), post.url %> </div>
                     <% else %>
-                        <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")), post %> </div>
-                        <%= link_to post.name, post %>
+                        <div class="thumbnail"> <%= link_to (image_tag("/assets/linkthumb.png")), post.url %> </div>
                     <% end %>
+                        <%= link_to post.name, post %> <span class="url-small"> <%= link_to "(#{post.url})", post.url %> </span>
 
-                        by <%= link_to post.author.username, post.author %>
+            <% elsif post.youtubeurl.present? %>
+                <% urllink = LinkThumbnailer.generate(post.youtubeurl)%>
+                    <% if urllink.images.present? %>
+                        <div class="thumbnail"> <%= link_to (image_tag(urllink.images.first.src.to_s)), post %> </div>
+                    <% else %>
+                        <div class="thumbnail"> <%= link_to (image_tag("/assets/linkthumb.png")), post %> </div>
+                    <% end %>
+                        <%= link_to post.name, post %> <span class="url-small"> <%= link_to "(#{post.youtubeurl})", post.youtubeurl %> </span>
 
-                    <div class="attributes">
-                        <%= turbo_frame_tag "like" do%>
-                            <% users_only do %>
-                                <% if current_user.liked? post %>
-                                    <%= link_to image_tag("/assets/unlikebutton.png", alt: "unlike"), unlike_post_path(post), method: :post, remote: :true %>
-                                <% else %>
-                                    <%= link_to image_tag("/assets/likebutton.png", alt: "like"), like_post_path(post), method: :post, remote: :true %>
-                                <% end %>
-                            <% end %>
-                                <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "like" : "likes" %>
-                        <% end %>
-                        | <%= post.comments.size %> <%= link_to ((post.comments.size) == 1 ? "comment" : "comments"), post %>
-                     </div>
-                </div>
+            <% else %>
+                <div class="thumbnail"> <%= link_to (image_tag("/assets/textthumb.png")), post %> </div>
+                <%= link_to post.name, post %>
             <% end %>
-    </div>
+
+                by <%= link_to post.author.username, post.author %>
+
+            <div class="attributes">
+                <%= turbo_frame_tag "like" do%>
+                    <% users_only do %>
+                        <% if current_user.liked? post %>
+                            <%= link_to image_tag("/assets/unlikebutton.png", alt: "unlike"), unlike_post_path(post), method: :post, remote: :true %>
+                        <% else %>
+                            <%= link_to image_tag("/assets/likebutton.png", alt: "like"), like_post_path(post), method: :post, remote: :true %>
+                        <% end %>
+                    <% end %>
+                        <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "like" : "likes" %>
+                <% end %>
+                | <%= post.comments.size %> <%= link_to ((post.comments.size) == 1 ? "comment" : "comments"), post %>
+            </div>
+        </div>
+    <% end %>
 </div>

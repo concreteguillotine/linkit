@@ -8,10 +8,10 @@ RSpec.feature "Posts can be seen on the homepage" do
 
     scenario "and clicking the image or name will take you to the post" do
 
-        click_link "Image post"
+        click_link "Image"
 
         fill_in "Name", with: "Chi Ball"
-        attach_file("Image", "spec/fixtures/logo.jpg")
+        attach_file("Image", "spec/fixtures/avatar.png")
         click_button "Create Post"
         expect(page). to have_content "This post has been added!"
 
@@ -19,7 +19,7 @@ RSpec.feature "Posts can be seen on the homepage" do
         
         within(".posts") do
             expect(page).to have_content "Chi Ball"
-            expect(page).to have_css("img[src*='logo.jpg']")
+            expect(page).to have_css("img[src*='avatar.png']")
         end
     end
 end

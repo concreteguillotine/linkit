@@ -2,35 +2,29 @@ class PostsController < ApplicationController
     before_action :set_post, only: %i(show like unlike edit update image destroy)
 
     def index
-        if params[:search].present?
-            @parameter = params[:search].downcase
-            @tags = Tag.where("lower(name) LIKE ?", "%#{@parameter}%")
-        else
-            @tags = Tag.all
-        end
+        if user_signed_in? && current_user.tags.present?
+            @toptags = Tag.all
+            @tags = current_user.tags
+            @posts = @tags.flat_map(&:posts)
 
-        if user_signed_in?
-            if params[:scope] == "all"
-                @tags = Tag.all
-                @posts = Post.all
-            else
-                @toptags = Tag.all
-                @tags = current_user.tags
-                
-                @posts = Post.where(params[:tag_id] == @tags.ids)
+            if params.present?
+                if params[:search].present?
+                    @parameter = params[:search].downcase
+                    @toptags = Tag.where("lower(name) LIKE ?", "#{@parameter}")
+    
+                elsif params[:tag_id].present?
+                    @posts = Post.where(params[:tag_id] == @tag.id)
+    
+                elsif params[:query] == "all"
+                    @toptags = Tag.all
+                    @posts = Post.all
+                    render "index"
+                end
             end
-        end
-        
-        # if params[:tag_id].present?
-        #     @posts = Post.where(params[:tag_id] == @tag.id)
-        # else
-        #     @posts = Post.all
-        # end
 
-        if params[:scope] == "likes"
-            @posts = @posts.orderedl
         else
-            @posts = @posts.orderedt
+            @toptags = Tag.all
+            @posts = Post.all
         end
     end
 
@@ -38,12 +32,6 @@ class PostsController < ApplicationController
         @toptags = Tag.all 
         @tag = Tag.find(params[:tag_id])
         @posts = Post.where(params[:tag_id] == @tag.id)
-
-        if params[:scope] == "likes"
-            @posts = @posts.orderedl
-        else
-            @posts = @posts.orderedt
-        end
     end
     
     def new

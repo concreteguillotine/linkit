@@ -7,7 +7,7 @@ class TagsController < ApplicationController
     def show
         if params[:search].present?
             @parameter = params[:search].downcase
-            @tags = Tag.where("lower(name) LIKE ?", "%#{@parameter}%")
+            @toptags = Tag.where("lower(name) LIKE ?", "%#{@parameter}%")
         else
             @toptags = Tag.all
         end

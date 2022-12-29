@@ -4,18 +4,18 @@ RSpec.feature "users can create posts" do
     before do
         login_as(FactoryBot.create(:user))
         visit "/"
-        click_link "Image post"
+        click_link "Image"
     end
     
     scenario "with only a name and image" do
         fill_in "Name", with: "Chi Ball"
-        attach_file("Image", "spec/fixtures/logo.jpg")
+        attach_file("Image", "spec/fixtures/avatar.png")
         click_button "Create Post"
 
         expect(page). to have_content "This post has been added!"
 
         within(".post") do
-            expect(page).to have_css("img[src*='logo.jpg']")
+            expect(page).to have_css("img[src*='avatar.png']")
         end
     end
 

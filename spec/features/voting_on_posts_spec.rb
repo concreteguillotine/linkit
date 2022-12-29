@@ -15,19 +15,19 @@ RSpec.feature "Users can vote on posts" do
     scenario "by clicking a link" do
 
         within(".votes") do
-            click_link('vote')
-            expect(page).to have_content "1 vote!"
+            click_link('like')
+            expect(page).to have_content "1 like"
         end
     end
 
     scenario "clicking the button again takes the vote away" do
     
-        click_link('vote')
+        click_link('like')
 
-        click_link('unvote')
+        click_link('unlike')
 
         within(".votes") do
-            expect(page).to have_content "0 votes!"
+            expect(page).to have_content "0 likes"
         end
     end
 end
