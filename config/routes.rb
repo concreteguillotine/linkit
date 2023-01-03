@@ -16,6 +16,14 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:new]
+
+  resources :posts, only: [:edit] do
+    member do
+      resources :tags, only: [:delete] do
+        get "delete", to: "tags#destroy"
+      end
+    end
+  end
   
   resources :posts, only: [:index] do
     collection do

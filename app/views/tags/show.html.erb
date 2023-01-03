@@ -4,17 +4,19 @@
             <%= render "posts/main_sidebar", posts: @posts, tags: @toptags %>
         </div>
         <div class="col-8 text-start">
-
-        <% users_only do %>
-            <% if current_user.tags.include?(@tag) %>
-                <%= link_to "Unfollow", unfollow_tag_path(@tag) %> this tag
-            <% else %>
-                <%= link_to "Follow", follow_tag_path(@tag) %> this tag
-            <% end %>
-        <% end %>
+            <h5 class="tag-title">
+                <% users_only do %>
+                    <% if current_user.tags.include?(@tag) %>
+                        <%= link_to "Unfollow", unfollow_tag_path(@tag) %> this tag
+                    <% else %>
+                        <%= link_to "Follow", follow_tag_path(@tag) %> this tag
+                    <% end %>
+                <% end %>
+            </h5>
 
                 <h3 class="tag-title"> Posts in the "<%= @tag.name %>" tag: </h3>
-                    <%= render "posts/posts", posts: @tag.posts %>
+            
+                <%= render "posts/posts", posts: @tag.posts %>
         </div>
     </div>
 </div>

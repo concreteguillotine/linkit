@@ -3,13 +3,13 @@
 
         <%= link_to "Your home", root_path %> </h6>
 
-    <% posts.each do |post| %>
+    <% posts.ordered.each do |post| %>
         <div class="ind-posts">
 
             <% if post.image.present? %>
-                <%= turbo_frame_tag "image" do %>
+                <%= turbo_frame_tag "image", dom_id: "thumbnail" do %>
                     <div class="img-post-thumbnail"> 
-                        <div class="thumbnail"> <%= link_to (image_tag post.image, alt: "expand image"), image_post_path(post), method: :get %> </div>
+                        <div class="thumbnail"> <%= link_to (image_tag post.image, alt: "expand image"), post_path(post), method: :get %> </div>
                     </div>
                 <% end %>
                         <%= link_to post.name, post %> <span class="url-small"> <%= link_to "(#{post_path(post)})", post %> </span>
@@ -17,9 +17,9 @@
             <% elsif post.url.present? %>
                 <% urllink = LinkThumbnailer.generate(post.url)%>
                     <% if urllink.images.present? %>
-                        <div class="thumbnail"> <%= link_to (image_tag(urllink.images.first.src.to_s)), post.url %> </div>
+                        <div class="thumbnail"> <%= link_to (image_tag(urllink.images.first.src.to_s)), post %> </div>
                     <% else %>
-                        <div class="thumbnail"> <%= link_to (image_tag("/assets/linkthumb.png")), post.url %> </div>
+                        <div class="thumbnail"> <%= link_to (image_tag("/assets/linkthumb.png")), post %> </div>
                     <% end %>
                         <%= link_to post.name, post %> <span class="url-small"> <%= link_to "(#{post.url})", post.url %> </span>
 
@@ -51,6 +51,9 @@
                         <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "like" : "likes" %>
                 <% end %>
                 | <%= post.comments.size %> <%= link_to ((post.comments.size) == 1 ? "comment" : "comments"), post %>
+                | <% post.tags.each do |tag| %>
+                    <span class="url-small"> <%= link_to tag.name, tag_path(tag), method: :get %> </span>
+                  <% end %>
             </div>
         </div>
     <% end %>

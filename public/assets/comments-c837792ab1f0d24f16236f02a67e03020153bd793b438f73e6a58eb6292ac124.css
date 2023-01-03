@@ -1,9 +1,0 @@
-/* line 4, app/assets/stylesheets/comments.scss */
-.comments {
-  border-bottom: var(--border);
-}
-
-/* line 7, app/assets/stylesheets/comments.scss */
-.replies {
-  margin-left: 20px;
-}

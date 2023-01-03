@@ -20,7 +20,7 @@
       <% end %>
       <%= turbo_frame_tag "like" do %>
         <div class="likes">
-          <%= comment.get_likes.size %> <%= (comment.get_likes.size) == 1 ? "like!" : "likes!" %>
+          <%= comment.get_likes.size %> <%= (comment.get_likes.size) == 1 ? "like" : "likes" %>
             <% if current_user.liked? comment %>
               <%= link_to image_tag("/assets/unlikebutton.png", alt: "unlike"), unlike_post_comment_path(@post, comment), method: :post %>
             <% else %>

@@ -1,5 +1,5 @@
-<div class="tag">
-    <% tags.each do |tag| %>
-        <%= link_to tag.name, tag_path(tag), method: :get %> <%= "(#{tag.followers.size})" %>
+<ul class="taglist">
+    <% tags.limit(10).sort_by { |tag| -tag.followers.size }.each do |tag| %>
+        <li class="tags"> <%= link_to tag.name, tag_path(tag), method: :get %> <%= "#{tag.followers.size}" %> </li>
     <% end %>
-</div>
+</ul>

@@ -1,9 +1,0 @@
-/* line 5, app/assets/stylesheets/comments.scss */
-.comments .h3 {
-  border-bottom: var(--border);
-}
-
-/* line 9, app/assets/stylesheets/comments.scss */
-.replies {
-  margin-left: 20px;
-}

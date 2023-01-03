@@ -13,9 +13,11 @@
   </head>
 
   <body>
+    <div class="container text-center justify-content-center">
       <% flash.each do |key, message| %>
-        <div><%= message %></div>
+        <h5 class="alert"> <%= message %> </h5>
       <% end %>
       <%= yield %>
+    </div>
   </body>
 </html>

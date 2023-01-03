@@ -21,8 +21,8 @@
 
 .thumbnail {
     position: relative;
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     
     .thumbnail::after {
         content: "";
@@ -37,9 +37,17 @@
         object-fit: cover;
     }
 }
-.comments {
+
+.comments,
+.user-comments {
     height: 100%;
+    background-color: white;
 }
+
+.user-comments {
+    margin-left: 5%;
+}
+
 .user-reply {
     .author {
         background-color: rgb(214, 207, 207);

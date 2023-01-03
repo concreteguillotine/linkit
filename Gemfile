@@ -27,6 +27,7 @@ gem 'jquery-rails'
 gem 'hotwire-rails'
 gem "sprockets-rails"
 gem "net-http"
+gem 'webpacker'
 
 gem 'link_thumbnailer'
 gem 'importmap-rails'

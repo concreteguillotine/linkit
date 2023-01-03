@@ -27,6 +27,17 @@ class TagsController < ApplicationController
         redirect_back(fallback_location: tag_path(@tag))
     end
 
+    def destroy
+        @post = Post.find(params[:id])
+        @tag = Tag.find(params[:tag_id])
+        @post.tags.destroy(@tag)
+
+        respond_to do |format|
+            format.turbo_stream
+            format.html { redirect_back(fallback_location: root_path) }
+        end
+    end
+
     private
 
     def set_tag

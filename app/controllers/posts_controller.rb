@@ -1,11 +1,19 @@
 class PostsController < ApplicationController
     before_action :set_post, only: %i(show like unlike edit update image destroy)
+    before_action :toptags, only: %i(index tag_index)
 
     def index
+        # if the person viewing this is signed in and follows some tags..
         if user_signed_in? && current_user.tags.present?
-            @toptags = Tag.all
+
+            # ..the tags are their followed tags..
             @tags = current_user.tags
-            @posts = @tags.flat_map(&:posts)
+
+            # ..and a joins query is used to assign the @posts variable
+            # to all of the posts that have those tags
+            @posts = Post.joins(:tags).
+                          where('tags.id IN (?)', 
+                          current_user.tags.select(:tag_id)).distinct
 
             if params.present?
                 if params[:search].present?
@@ -16,36 +24,24 @@ class PostsController < ApplicationController
                     @posts = Post.where(params[:tag_id] == @tag.id)
     
                 elsif params[:query] == "all"
-                    @toptags = Tag.all
                     @posts = Post.all
                     render "index"
                 end
             end
-
         else
-            @toptags = Tag.all
             @posts = Post.all
         end
     end
 
     def tag_index
-        @toptags = Tag.all 
         @tag = Tag.find(params[:tag_id])
         @posts = Post.where(params[:tag_id] == @tag.id)
     end
     
     def new
         @post = Post.new
-        
-        if params[:query] == "text"
-            render "posts/_textform"
-        elsif params[:query] == "image"
-            render "posts/_imageform"
-        elsif params[:query] == "video"
-            render "posts/_videoform"
-        elsif params[:query] == "link"
-            render "posts/_linkform"
-        end
+
+        render "posts/_#{params[:query]}form"
     end
 
     def create
@@ -55,7 +51,7 @@ class PostsController < ApplicationController
         @post.tags = processed_tags
 
         if @post.save
-            flash[:notice] = "This post has been added!"
+            flash[:notice] = "This post has been added."
             redirect_to @post
         else
             flash[:notice] = "Post not saved, try again"
@@ -80,19 +76,13 @@ class PostsController < ApplicationController
         redirect_back(fallback_location: root_path)
     end
 
-    def edit
-    end
-
     def update
         if @post.update(post_params)
             @post.tags << processed_tags
 
-        flash[:notice] = "This post's name has been changed!"
+        flash[:notice] = "Post edited."
         redirect_to @post
         end
-    end
-
-    def image
     end
 
     def destroy
@@ -102,6 +92,12 @@ class PostsController < ApplicationController
         redirect_to posts_path
     end
 
+    def edit
+    end
+
+    def image
+    end
+
     private
 
     def set_post
@@ -109,6 +105,10 @@ class PostsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
         flash[:alert] = "This post does not exist!"
         redirect_to posts_path
+    end
+
+    def toptags
+        @toptags = Tag.all
     end
 
     def post_params

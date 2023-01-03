@@ -1,10 +1,18 @@
 .comments {
+    margin-left: 80%;
+}
+
+.user-comments {
+    margin-left: 94%;
+}
+
+.comments,
+.user-comments {
     display: block;
     top: 0;
     position: sticky;
     text-align: start;
     width: 380.6px;
-    margin-left: 80%;
     border-left: var(--border);
     padding: .5rem;
     min-height: fit-content;

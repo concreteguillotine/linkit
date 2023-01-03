@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
     before_action :set_post
+    before_action :set_comment, only: %i(like unlike destroy)
 
     def create
         @comment = @post.comments.new(comment_params)
         @comment.author = current_user
 
         if @comment.save
-            flash[:notice] = "Comment has been created!"
+            flash[:notice] = "Comment has been created."
             redirect_to @post
         else
             flash.now[:alert] = "Comment not created, please revise."  
@@ -30,19 +31,16 @@ class CommentsController < ApplicationController
     end
 
     def like
-        @comment = @post.comments.find(params[:id])
         @comment.like_by current_user
         redirect_to @post
     end
 
     def unlike
-        @comment = @post.comments.find(params[:id])
         @comment.unliked_by current_user
         redirect_to @post
     end
 
     def destroy
-        @comment = @post.comments.find(params[:id])
         @comment.destroy
 
         flash[:notice] = "Comment removed successfully."
@@ -53,6 +51,14 @@ class CommentsController < ApplicationController
 
     def set_post
         @post = Post.find(params[:post_id])
+    end
+
+    def set_comment
+        @post = Post.find(params[:post_id])
+        @comment =  @post.comments.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+        flash[:alert] = "This comment does not exist!"
+        redirect_to @post
     end
 
     def comment_params

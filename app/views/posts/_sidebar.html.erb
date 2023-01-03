@@ -14,8 +14,10 @@
             <% end %>
 
             <% unless user_signed_in? %>
-                <li><%= link_to "Sign up", new_user_registration_path %></li>
-                <li><%= link_to "Sign in", new_user_session_path %></li>
+                <%= turbo_frame_tag "sign_frame" do %>
+                    <li><%= link_to "Sign up", new_user_registration_path %></li>
+                    <li><%= link_to "Sign in", new_user_session_path %></li>
+                <% end %>
             <% end %>
 
             <li><%= link_to "Return home", root_path %></li>
@@ -23,7 +25,7 @@
     <ul class="attributes">
         <h3> Tags: </h3>
             <% if @post.tags.any? %>
-                <ul class="taglist"> <li class="tags"> <%= render "tags/tag_index", tags: @post.tags, posts: @posts %> </li> </ul>
+                <%= render "tags/tag_index", tags: @post.tags, posts: @posts %>
             <% else %>
                 There are no tags for this post!
             <% end %>

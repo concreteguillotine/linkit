@@ -8,19 +8,19 @@
                 <h4> Create a new post: </h4>
                 <%= turbo_frame_tag "newpost_frame" do %>
                     <div class="new_post">
-                        <li><%= link_to "#{image_tag("/assets/textbutton.png", alt: "text post")}Text".html_safe, new_post_path(@post, :query => "text") %></li>
+                        <li> <%= link_to "#{image_tag("/assets/textbutton.png", alt: "text post")}Text".html_safe, new_post_path(@post, :query => "text") %> </li>
                     </div>
 
                     <div class="new_post">
-                        <li><%= link_to "#{image_tag("/assets/imagebutton.png", alt: "image post")}Image".html_safe, new_post_path(@post, :query => "image") %></li>
+                        <li> <%= link_to "#{image_tag("/assets/imagebutton.png", alt: "image post")}Image".html_safe, new_post_path(@post, :query => "image") %> </li>
                     </div>
 
                     <div class="new_post">
-                        <li><%= link_to "#{image_tag("/assets/videobutton.png", alt: "video post")}Video".html_safe, new_post_path(@post, :query => "video") %></li>
+                        <li> <%= link_to "#{image_tag("/assets/videobutton.png", alt: "video post")}Video".html_safe, new_post_path(@post, :query => "video") %> </li>
                     </div>
 
                     <div class="new_post">
-                        <li><%= link_to "#{image_tag("/assets/linkbutton.png", alt: "link post")}Link".html_safe, new_post_path(@post, :query => "link")%></li>
+                        <li> <%= link_to "#{image_tag("/assets/linkbutton.png", alt: "link post")}Link".html_safe, new_post_path(@post, :query => "link")%> </li>
                     </div>
                 <% end %>
             
@@ -29,22 +29,19 @@
             <% end %>
 
             <% unless user_signed_in? %>
-                <%= turbo_frame_tag "sign_up_frame" do %>
+                <%= turbo_frame_tag "sign_frame" do %>
                     <div class="sign_up"> <li><%= link_to "Sign up", new_user_registration_path %></li> </div>
-                <% end %>
-
-                <%= turbo_frame_tag "sign_in_frame" do %>
                     <div class="sign_in"> <li><%= link_to "Sign in", new_user_session_path %></li></div>
                 <% end %>
             <% end %>
         </ul>
 
         <ol class="attributes">
-            <h5> Top tags: </h5>
+            <h5> Top followed tags: </h5>
                 <% if @toptags.present?%>
-                    <ul class="taglist"> <li class="tags"> <%= render "tags/tag_index", tags: @toptags, posts: @posts %> </li> </ul>
+                    <%= render "tags/tag_index", tags: @toptags, posts: @posts %>
                 <% else %>
-                    <ul class="taglist"> <li class="tags"> No tags yet, create a new post above to get started! </li> </ul>
+                    No tags yet, create a new post above to get started!
                 <% end %>
 
                 <h4> Search for tags here, they'll show up in the box above! </h4>

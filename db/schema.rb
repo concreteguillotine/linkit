@@ -48,7 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_190345) do
     t.integer "reply_id"
     t.integer "parent_id"
     t.integer "cached_votes_total", default: 0
-    t.text "scope"
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["cached_votes_total"], name: "index_comments_on_cached_votes_total"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
@@ -83,13 +82,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_190345) do
     t.index ["tag_id", "post_id"], name: "index_posts_tags_on_tag_id_and_post_id", unique: true
   end
 
-  create_table "tag_subscribers", id: false, force: :cascade do |t|
-    t.integer "tag_id", null: false
-    t.integer "user_id", null: false
-    t.index ["tag_id", "user_id"], name: "index_tag_subscribers_on_tag_id_and_user_id", unique: true
-    t.index ["user_id", "tag_id"], name: "index_tag_subscribers_on_user_id_and_tag_id"
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string "name"
   end
@@ -106,8 +98,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_190345) do
     t.boolean "admin", default: false
     t.boolean "user", default: true
     t.text "about"
-    t.integer "cached_votes_total", default: 0
-    t.index ["cached_votes_total"], name: "index_users_on_cached_votes_total"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

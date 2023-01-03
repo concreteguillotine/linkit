@@ -4,6 +4,9 @@ class UsersController < ApplicationController
     def show
         @posts = Post.order(cached_votes_total: :desc).where(author: @user)
         @comments = Comment.where(author: @user)
+        @tags = Tag.joins(:posts).
+                    where('posts.id IN (?)', 
+                    @posts.select(:post_id)).distinct
     end
 
     def edit

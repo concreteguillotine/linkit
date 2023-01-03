@@ -17,6 +17,13 @@
                         <% comments_sum = @comments.map { |comment| comment.get_likes.size }.sum %> <br>
                         <%= comments_sum %> comment <%= comments_sum == 1 ? "like" : "likes" %>
                     </p>
+
+                    <h5> <%= @user.username %> posts in these tags: </h5>
+                        <ul class="taglist">
+                            <% @tags.sort_by { |tag| -tag.posts.size }.each do |tag| %>
+                                <li class="tags" > <%= link_to tag.name, tag_path(tag), method: :get %> </li>
+                            <% end %> 
+                        </ul>
                 </div>
             </div>
 

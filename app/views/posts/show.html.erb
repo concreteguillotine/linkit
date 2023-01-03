@@ -20,15 +20,24 @@
                 <% end %>
             </div>
                         <% if @post.image.present? %>
-                            <div class="image"> <%= image_tag @post.image %> </div>
+                            <%= turbo_frame_tag "image" do %>
+                                <div class="inline-image">
+                                    <div class="image"> <%= link_to (image_tag @post.image, dom_id: "show-image"), :back,  method: :get %> </div>
+                                </div>
+                            <% end %>
                         <% end %>
+
                         <% if @post.youtubeurl.present? %>
                             <iframe width=600 height=455 src="<%= Post.youtube_embed_url(@post.youtubeurl) %>"></iframe>
                         <% end %>
+
                         <% if @post.url.present? %>
                             From <%= link_to @post.url, @post.url %>
                         <% end %>
-                        <p class="caption"> <%= @post.text %> </p>
+                        
+                        <% if @post.text.present? %>
+                            <p class="caption"> <%= @post.text %> </p>
+                        <% end %>
                 </div>
         </div>
 
